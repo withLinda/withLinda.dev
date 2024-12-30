@@ -1,0 +1,76 @@
+/* Custom fonts first */
+@font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/raleway-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Then Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this at the top of your global.css */
+html.no-flash {
+    visibility: hidden;
+}
+
+/* Finally, custom styles */
+@layer base {
+    body {
+        @apply bg-solarized-bg dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
+        font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-wrap: break-word;
+    }
+}
+
+@layer components {
+    .prose {
+        @apply max-w-none leading-normal;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose h1 {
+        @apply text-4xl font-bold my-8;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose h2 {
+        @apply text-3xl font-semibold my-6;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose h3 {
+        @apply text-2xl font-semibold my-4;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose h4 {
+        @apply text-xl font-semibold my-4;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose p {
+        @apply my-6;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    .prose img {
+        @apply rounded-lg shadow-lg my-8 w-full object-cover max-h-[600px];
+    }
+
+    .prose img+em {
+        @apply block text-center text-sm text-solarized-text dark:text-nightowl-text -mt-6 mb-8;
+    }
+
+    .prose a {
+        @apply text-solarized-blue hover:text-solarized-accent dark:text-nightowl-blue dark:hover:text-nightowl-accent;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}

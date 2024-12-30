@@ -1,0 +1,48 @@
+---
+import HeaderLink from './HeaderLink.astro'
+import ThemeToggleButton from './ThemeToggleButton'
+import { ABOUT_URL, SITE_TITLE } from '../config'
+import { IoLogoGithub, IoMenu, IoClose } from 'react-icons/io5'
+import MobileMenu from './MobileMenu'
+---
+
+<header class="fixed w-full p-2 z-20 bg-solarized-bg/60 dark:bg-nightowl-bg/60 backdrop-blur-lg">
+  <div class="mx-auto max-w-3xl">
+    <nav class="flex items-center gap-3 text-base">
+      {/* Site Title/Home Link */}
+      <a href="/" class="group">
+        <h2 class="font-semibold tracking-wide p-2 text-lg">
+          {SITE_TITLE}
+        </h2>
+      </a>
+
+      {/* Desktop Navigation Links */}
+      <div class="items-center gap-6 hidden md:flex">
+        <HeaderLink href={ABOUT_URL}>About</HeaderLink>
+        <HeaderLink 
+          href="https://github.com/yourusername/yourrepo" 
+          target="_blank"
+        >
+          <IoLogoGithub />Source
+        </HeaderLink>
+      </div>
+
+      {/* Right-side items */}
+      <div class="flex-1"></div>
+      <ThemeToggleButton client:visible />
+      
+      {/* Mobile Menu Button */}
+      <div class="md:hidden">
+        <MobileMenu client:visible>
+          <HeaderLink href={ABOUT_URL}>About</HeaderLink>
+          <HeaderLink 
+            href="https://github.com/yourusername/yourrepo" 
+            target="_blank"
+          >
+            <IoLogoGithub />Source
+          </HeaderLink>
+        </MobileMenu>
+      </div>
+    </nav>
+  </div>
+</header>
