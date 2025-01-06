@@ -9,7 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 const posts = (await Astro.glob('./posts/*.md')).map(post => ({
   ...post,
   category: post.frontmatter.category || 'Uncategorized',
-  date: new Date(post.frontmatter.date).toLocaleDateString('en-US', {
+  date: new Date(post.frontmatter.createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'
