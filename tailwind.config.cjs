@@ -24,7 +24,8 @@ module.exports = {
 			purple: '#6c71c4',    // Violet from Solarized
 			orange: '#cb4b16',    // Orange from Solarized
 			cyan: '#2aa198',      // Cyan from Solarized
-			gray: '#657b83'       // Base00 from Solarized (darker gray for better contrast)
+			gray: '#657b83',       // Base00 from Solarized (darker gray for better contrast)
+			category: "#011627"
 		  },
 		  nightowl: {
 			// Night Owl dark theme colors (unchanged)
@@ -45,7 +46,8 @@ module.exports = {
 			purple: '#c792ea',    
 			orange: '#f78c6c',    
 			cyan: '#7fdbca',      
-			gray: '#637777'       
+			gray: '#637777',
+			category: "#fdf6e3"       
 		  }
 		},
 		fontFamily: {

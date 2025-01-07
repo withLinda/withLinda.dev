@@ -1,9 +1,9 @@
 ---
-layout: ../../layouts/BlogPost.astro
+layout: ../../../layouts/BlogPost.astro
 title: "A Journey Through Nature's Wonders"
 description: "An exploration of breathtaking landscapes and natural phenomena"
 heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070"
-createdAt: "2024-03-21"
+pubDate: "2024-03-21"
 tags: ["nature", "photography", "travel"]
 ---
 
