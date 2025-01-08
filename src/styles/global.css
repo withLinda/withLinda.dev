@@ -73,4 +73,14 @@ html.no-flash {
         text-decoration: underline;
         text-underline-offset: 2px;
     }
+
+    .prose pre {
+        @apply relative p-4 my-6 overflow-x-auto bg-solarized-secondary dark:bg-nightowl-secondary rounded-lg;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    .prose pre code {
+        @apply block p-0 overflow-visible bg-transparent border-0;
+        @apply text-sm font-mono;
+    }
 }

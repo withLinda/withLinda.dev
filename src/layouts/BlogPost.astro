@@ -4,6 +4,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
+import CopyCodeButton from '../components/CopyCodeButton.astro'
 import { SITE_TITLE } from '../config'
 
 export interface Props {
@@ -32,5 +33,6 @@ const {
       </div>
     </Content>
     <Footer />
+    <CopyCodeButton />
   </Body>
 </html>
