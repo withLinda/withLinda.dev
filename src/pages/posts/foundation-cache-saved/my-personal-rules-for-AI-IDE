@@ -1,3 +1,11 @@
+---
+layout: ../../../layouts/BlogPost.astro
+title: "My Personal Rules for AI IDE"
+description: "A guide to documenting comments for React and TypeScript code, featuring operator terminology, proper commenting practices, and TypeScript-specific documentation patterns"
+pubDate: "2025-01-08"
+heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
+---
+
 # I'm using Windows operating system and Powershell
 
 #Please do NOT be lazy, if you suggest a fix of a file, rewrite the codes without truncation, do not use something like [existing]  [... Continue with more sections and images ...] or [... Continue with existing codes ...], etc.
