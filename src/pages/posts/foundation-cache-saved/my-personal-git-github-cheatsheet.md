@@ -46,7 +46,7 @@ git commit -m "Add awesome new feature"
 
 ## 🌳 Branching Out (Like a Tree, But Cooler)
 
-## 🌳 Branching and Feature Development Workflow
+### 🌳 Branching and Feature Development Workflow
 
 ### 🌿 Creating & Managing Feature Branches
 ```bash
@@ -201,6 +201,22 @@ rm -rf repo-name
 git clone https://github.com/username/repo-name.git
 ```
 > The nuclear option - sometimes starting fresh is the best solution! 
+
+### Additional note: In PowerShell, you can combine multiple commands using a semicolon (;) or by using &&, where && will only execute the next command if the previous one succeeds.
+
+Here's the combined command using &&:
+
+```powershell
+git add . && git commit -m "test" && git push origin main
+```
+
+Or using semicolons:
+
+```powershell
+git add .; git commit -m "test"; git push origin main
+```
+
+The && approach is generally preferred because it will stop if any command fails, preventing potential issues (like pushing a failed commit). If any command in the chain fails, the subsequent commands won't execute.
 
 ---
 Happy coding! 
