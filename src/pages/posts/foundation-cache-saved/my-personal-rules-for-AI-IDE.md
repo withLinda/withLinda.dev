@@ -6,6 +6,12 @@ pubDate: "2025-01-08"
 heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
 ---
 
+# Comment Guide for AI Development with React and TypeScript
+
+This is a comprehensive guide for AI tools to understand and generate proper comments in React and TypeScript projects. The guide includes operator terminology, documentation patterns, and best practices for code commenting.
+
+```markdown
+
 # I'm using Windows operating system and Powershell
 
 #Please do NOT be lazy, if you suggest a fix of a file, rewrite the codes without truncation, do not use something like [existing]  [... Continue with more sections and images ...] or [... Continue with existing codes ...], etc.
@@ -101,7 +107,7 @@ const element = event.target as HTMLInputElement;
 
 // Using Union Type Operator (|) for multiple types
 type Status = "loading" | "success" | "error";
-```
+
 
 ## Style Guide for Comments
 
