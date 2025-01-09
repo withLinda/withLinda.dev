@@ -49,8 +49,9 @@ Before we begin, it's important to understand that:
 This is the crucial part where you get your Access Key, Secret, and Endpoint.
 
 1. Navigate to R2 Settings:
-   - Click on "R2" in sidebar
-   - Look for "Manage R2 API Tokens"
+    - From the R2 Overview page
+    - Click the "{} API" button in the top right
+    - Click "Manage API tokens" from the dropdown menu
 
 2. Create an API Token:
    - Click "Create API Token"
