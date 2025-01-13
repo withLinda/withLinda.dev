@@ -22,6 +22,15 @@ git config --global user.email "your.epic@email.com"
 
 ## 🌟 The Daily Commands (Your New Best Friends)
 
+```
+git init
+git commit -m "first commit"
+git branch -M main
+git remote add origin YOUR_REPOSITORY_URL
+git push -u origin main
+```
+
+
 ### 🔍 Checking Status
 ```bash
 git status
