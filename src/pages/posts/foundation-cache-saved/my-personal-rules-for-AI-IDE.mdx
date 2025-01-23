@@ -127,3 +127,104 @@ Example:
 // Ternary Operator (? :) - Conditionally assigns role based on admin status
 const role = isAdmin ? "administrator" : "user";
 ```
+
+
+From: Reddit thread "[Pro Tip: These 3 Magic Words Will Make Claude Write WAY Better Code (KISS, YAGNI, SOLID)](https://www.reddit.com/r/ClaudeAI/comments/1gqcsn6/pro_tip_these_3_magic_words_will_make_claude/?share_id=DBbQj_iX-kJQcHuf2sg11&utm_content=1&utm_medium=android_app&utm_name=androidcss&utm_source=share&utm_term=1)"
+
+```
+// Define core principles
+define KISS as "Keep It Simple, Stupid principle".
+KISS has goal of "straightforward solutions".
+KISS has attribute of "simplicity".
+KISS has attribute of "readability".
+KISS has attribute of "maintainability".
+
+define Solution as "Code implementation".
+Solution has complexity_level of "low".
+Solution has maintainability of "high".
+
+relate KISS and Solution as "guides" if Solution has complexity_level of "low".
+ensure KISS guides Solution.
+
+// Define YAGNI
+define YAGNI as "You Aren't Gonna Need It principle".
+YAGNI has goal of "minimal implementation".
+YAGNI has attribute of "focus".
+YAGNI has attribute of "efficiency".
+
+define Feature as "Code functionality".
+Feature has status of "required".
+
+relate YAGNI and Feature as "filters" if Feature has status of "required".
+ensure YAGNI filters Feature.
+
+// Define SOLID principles
+define SOLID as "Set of five design principles".
+SOLID has principle_count of 5.
+
+// Single Responsibility Principle
+define SRP as "Single Responsibility Principle".
+SRP has responsibility of "one".
+SRP has parent of SOLID.
+
+define Component as "Software component".
+Component has responsibility_count of 1.
+
+relate SRP and Component as "enforces" if Component has responsibility_count of 1.
+ensure SRP enforces Component.
+
+// Open-Closed Principle
+define OCP as "Open-Closed Principle".
+OCP has attribute of "extensibility".
+OCP has parent of SOLID.
+OCP is extendable.
+OCP is closed_for_modification.
+
+// Liskov Substitution Principle
+define LSP as "Liskov Substitution Principle".
+LSP has attribute of "substitutability".
+LSP has parent of SOLID.
+
+define Subtype as "Derived class or implementation".
+define Supertype as "Base class or interface".
+
+relate Subtype and Supertype as "substitutes" if Subtype is compatible.
+ensure LSP enforces "substitutes".
+
+// Interface Segregation Principle
+define ISP as "Interface Segregation Principle".
+ISP has attribute of "specificity".
+ISP has parent of SOLID.
+
+define Interface as "Contract between components".
+Interface is specific.
+Interface is minimal.
+
+relate ISP and Interface as "shapes" if Interface is specific and Interface is minimal.
+ensure ISP shapes Interface.
+
+// Dependency Inversion Principle
+define DIP as "Dependency Inversion Principle".
+DIP has attribute of "abstraction".
+DIP has parent of SOLID.
+
+define HighLevelModule as "Abstract component".
+define LowLevelModule as "Concrete implementation".
+define Abstraction as "Interface or abstract class".
+
+relate HighLevelModule and LowLevelModule as "depends_on" if Abstraction is present.
+ensure DIP enforces "depends_on".
+
+// Define relationships between principles
+relate KISS and YAGNI as "complements".
+relate SOLID and KISS as "supports".
+relate SOLID and YAGNI as "reinforces".
+
+// Define goals
+ensure Solution is simple.
+ensure Feature is necessary.
+ensure Component has responsibility_count of 1.
+ensure Interface is specific.
+ensure Abstraction is present.
+
+```
