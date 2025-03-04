@@ -10,11 +10,13 @@ export interface Props {
 
 const { title, description, image = '/cover.jpg' } = Astro.props
 ---
-<!-- Theme Script must be the first thing in head -->
-<ThemeScript />
+<head>
+  <!-- Theme Script must be the first thing in head -->
+  <ThemeScript />
 
-<!-- Basic meta tags -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>{title}</title>
-<meta name="description" content={description} />
+  <!-- Basic meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+</head>
