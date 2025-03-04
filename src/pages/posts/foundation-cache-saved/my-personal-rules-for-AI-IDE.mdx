@@ -11,7 +11,7 @@ import Gist from '@kotosha/astro-gist';
 
 <Gist id="4aeccbe1dbaa7f89c182bd65d2764203" />
 
-# Comment Guide for AI Development with React and TypeScript
+### Comment Guide for AI Development with React and TypeScript
 
 This is a comprehensive guide for AI tools to understand and generate proper comments in React and TypeScript projects. The guide includes operator terminology, documentation patterns, and best practices for code commenting.
 
@@ -247,4 +247,47 @@ ensure Component has responsibility_count of 1.
 ensure Interface is specific.
 ensure Abstraction is present.
 
+```
+
+### Text Simplification Prompt
+
+```
+# Text Simplification Request
+
+## Purpose
+I need to simplify complex text to make it more accessible while preserving all original meaning and information.
+
+## Target Audience
+Please simplify for readers with approximately an 8th-grade reading level who are not familiar with complex sentence structures but need to understand all the content details.
+
+## Simplification Guidelines
+Please follow these specific guidelines when simplifying:
+
+1. Language Structure:
+   - Break down complex sentences into shorter, clearer ones
+   - Use active voice where possible
+   - Replace jargon with everyday terms when it doesn't change meaning
+   - Maintain all technical terms and proper nouns exactly as written
+
+2. Content Preservation:
+   - Keep 100% of the original meaning and information
+   - Preserve all facts, statistics, numbers, and key concepts
+   - Maintain all examples, analogies, and comparisons (but simplify their wording)
+   - Keep cause-and-effect relationships clear and explicit
+
+3. Organization:
+   - Follow the original paragraph structure and flow
+   - Do not summarize, condense, or skip any content
+   - Process the entire document from beginning to end
+
+## Example of Desired Simplification
+
+Original:
+"The implementation of the new regulatory framework necessitates that organizations undertake comprehensive reviews of their current compliance procedures, as failure to adequately address these new requirements could potentially result in significant financial penalties."
+
+Simplified:
+"Organizations must thoroughly review their current compliance procedures because of the new regulatory framework. If they don't properly follow these new requirements, they could face large financial penalties."
+
+## Output Format
+Please provide the complete simplified text in the same paragraph structure as the original. Think through each sentence step by step to ensure you've preserved all meaning while making it more accessible.
 ```
