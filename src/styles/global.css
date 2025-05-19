@@ -6,35 +6,30 @@
     font-style: normal;
     font-display: swap;
 }
-
 /* Then Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Add this at the top of your global.css */
 html.no-flash {
     visibility: hidden;
 }
-
 /* Finally, custom styles */
 @layer base {
     body {
         @apply bg-solarized-bg dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
         font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-            sans-serif;
+        sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
         overflow-wrap: break-word;
     }
 }
-
 @layer components {
     .prose {
         @apply max-w-none leading-normal;
         @apply text-solarized-fg dark:text-nightowl-fg;
     }
-
     .prose h1 {
         @apply text-4xl font-bold my-8;
         @apply text-solarized-fg dark:text-nightowl-fg;
@@ -60,6 +55,31 @@ html.no-flash {
         @apply text-solarized-text dark:text-nightowl-text;
     }
 
+    /* Fix for bold text in dark mode */
+    .prose strong,
+    .prose b {
+        @apply font-bold text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    /* Emphasis/italic text */
+    .prose em,
+    .prose i {
+        @apply italic text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* Inline code */
+    .prose code:not(pre code) {
+        @apply px-1.5 py-0.5 rounded text-sm bg-solarized-secondary dark:bg-nightowl-secondary;
+        @apply text-solarized-red dark:text-nightowl-red;
+    }
+
+    /* Blockquotes */
+    .prose blockquote {
+        @apply pl-4 border-l-4 border-solarized-border dark:border-nightowl-border;
+        @apply my-6 italic text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* Images */
     .prose img {
         @apply rounded-lg shadow-lg my-8 w-full object-cover max-h-[600px];
     }
@@ -68,12 +88,14 @@ html.no-flash {
         @apply block text-center text-sm text-solarized-text dark:text-nightowl-text -mt-6 mb-8;
     }
 
+    /* Links */
     .prose a {
         @apply text-solarized-blue hover:text-solarized-accent dark:text-nightowl-blue dark:hover:text-nightowl-accent;
         text-decoration: underline;
         text-underline-offset: 2px;
     }
 
+    /* Code blocks */
     .prose pre {
         @apply relative p-4 my-6 overflow-x-auto bg-solarized-secondary dark:bg-nightowl-secondary rounded-lg;
         @apply text-solarized-text dark:text-nightowl-text;
@@ -82,5 +104,63 @@ html.no-flash {
     .prose pre code {
         @apply block p-0 overflow-visible bg-transparent border-0;
         @apply text-sm font-mono;
+    }
+
+    /* Tables */
+    .prose table {
+        @apply w-full my-6 border-collapse;
+    }
+
+    .prose thead {
+        @apply bg-solarized-secondary dark:bg-nightowl-secondary;
+    }
+
+    .prose th {
+        @apply p-2 text-left font-semibold border border-solarized-border dark:border-nightowl-border;
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    .prose td {
+        @apply p-2 border border-solarized-border dark:border-nightowl-border;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* Horizontal rule */
+    .prose hr {
+        @apply my-8 border-t border-solarized-border dark:border-nightowl-border;
+    }
+
+    /* Unordered lists */
+    .prose ul {
+        @apply my-6 list-disc pl-8;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* Ordered lists */
+    .prose ol {
+        @apply my-6 list-decimal pl-8;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* All list items (both ul and ol) */
+    .prose li {
+        @apply my-2;
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    /* Bold text within list items - explicit fix for the issue */
+    .prose li strong,
+    .prose li b {
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
+
+    /* Nested paragraphs inside list items */
+    .prose li p {
+        @apply my-0;
+    }
+
+    /* Make sure the markers (bullets & numbers) also use the correct color */
+    .prose li::marker {
+        @apply text-solarized-text dark:text-nightowl-text;
     }
 }
