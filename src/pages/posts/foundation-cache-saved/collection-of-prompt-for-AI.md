@@ -4,51 +4,42 @@ title: "Collection of Prompts for AI"
 description: "A guide to documenting comments for React and TypeScript code, featuring operator terminology, proper commenting practices, and TypeScript-specific documentation patterns"
 pubDate: "2025-01-08"
 heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
-
 ---
+
 # Collection of Prompts for AI
 
-### Comment Guide for AI Development with React and TypeScript
-
-
-```markdown
-
-# I'm using Windows operating system and Powershell
-
-#Please do NOT be lazy, if you suggest a fix of a file, rewrite the codes without truncation, do not use something like [existing]  [... Continue with more sections and images ...] or [... Continue with existing codes ...], etc.
-
-# React & TypeScript Code Documentation Guide
+## React & TypeScript Code Documentation Guide
 
 Use these specific terms when commenting code to make documentation searchable and consistent.
 
-## Operators & Expressions
+### Operators & Expressions
 
-### Conditional Operators
+#### Conditional Operators
 
 - `? :` - **Ternary Conditional Operator**
 - `&&` - **Logical AND Operator** (short-circuit evaluation)
 - `||` - **Logical OR Operator** (short-circuit evaluation)
 - `??` - **Nullish Coalescing Operator**
 
-### Optional Chaining
+#### Optional Chaining
 
 - `?.` - **Optional Chaining Operator**
 - `!.` - **Non-null Assertion Operator**
 
-### Type Operations
+#### Type Operations
 
 - `as` - **Type Assertion Operator**
 - `instanceof` - **Instance Check Operator**
 - `typeof` - **Type Check Operator**
 - `keyof` - **Index Type Query Operator**
 
-### String Operations
+#### String Operations
 
 - `+` - **String Concatenation Operator**
 - `` ` `` - **Template Literal**
 - `${expression}` - **String Interpolation**
 
-### Array Operations
+#### Array Operations
 
 - `...` - **Spread Operator**
 - `.map()` - **Array Mapping Method**
@@ -56,13 +47,13 @@ Use these specific terms when commenting code to make documentation searchable a
 - `.reduce()` - **Array Reduction Method**
 - `.find()` - **Array Find Method**
 
-### Object Operations
+#### Object Operations
 
 - `...` - **Object Spread Operator**
 - `?.` - **Optional Property Access**
 - `??=` - **Nullish Coalescing Assignment**
 
-### React-Specific
+#### React-Specific
 
 - `<>` - **Fragment Shorthand**
 - `React.Fragment` - **Fragment Component**
@@ -71,7 +62,7 @@ Use these specific terms when commenting code to make documentation searchable a
 - `useMemo` - **Memoization Hook**
 - `useCallback` - **Callback Memoization Hook**
 
-### TypeScript-Specific
+#### TypeScript-Specific
 
 - `interface` - **Interface Declaration**
 - `type` - **Type Alias**
@@ -80,7 +71,7 @@ Use these specific terms when commenting code to make documentation searchable a
 - `&` - **Intersection Type Operator**
 - `|` - **Union Type Operator**
 
-## Example Usage in Comments
+### Example Usage in Comments
 
 ```typescript
 // Using Nullish Coalescing Operator (??) for default value
@@ -108,9 +99,9 @@ const element = event.target as HTMLInputElement;
 
 // Using Union Type Operator (|) for multiple types
 type Status = "loading" | "success" | "error";
+```
 
-
-## Style Guide for Comments
+### Style Guide for Comments
 
 1. Be specific with operator names
 2. Include both the symbol and the full operator name
@@ -124,8 +115,9 @@ Example:
 const role = isAdmin ? "administrator" : "user";
 ```
 
+## Development Principles for Better Code
 
-### From: Reddit thread "[Pro Tip: These 3 Magic Words Will Make Claude Write WAY Better Code (KISS, YAGNI, SOLID)](https://www.reddit.com/r/ClaudeAI/comments/1gqcsn6/pro_tip_these_3_magic_words_will_make_claude/?share_id=DBbQj_iX-kJQcHuf2sg11&utm_content=1&utm_medium=android_app&utm_name=androidcss&utm_source=share&utm_term=1)"
+### From: Reddit thread "Pro Tip: These 3 Magic Words Will Make Claude Write WAY Better Code (KISS, YAGNI, SOLID)"
 
 ```
 Follow these principles:
@@ -146,8 +138,11 @@ Open-Closed Principle
 Liskov Substitution Principle
 Interface Segregation Principle
 Dependency Inversion Principle
+```
 
+### Formal Definition of Principles
 
+```
 // Define core principles
 define KISS as "Keep It Simple, Stupid principle".
 KISS has goal of "straightforward solutions".
@@ -242,10 +237,9 @@ ensure Feature is necessary.
 ensure Component has responsibility_count of 1.
 ensure Interface is specific.
 ensure Abstraction is present.
-
 ```
 
-### Text Simplification Prompt
+## Text Simplification Prompt
 
 ```
 # Text Simplification Request
@@ -288,9 +282,8 @@ Simplified:
 Please provide the complete simplified text in the same paragraph structure as the original. Think through each sentence step by step to ensure you've preserved all meaning while making it more accessible.
 ```
 
-### Contemplating LLM: improved from [the original gist by Maharshi-Pandya](https://gist.github.com/Maharshi-Pandya/4aeccbe1dbaa7f89c182bd65d2764203#file-contemplative-llms-txt)
-
-
+## Contemplating LLM Framework
+*Improved from the original gist by Maharshi-Pandya*
 
 ```
 # Thorough Reasoning Assistant
@@ -366,7 +359,8 @@ Your reasoning should include natural thought progressions like:
 For simpler questions that don't require extensive analysis, you can provide more concise reasoning while still showing your thought process.
 ```
 
-### Comprehensive Structured Analysis Framework for Text
+## Comprehensive Structured Analysis Framework for Text
+
 ```
 Please analyze the provided text thoroughly and reorganize it into the following clear structure:
 
@@ -399,4 +393,29 @@ For your analysis:
 At the end, provide a "Key Takeaways" section with 5-7 most important insights from the text, using direct quotes where particularly impactful.
 
 Think step-by-step through each section of the text to ensure comprehensive coverage of all relevant information.
+```
+
+## Personal Analysis Framework
+
+```
+You are tasked with analyzing me based on your memory of our past interactions, context, goals, and challenges. Your mission is to identify the single most critical bottleneck or flaw in my thinking, strategy, or behavior that is limiting my growth or success. Use specific references from memory to strengthen your analysis. 
+
+Part 1: Diagnosis 
+Pinpoint the one core flaw, mental model error, or strategic blind spot. Focus deeply: do not list multiple issues — only the single most impactful one. Explain how this flaw shows up in my actions, decisions, or mindset, citing specific patterns or tendencies from memory. 
+
+Part 2: Consequences 
+Describe how this bottleneck is currently limiting my outcomes. Reference past behaviors, initiatives, or goals to illustrate how this flaw has played out. Be brutally honest but maintain a constructive, actionable tone. 
+
+Part 3: Prescription 
+Provide a clear, practical strategy to fix this flaw. Suggest the highest-leverage shift in thinking, habits, or systems that would unlock growth. Align the advice with my known goals and tendencies to ensure it's actionable. 
+
+Important: Do not sugarcoat. Prioritize brutal clarity over comfort. Your goal is to make me see what I am blind to. Use memory as an asset to provide deep, sharp insights.
+```
+
+## General Instruction for Claude
+
+```
+# I'm using Windows operating system and Powershell
+
+# Please do NOT be lazy, if you suggest a fix of a file, rewrite the codes without truncation, do not use something like [existing] [... Continue with more sections and images ...] or [... Continue with existing codes ...], etc.
 ```
