@@ -11,14 +11,14 @@ export default function MobileMenu({ children }: Props) {
   return (
     <div>
       {/* Hamburger Button */}
-      <button
-        type="button"
-        className="p-2 text-2xl text-solarized-fg dark:text-nightowl-fg hover:bg-solarized-button dark:hover:bg-nightowl-button rounded-lg transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <IoClose /> : <IoMenu />}
-      </button>
+        <button
+            type="button"
+            className="p-2 text-2xl text-solarized-fg dark:text-nightowl-fg hover:bg-solarized-button dark:hover:bg-nightowl-button rounded-lg transition-colors rounded-md mr-4"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+        >
+            {isOpen ? <IoClose /> : <IoMenu />}
+        </button>
 
       {/* Mobile Menu Panel */}
       {isOpen && (

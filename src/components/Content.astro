@@ -5,6 +5,8 @@ export interface Props {
 
 const { className = '' } = Astro.props
 ---
-<article class={`px-8 pt-24 mx-auto max-w-3xl ${className}`}>
-  <slot />
+<article class={`pt-24 mx-auto max-w-3xl ${className}`}>
+  <div class="px-8">
+    <slot />
+  </div>
 </article>
