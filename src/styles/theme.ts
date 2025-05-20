@@ -37,7 +37,7 @@ export const themes = {
         active: '#13344F',         // Keep original
         border: '#122d42',         // Keep original
         highlight: '#084d81',      // Keep original
-        accent: '#7e57c2',         // Material deep purple
+        accent: '#f7a5a5',         // Soft pastel red that complements the orange fg color
         green: '#addb67',          // Night Owl green
         yellow: '#ecc48d',         // Night Owl yellow
         blue: '#82aaff',           // Night Owl blue
