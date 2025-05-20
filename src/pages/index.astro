@@ -60,18 +60,19 @@ const categories = [...new Set(posts.map(post => post.category))]
           margin: 2rem 0 1rem;
           font-size: 1.1rem;
           font-weight: 500;
-          @apply text-solarized-category dark:text-nightowl-category font-semibold;
+          @apply text-solarized-accent dark:text-nightowl-accent font-semibold;
         }
         .post-item {
           padding: 1rem 0;
           border-bottom: 1px solid #e2e8f0;
           transition: transform 0.2s ease;
+          @apply border-solarized-border dark:border-nightowl-border;
         }
         .post-item:hover {
           transform: translateX(8px);
         }
         .post-item:hover .post-date {
-          color: #4a5568;
+          @apply text-solarized-accent dark:text-nightowl-accent;
         }
         .post-link {
           display: flex;
@@ -86,10 +87,10 @@ const categories = [...new Set(posts.map(post => post.category))]
           transition: color 0.2s ease;
         }
         .post-item:hover {
-          border-bottom-color: #cbd5e0;
+          @apply border-solarized-accent dark:border-nightowl-accent;
         }
       </style>
-      
+
       {categories.map(category => (
         <div>
           <h2 class="category">{category}</h2>

@@ -30,6 +30,15 @@ html.no-flash {
         @apply max-w-none leading-normal;
         @apply text-solarized-fg dark:text-nightowl-fg;
     }
+
+    /* Consistent color application */
+    .prose p, .prose li, .prose td {
+        @apply text-solarized-text dark:text-nightowl-text;
+    }
+
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose strong {
+        @apply text-solarized-fg dark:text-nightowl-fg;
+    }
     .prose h1 {
         @apply text-4xl font-bold my-8;
         @apply text-solarized-fg dark:text-nightowl-fg;

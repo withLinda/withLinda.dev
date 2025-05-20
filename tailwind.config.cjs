@@ -8,8 +8,8 @@ module.exports = {
 		  solarized: {
 			// Light theme colors with Solarized values
 			bg: '#fdf6e3',        // Base3 (background)
-			fg: '#d35f06',        // Base03 (strong contrast)
-			text: '#073642',      // Base02 (darker text for better contrast)
+			fg: '#073642',        // Change from orange to a darker blue for better readability
+			text: '#586e75',      // Slightly lighter than fg for secondary text
 			button: '#d8d4c4',    // From your Solarized list
 			accent: '#d33682',    // Magenta from Solarized
 			blue: '#268bd2',      // Blue from Solarized
@@ -33,7 +33,7 @@ module.exports = {
 			fg: '#f78c6c',        
 			text: '#d6deeb',      
 			button: '#0b253a',    
-			accent: '#7e57c2',    
+			accent: '#f7a5a5',    // Soft pastel red that complements the orange fg color
 			blue: '#82aaff',      
 			yellow: '#ecc48d',    
 			secondary: '#0b2942', 
@@ -67,4 +67,3 @@ module.exports = {
 	  require('@tailwindcss/typography')
 	]
   }
-  
