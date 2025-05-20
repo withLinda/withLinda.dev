@@ -60,7 +60,7 @@ const categories = [...new Set(posts.map(post => post.category))]
           margin: 2rem 0 1rem;
           font-size: 1.1rem;
           font-weight: 500;
-          @apply text-solarized-accent dark:text-nightowl-accent font-semibold;
+          @apply text-solarized-accent dark:text-nightowl-yellow font-semibold;
         }
         .post-item {
           padding: 1rem 0;
@@ -72,7 +72,7 @@ const categories = [...new Set(posts.map(post => post.category))]
           transform: translateX(8px);
         }
         .post-item:hover .post-date {
-          @apply text-solarized-accent dark:text-nightowl-accent;
+          @apply text-solarized-accent dark:text-nightowl-yellow;
         }
         .post-link {
           display: flex;
@@ -87,7 +87,7 @@ const categories = [...new Set(posts.map(post => post.category))]
           transition: color 0.2s ease;
         }
         .post-item:hover {
-          @apply border-solarized-accent dark:border-nightowl-accent;
+          @apply border-solarized-accent dark:border-nightowl-yellow;
         }
       </style>
 

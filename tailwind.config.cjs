@@ -11,7 +11,7 @@ module.exports = {
 			fg: '#073642',        // Change from orange to a darker blue for better readability
 			text: '#586e75',      // Slightly lighter than fg for secondary text
 			button: '#d8d4c4',    // From your Solarized list
-			accent: '#d33682',    // Magenta from Solarized
+			accent: '#2b6cb0',    // Soft blue (matching moon icon)
 			blue: '#268bd2',      // Blue from Solarized
 			yellow: '#b58900',    // Yellow from Solarized
 			secondary: '#F6F0DE', // Second Background from your list

@@ -13,7 +13,7 @@ export const themes = {
         active: '#E1E1E1',        // Subtle active state
         border: '#E4E4E4',        // Subtle border
         highlight: '#80CBC4',      // Material teal for highlights
-        accent: '#7E57C2',        // Material deep purple
+        accent: '#2b6cb0',        // Soft blue (matching moon icon)
         green: '#91B859',         // Material light green
         yellow: '#F6A434',        // Material amber
         blue: '#82AAFF',          // Keeping your blue
