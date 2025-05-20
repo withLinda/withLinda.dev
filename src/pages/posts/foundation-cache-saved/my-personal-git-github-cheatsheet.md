@@ -2,7 +2,7 @@
 layout: ../../../layouts/BlogPost.astro
 title: "My Personal Git & GitHub Cheatsheet"
 description: "Cheatshhet to Git and GitHub commands, workflows, and best practices."
-pubDate: "2024-01-19"
+pubDate: "2025-05-20"
 heroImage: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80"
 tags: ["git", "github", "development", "tutorial", "cheatsheet"]
 readingTime: "15 minutes"
@@ -295,6 +295,74 @@ Analogy: A bookmark in your project's timeline, marking important milestones.
 What it is: The files on your local machine.  
 Analogy: Your workspace where you actually make changes.
 
+## 📌 Preserving Different Versions of Your Project
+
+Sometimes you need to maintain different versions of your project simultaneously. For example, you might want to preserve your MVP while developing new features, or maintain multiple versions for different clients.
+
+### Using Branches to Save Versions
+
+Here's how to maintain separate versions using branches:
+
+```bash
+# Start from your current master
+git checkout master
+
+# Create a branch to preserve current state
+git checkout -b MVP
+
+# Optional: Add an empty commit to mark this version
+git commit --allow-empty -m "MVP version 1.0 release"
+
+# Push the branch to remote to preserve it
+git push origin MVP
+
+# Return to master for new development
+git checkout master
+
+# Create new branch for next version
+git checkout -b "MVP-2.0"
+
+# Work on new features...
+```
+
+This approach allows you to:
+1. Preserve the exact state of your MVP
+2. Keep developing new features on a separate branch
+3. Deploy any version at any time by checking out the appropriate branch
+4. Easily switch between versions for comparison or bug fixing
+
+### Using Tags for Version Management (Recommended)
+
+While branches work for preserving versions, Git tags are specifically designed for this purpose and are more efficient:
+
+```bash
+# While on master at the MVP point
+git tag -a v1.0 -m "MVP Version 1.0"
+git push origin v1.0
+
+# Continue development...
+# When MVP 2.0 is ready
+git tag -a v2.0 -m "MVP Version 2.0"
+git push origin v2.0
+```
+
+**Advantages of tags:**
+- Simpler to manage than multiple long-lived branches
+- Don't clutter your branch list
+- Clearly indicate "official" versions
+- Can be checked out just like branches: `git checkout v1.0`
+- Don't move as you continue development (unlike branches)
+
+To list all tags:
+```bash
+git tag
+```
+
+To checkout a specific tagged version:
+```bash
+git checkout v1.0
+```
+
 ## 🎯 Best Practices
 
 1. **Branch Often:** Create branches for each discrete feature or bug fix
@@ -304,5 +372,8 @@ Analogy: Your workspace where you actually make changes.
 5. **Keep Main Branch Stable:** Never commit directly to main for team projects
 6. **Use .gitignore:** Exclude unnecessary files from your repository
 7. **Delete Branches After Merging:** Keep your repository clean
+8. **Use Tags for Versions:** Tag important milestones and releases
+9. **Document Your Workflow:** Maintain notes on your branching strategy
 
 By following these guidelines and understanding the core Git concepts, you'll develop a workflow that helps you maintain clean code, collaborate effectively, and recover from mistakes with confidence.
+
