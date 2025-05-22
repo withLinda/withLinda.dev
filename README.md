@@ -15,6 +15,16 @@ A modern, fast, and customizable blog template built with Astro, React, and Tail
 - 🔒 **TypeScript** - Type-safe code with TypeScript
 - 📊 **Zero JS by default** - Astro's partial hydration for optimal performance
 
+## 📱 Screenshots
+
+### Light Mode (Solarized Light Theme)
+<img src="screenshots/paper-light-mode.png" alt="Blog in Light Mode" width="600" />
+
+### Dark Mode (Night Owl Theme)
+<img src="screenshots/nightowl-dark-mode.png" alt="Blog in Dark Mode" width="600" />
+
+Both themes are fully responsive and optimized for mobile viewing, providing an excellent reading experience on any device.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
