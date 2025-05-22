@@ -107,7 +107,7 @@ html.no-flash {
     }
     .prose h1 {
         @apply text-4xl font-bold my-8;
-        @apply text-solarized-fg dark:text-nightowl-fg;
+        @apply text-solarized-blue dark:text-nightowl-blue;
     }
 
     .prose h2 {
