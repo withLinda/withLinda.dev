@@ -1,12 +1,4 @@
-/* Custom fonts first */
-@font-face {
-    font-family: 'Raleway';
-    src: url('/fonts/raleway-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-/* Then Tailwind directives */
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +10,7 @@ html.no-flash {
 @layer base {
     body {
         @apply dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
-        font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
         sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
