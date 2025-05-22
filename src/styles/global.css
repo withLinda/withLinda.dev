@@ -17,12 +17,78 @@ html.no-flash {
 /* Finally, custom styles */
 @layer base {
     body {
-        @apply bg-solarized-bg dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
+        @apply dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
         font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
         sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
         overflow-wrap: break-word;
+
+        /* Paper-like background for light theme */
+        background-color: #fdf6e3; /* Fallback color (original solarized bg) */
+        background-image: 
+            /* Age spots and variations */
+            radial-gradient(circle at 15% 25%, rgba(139, 122, 96, 0.12) 0%, transparent 35%),
+            radial-gradient(circle at 85% 75%, rgba(160, 140, 115, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 45% 60%, rgba(120, 100, 80, 0.06) 0%, transparent 30%),
+            /* Subtle grain */
+            repeating-radial-gradient(circle at 50% 50%, 
+                transparent 0px, 
+                rgba(139, 122, 96, 0.03) 1px, 
+                transparent 2px),
+            /* Base aged paper color - using solarized light colors */
+            linear-gradient(145deg, 
+                #fdf6e3 0%, 
+                #f5efe4 30%, 
+                #f8f2e3 70%, 
+                #f4ecd9 100%);
+    }
+
+    /* Reset to normal background in dark mode */
+    .dark body {
+        background-image: none;
+    }
+
+    /* Reset header background in dark mode */
+    .dark .paper-header-bg {
+        background-image: none;
+        /* Removed background-color: transparent to allow the dark:bg-nightowl-bg/60 class to work */
+    }
+
+    /* Reset UI element background in dark mode */
+    .dark .paper-ui-bg {
+        background-image: none;
+        /* Removed background-color: transparent to allow the dark:bg-nightowl-bg/60 class to work */
+    }
+
+    /* Paper-like header background for light theme */
+    .paper-header-bg {
+        background-color: rgba(253, 246, 227, 0.6); /* Fallback color (original solarized bg with opacity) */
+        background-image: 
+            /* Subtle grain for header */
+            repeating-radial-gradient(circle at 50% 50%, 
+                transparent 0px, 
+                rgba(139, 122, 96, 0.02) 1px, 
+                transparent 2px),
+            /* Base color with opacity */
+            linear-gradient(145deg, 
+                rgba(253, 246, 227, 0.6) 0%, 
+                rgba(245, 239, 228, 0.6) 100%);
+    }
+
+    /* Paper-like background for UI elements in light theme */
+    .paper-ui-bg {
+        background-color: rgba(253, 246, 227, 0.6); /* Fallback color (original solarized bg with opacity) */
+        background-image: 
+            /* Subtle grain for UI elements */
+            repeating-radial-gradient(circle at 50% 50%, 
+                transparent 0px, 
+                rgba(139, 122, 96, 0.02) 1px, 
+                transparent 2px),
+            /* Base color with opacity - matching header */
+            linear-gradient(145deg, 
+                rgba(253, 246, 227, 0.6) 0%, 
+                rgba(245, 239, 228, 0.6) 100%);
     }
 }
 @layer components {

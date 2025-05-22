@@ -11,6 +11,7 @@ module.exports = {
 			fg: '#073642',        // Change from orange to a darker blue for better readability
 			text: '#586e75',      // Slightly lighter than fg for secondary text
 			button: '#d8d4c4',    // From your Solarized list
+			buttonBg: '#d1cdbe',  // Less bright background for sun button (D1CDBEFF)
 			accent: '#2b6cb0',    // Soft blue (matching moon icon)
 			blue: '#268bd2',      // Blue from Solarized
 			yellow: '#b58900',    // Yellow from Solarized
@@ -36,6 +37,7 @@ module.exports = {
 			accent: '#f7a5a5',    // Soft pastel red that complements the orange fg color
 			blue: '#82aaff',      
 			yellow: '#ecc48d',    
+			buttonBg: '#1e3951',  // More distinct background for moon button in dark mode
 			secondary: '#0b2942', 
 			border: '#122d42',    
 			disabled: '#697098',  

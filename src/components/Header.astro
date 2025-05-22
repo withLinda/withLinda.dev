@@ -6,7 +6,7 @@ import { IoLogoGithub, IoMenu, IoClose } from 'react-icons/io5'
 import MobileMenu from './MobileMenu'
 ---
 
-<header class="fixed w-full p-2 z-20 bg-solarized-bg/60 dark:bg-nightowl-bg/60 backdrop-blur-lg">
+<header class="fixed w-full p-2 z-20 paper-header-bg dark:bg-nightowl-bg/60 backdrop-blur-lg">
   <div class="mx-auto max-w-3xl">
     <nav class="flex items-center gap-3 text-base">
       {/* Site Title/Home Link */}
@@ -30,7 +30,7 @@ import MobileMenu from './MobileMenu'
       {/* Right-side items */}
       <div class="flex-1"></div>
       <ThemeToggleButton client:visible />
-      
+
       {/* Mobile Menu Button */}
       <div class="md:hidden">
         <MobileMenu client:visible>

@@ -45,8 +45,8 @@ export default function ThemeToggleButton() {
           <button
             key={t}
             className={`${
-              checked
-                ? "bg-solarized-bg dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg"
+              !checked
+                ? "bg-solarized-buttonBg dark:bg-nightowl-buttonBg text-solarized-fg dark:text-nightowl-fg"
                 : ""
             } cursor-pointer rounded-3xl p-2`}
             onClick={toggleTheme}
