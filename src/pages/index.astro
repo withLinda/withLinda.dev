@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
@@ -6,41 +7,35 @@ import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 
-interface Frontmatter {
-  title: string;
-  pubDate: string;
-}
-
-interface Post {
-  file: string;
-  url: string;
-  frontmatter: Frontmatter;
-}
-
-const posts = await Promise.all(
-  Object.values(await import.meta.glob<Post>('./posts/**/*.{md,mdx}'))
-    .map(async (post) => {
-      const postData = await post();
-      // Extract category from file path - will be like './posts/category-name/file.md'
-      const pathParts = postData.file.split('/posts/')[1].split('/');
-      return {
-        ...postData,
-        category: pathParts.length > 1
-          ? pathParts[0]
-              .split('-')
-              .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ')
-          : 'Uncategorized',
-        date: new Date(postData.frontmatter.pubDate).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        })
-      }
-    })
+const posts = await getCollection('blog')
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 )
 
-const categories = [...new Set(posts.map(post => post.category))]
+// Group posts by category
+const postsByCategory = sortedPosts.reduce((acc, post) => {
+  const pathParts = post.id.split('/')
+  const category = pathParts.length > 1
+    ? pathParts[0]
+        .split('-')
+        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    : 'Uncategorized'
+  
+  if (!acc[category]) acc[category] = []
+  acc[category].push({
+    ...post,
+    url: `/blog/${post.id}`,
+    date: new Date(post.data.pubDate).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  })
+  return acc
+}, {} as Record<string, any[]>)
+
+const categories = Object.keys(postsByCategory)
 ---
 
 <!DOCTYPE html>
@@ -95,16 +90,14 @@ const categories = [...new Set(posts.map(post => post.category))]
         <div>
           <h2 class="category">{category}</h2>
           <ul class="post-list">
-            {posts
-              .filter(post => post.category === category)
-              .map(post => (
-                <li class="post-item">
-                  <a class="post-link" href={post.url}>
-                    <span class="text-solarized-blue dark:text-nightowl-blue">{post.frontmatter.title}</span>
-                    <span class="post-date">{post.date}</span>
-                  </a>
-                </li>
-              ))}
+            {postsByCategory[category].map(post => (
+              <li class="post-item">
+                <a class="post-link" href={post.url}>
+                  <span class="text-solarized-blue dark:text-nightowl-blue">{post.data.title}</span>
+                  <span class="post-date">{post.date}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       ))}

@@ -1,10 +1,8 @@
 
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "Guide to Setting Up Cloudflare R2"
 description: "A comprehensive guide on setting up Cloudflare R2 storage, obtaining necessary credentials, and understanding its free tier benefits with step-by-step instructions"
 pubDate: "2024-01-17"
-heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80"
 ---
 
 #  Guide to Setting Up Cloudflare R2

@@ -11,19 +11,19 @@ export interface Props {
   content: {
     title: string
     description: string
-    heroImage?: string
+    pubDate: Date
+    updatedDate?: Date
   }
 }
 
-const {
-  content: { title, description, heroImage }
-} = Astro.props
+const { content } = Astro.props
+const { title, description } = content
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="no-flash">
   <head>
-    <BaseHead title={`${title} | ${SITE_TITLE}`} description={description} image={heroImage} />
+    <BaseHead title={`${title} | ${SITE_TITLE}`} description={description} />
   </head>
   <Body>
     <Header />

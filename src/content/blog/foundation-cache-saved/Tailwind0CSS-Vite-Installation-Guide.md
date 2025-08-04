@@ -1,9 +1,7 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "Tailwind CSS + Vite Installation Guide"
 description: "A comprehensive guide to setting up Tailwind CSS with Vite and React"
 pubDate: "2024-01-09"
-heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
 ---
 
 

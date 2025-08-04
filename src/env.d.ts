@@ -7,7 +7,6 @@ export interface Post {
   description: string
   createdAt?: string
   updatedAt?: string
-  heroImage?: string
   tags: string[]
 }
 

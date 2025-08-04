@@ -232,30 +232,32 @@ html.no-flash {
     }
 
 
-    h2.category {
-        margin-left: 0px !important; /* Option 1 */
-    }
+/* Category heading specific styling */
+h2.category {
+    margin-left: 0;
+}
 
-    header nav h2 {
-        margin-left: 17px !important; /* Site title margin */
-    }
+/* Header navigation styling */
+header nav h2 {
+    margin-left: 17px;
+}
 
-    /* Default for mobile (smaller margin or no margin) */
+/* Mobile-first approach for nav items */
+header nav .inline-flex {
+    margin-right: 0;
+}
+
+/* Desktop navigation spacing */
+@media (min-width: 768px) {
     header nav .inline-flex {
-        margin-right: 0px !important; /* Smaller margin for mobile - adjust as needed */
+        margin-right: 27px;
     }
+}
 
-    /* Only apply the larger margin on medium screens and up */
-    @media (min-width: 768px) {
-        header nav .inline-flex {
-            margin-right: 27px !important; /* Original margin for desktop */
-        }
-    }
-
-    /* If you need additional fine-tuning */
-    header nav > div:last-child {
-        margin-left: auto;
-    }
+/* Auto margin for last nav item */
+header nav > div:last-child {
+    margin-left: auto;
+}
 
 
 

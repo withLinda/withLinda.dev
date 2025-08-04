@@ -2,8 +2,7 @@
 module.exports = {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}',
-		'./src/pages/**/*.md',
-		'./src/pages/**/*.mdx'
+		'./src/content/blog/**/*.md'
 	],
 	darkMode: 'class',
 	theme: {

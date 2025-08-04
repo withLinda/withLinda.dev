@@ -1,9 +1,7 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "Collection of Prompts for AI"
 description: "A guide to documenting comments for React and TypeScript code, featuring operator terminology, proper commenting practices, and TypeScript-specific documentation patterns"
 pubDate: "2025-01-08"
-heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
 ---
 
 # Collection of Prompts for AI

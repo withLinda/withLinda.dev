@@ -1,12 +1,7 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "My Personal Git & GitHub Cheatsheet"
 description: "Cheatshhet to Git and GitHub commands, workflows, and best practices."
 pubDate: "2025-05-20"
-heroImage: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80"
-tags: ["git", "github", "development", "tutorial", "cheatsheet"]
-readingTime: "15 minutes"
-author: "Dev Companion"
 ---
 
 

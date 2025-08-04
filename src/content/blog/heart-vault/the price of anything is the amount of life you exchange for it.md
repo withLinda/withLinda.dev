@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "The Price of Unrequited Love"
 description: "Reflections on emotional investment, the wisdom of Henry David Thoreau, and finding meaning in one-sided affection despite the pain it brings"
 pubDate: "2025-03-14"

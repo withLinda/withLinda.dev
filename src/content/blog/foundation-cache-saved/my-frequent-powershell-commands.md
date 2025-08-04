@@ -1,9 +1,7 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: "My Frequent Powershell Command"
-description: ""
+description: "A collection of frequently used PowerShell commands for development and system administration"
 pubDate: "2025-01-09"
-heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
 
 ---
 

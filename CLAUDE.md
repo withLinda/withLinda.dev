@@ -12,7 +12,7 @@
 * **Naming**: PascalCase for components, camelCase for variables/functions
 * **TypeScript**: Use strict type checking, avoid `any` unless necessary
 * **CSS**: Use Tailwind utility classes, centralize theme variables in theme.ts
-* **Content**: Markdown files in src/pages with frontmatter for metadata
+* **Content**: Blog posts in src/content/blog/ using Astro v5.0 Content Collections
 * **Imports**: Group imports (React, Astro, utils, components, styles)
 * **Error Handling**: Use try/catch blocks for async operations
 * **Components**: Keep them small, focused, and reusable
@@ -228,6 +228,28 @@ The only time to provide multiple approaches:
 - Time is saved, not wasted on complexity
 
 Remember: **Precision and specificity save time. Assumptions and guessing waste time.**
+
+## Content Structure (Updated for Astro v5.0)
+
+- Blog posts are located in `src/content/blog/`
+- Posts are organized by category subdirectories
+- Configuration is in `src/content.config.ts` (note: NOT inside content folder)
+- Uses modern Astro v5.0 Content Collections API with glob loader
+- Frontmatter schema is enforced via Zod
+- Required fields: title, description, pubDate
+- Optional fields: updatedDate, tags, author
+- Posts are accessible at `/blog/[id]` URLs (uses id, not slug)
+
+## No Hero Images
+
+This site does not use hero images for blog posts. The heroImage field has been completely removed from all posts and components.
+
+## Content Collections Commands
+
+- `npm run astro sync` - ALWAYS run after changing content collections config
+- `npm run astro check` - Type checking for content
+- Content is queried using `getCollection('blog')` and rendered with `render(post)`
+
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
 NEVER create files unless they're absolutely necessary for achieving your goal.

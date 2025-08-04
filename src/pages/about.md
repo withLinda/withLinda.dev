@@ -2,7 +2,7 @@
 layout: ../layouts/BlogPost.astro
 title: "About Me"
 description: "A little bit about me and what I do"
-updatedDate: "2024-03-21"
+pubDate: "2024-03-21"
 ---
 
 # About Me
@@ -22,8 +22,9 @@ And for scraping and automation, I use:
 
 - Python Requests
 - Playwright
+- Puppeteer-real-browser
 - Scrapy
-- BeautifulSoup
+
 
 ## Get in Touch
 
@@ -33,11 +34,6 @@ Feel free to reach out to me through:
 - [Twitter/X](https://x.com/withLinda13) you can DM me here
 - [Tumblr](https://www.tumblr.com/withlinda13)
 
-## About This Site
+## Replicate This Blog Design
 
-This site is built with [Astro](https://astro.build), a modern static site generator that allows for building fast, content-focused websites. It features:
-
-- ⚡️ Fast page loads
-- 🌙 Dark mode support
-- 📱 Responsive design
-- 🎨 Tailwind CSS styling
+If you'd like to replicate this Astro blog design, you can find all the code on GitHub: https://github.com/withLinda/withLinda.dev
