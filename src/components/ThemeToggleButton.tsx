@@ -38,17 +38,17 @@ export default function ThemeToggleButton() {
   }, []);
 
   return isMounted ? (
-    <div className="inline-flex items-center p-[1px] rounded-3xl bg-solarized-button dark:bg-nightowl-button">
+    <div className="inline-flex items-center p-[1px] rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-xl backdrop-saturate-150 border border-[#5C6A72]/40 dark:border-white/30 supports-[backdrop-filter]:backdrop-blur-xl supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-xl]">
       {themes.map((t) => {
         const checked = t === theme;
         return (
           <button
             key={t}
             className={`${
-              !checked
-                ? "bg-solarized-buttonBg dark:bg-nightowl-buttonBg text-solarized-fg dark:text-nightowl-fg"
-                : ""
-            } cursor-pointer rounded-3xl p-2`}
+              checked
+                ? "bg-white/30 dark:bg-white/20"
+                : "bg-transparent"
+            } cursor-pointer rounded-3xl p-2 transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/10 transform-gpu`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >

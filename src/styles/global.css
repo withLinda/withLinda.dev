@@ -16,24 +16,24 @@ html.no-flash {
         text-rendering: optimizeLegibility;
         overflow-wrap: break-word;
 
-        /* Paper-like background for light theme */
-        background-color: #fdf6e3; /* Fallback color (original solarized bg) */
+        /* Paper-like background for light theme - Everforest warm palette */
+        background-color: #F3EAD3; /* Fallback color (Everforest bg0) */
         background-image: 
-            /* Age spots and variations */
-            radial-gradient(circle at 15% 25%, rgba(139, 122, 96, 0.12) 0%, transparent 35%),
-            radial-gradient(circle at 85% 75%, rgba(160, 140, 115, 0.08) 0%, transparent 40%),
-            radial-gradient(circle at 45% 60%, rgba(120, 100, 80, 0.06) 0%, transparent 30%),
-            /* Subtle grain */
+            /* Age spots and variations - using warm Everforest tones */
+            radial-gradient(circle at 15% 25%, rgba(122, 138, 137, 0.08) 0%, transparent 35%),
+            radial-gradient(circle at 85% 75%, rgba(167, 192, 128, 0.06) 0%, transparent 40%),
+            radial-gradient(circle at 45% 60%, rgba(219, 188, 127, 0.05) 0%, transparent 30%),
+            /* Subtle grain - warm Everforest tone */
             repeating-radial-gradient(circle at 50% 50%, 
                 transparent 0px, 
-                rgba(139, 122, 96, 0.03) 1px, 
+                rgba(133, 146, 137, 0.02) 1px, 
                 transparent 2px),
-            /* Base aged paper color - using solarized light colors */
+            /* Base aged paper color - using Everforest light colors */
             linear-gradient(145deg, 
-                #fdf6e3 0%, 
-                #f5efe4 30%, 
-                #f8f2e3 70%, 
-                #f4ecd9 100%);
+                #F3EAD3 0%, 
+                #EAE4CA 30%, 
+                #E5DFC5 70%, 
+                #DDD8BE 100%);
     }
 
     /* Reset to normal background in dark mode */
@@ -53,34 +53,34 @@ html.no-flash {
         /* Removed background-color: transparent to allow the dark:bg-nightowl-bg/60 class to work */
     }
 
-    /* Paper-like header background for light theme */
+    /* Paper-like header background for light theme - Everforest warm palette */
     .paper-header-bg {
-        background-color: rgba(253, 246, 227, 0.6); /* Fallback color (original solarized bg with opacity) */
+        background-color: rgba(243, 234, 211, 0.6); /* Fallback color (Everforest bg0 with opacity) */
         background-image: 
-            /* Subtle grain for header */
+            /* Subtle grain for header - warm Everforest tone */
             repeating-radial-gradient(circle at 50% 50%, 
                 transparent 0px, 
-                rgba(139, 122, 96, 0.02) 1px, 
+                rgba(133, 146, 137, 0.02) 1px, 
                 transparent 2px),
-            /* Base color with opacity */
+            /* Base color with opacity - Everforest colors */
             linear-gradient(145deg, 
-                rgba(253, 246, 227, 0.6) 0%, 
-                rgba(245, 239, 228, 0.6) 100%);
+                rgba(243, 234, 211, 0.6) 0%, 
+                rgba(234, 228, 202, 0.6) 100%);
     }
 
-    /* Paper-like background for UI elements in light theme */
+    /* Paper-like background for UI elements in light theme - Everforest warm palette */
     .paper-ui-bg {
-        background-color: rgba(253, 246, 227, 0.6); /* Fallback color (original solarized bg with opacity) */
+        background-color: rgba(243, 234, 211, 0.6); /* Fallback color (Everforest bg0 with opacity) */
         background-image: 
-            /* Subtle grain for UI elements */
+            /* Subtle grain for UI elements - warm Everforest tone */
             repeating-radial-gradient(circle at 50% 50%, 
                 transparent 0px, 
-                rgba(139, 122, 96, 0.02) 1px, 
+                rgba(133, 146, 137, 0.02) 1px, 
                 transparent 2px),
-            /* Base color with opacity - matching header */
+            /* Base color with opacity - matching header - Everforest colors */
             linear-gradient(145deg, 
-                rgba(253, 246, 227, 0.6) 0%, 
-                rgba(245, 239, 228, 0.6) 100%);
+                rgba(243, 234, 211, 0.6) 0%, 
+                rgba(234, 228, 202, 0.6) 100%);
     }
 }
 @layer components {
@@ -258,7 +258,144 @@ header nav .inline-flex {
 header nav > div:last-child {
     margin-left: auto;
 }
+}
 
+/* Animated Background Orbs for Glassmorphism - GPU Accelerated */
+@keyframes float-1 {
+  0%, 100% { 
+    transform: translate3d(0, 0, 0) scale(1); 
+  }
+  25% { 
+    transform: translate3d(30px, -30px, 0) scale(1.1); 
+  }
+  50% { 
+    transform: translate3d(-20px, 20px, 0) scale(0.9); 
+  }
+  75% { 
+    transform: translate3d(40px, 10px, 0) scale(1.05); 
+  }
+}
 
+@keyframes float-2 {
+  0%, 100% { 
+    transform: translate3d(0, 0, 0) scale(1); 
+  }
+  25% { 
+    transform: translate3d(-40px, 20px, 0) scale(0.95); 
+  }
+  50% { 
+    transform: translate3d(30px, -40px, 0) scale(1.1); 
+  }
+  75% { 
+    transform: translate3d(-10px, -20px, 0) scale(1); 
+  }
+}
 
+@keyframes float-3 {
+  0%, 100% { 
+    transform: translate3d(0, 0, 0) scale(1); 
+  }
+  33% { 
+    transform: translate3d(50px, -20px, 0) scale(1.15); 
+  }
+  66% { 
+    transform: translate3d(-30px, 30px, 0) scale(0.85); 
+  }
+}
+
+/* Background orbs container */
+.orbs-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  transform: translateZ(0); /* Force GPU layer */
+}
+
+/* Dark mode only - hide orbs in light mode for performance */
+.dark .orbs-container::before,
+.dark .orbs-container::after,
+.dark .orbs-container .orb {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  will-change: transform; /* GPU acceleration hint */
+  transform: translateZ(0); /* Create compositor layer */
+}
+
+/* Orb 1 - Cyan */
+.dark .orbs-container::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #7fdbca 0%, transparent 70%);
+  top: 10%;
+  left: 10%;
+  animation: float-1 20s ease-in-out infinite;
+}
+
+/* Orb 2 - Purple */
+.dark .orbs-container::after {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #c792ea 0%, transparent 70%);
+  bottom: 20%;
+  right: 15%;
+  animation: float-2 25s ease-in-out infinite;
+}
+
+/* Orb 3 - Blue */
+.dark .orb-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #82aaff 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  animation: float-3 30s ease-in-out infinite;
+  filter: blur(80px);
+  opacity: 0.3;
+  will-change: transform;
+}
+
+/* Remove will-change after page load for better performance */
+@media (prefers-reduced-motion: reduce) {
+  .dark .orbs-container::before,
+  .dark .orbs-container::after,
+  .dark .orb-3 {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Light mode - ensure orbs are hidden */
+.orbs-container:not(.dark .orbs-container) {
+  display: none;
+}
+
+/* Custom background utilities for proper light/dark mode handling */
+@layer utilities {
+  /* Header background - Everforest green in light, Night Owl in dark */
+  .header-bg-everforest {
+    background-color: rgba(229, 230, 197, 0.6); /* Everforest bg_green for light mode */
+  }
+  
+  .dark .header-bg-everforest {
+    background-color: rgba(1, 22, 39, 0.4); /* Night Owl bg/40 for dark mode */
+  }
+  
+  /* Footer background - Everforest gradient in light, Night Owl in dark */
+  .footer-bg-everforest {
+    background: linear-gradient(135deg, rgba(229, 230, 197, 0.8) 0%, rgba(229, 230, 197, 0.6) 100%);
+  }
+  
+  .dark .footer-bg-everforest {
+    background: rgba(1, 22, 39, 0.8) !important; /* Night Owl bg/80 for dark mode - needs !important to override gradient */
+  }
 }

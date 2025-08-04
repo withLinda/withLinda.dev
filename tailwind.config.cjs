@@ -9,27 +9,27 @@ module.exports = {
 	  extend: {
 		colors: {
 		  solarized: {
-			// Light theme colors with Solarized values
-			bg: '#fdf6e3',        // Base3 (background)
-			fg: '#F27255',        // Changed to orange #F27255 as requested
-			text: '#586e75',      // Slightly lighter than fg for secondary text
-			button: '#d8d4c4',    // From your Solarized list
-			buttonBg: '#d1cdbe',  // Less bright background for sun button (D1CDBEFF)
-			accent: '#2b6cb0',    // Soft blue (matching moon icon)
-			blue: '#2b6cb0',      // Updated blue for post titles as requested
-			yellow: '#b58900',    // Yellow from Solarized
-			secondary: '#F6F0DE', // Second Background from your list
-			border: '#edead9',    // Border from your list
-			disabled: '#C9CCC3',  // Disabled from your list
-			active: '#d1cbb8',    // Active from your list
-			highlight: '#d1cbb8', // Highlight from your list
-			green: '#859900',     // Green from Solarized
-			red: '#f7b6b3',       // Updated color for category titles as requested
-			purple: '#6c71c4',    // Violet from Solarized
-			orange: '#cb4b16',    // Orange from Solarized
-			cyan: '#2aa198',      // Cyan from Solarized
-			gray: '#657b83',       // Base00 from Solarized (darker gray for better contrast)
-			category: "#B8935A"
+			// Light theme colors with Everforest Light soft palette
+			bg: '#F3EAD3',        // Everforest bg0 - warm main background
+			fg: '#F27255',        // Keep the orange accent as requested
+			text: '#5C6A72',      // Everforest foreground - warm readable text
+			button: '#D8D3BA',    // Everforest bg4 - warm button background
+			buttonBg: '#EAE4CA',  // Everforest bg1 - slightly darker for active states
+			accent: '#7FBBB3',    // Everforest blue - soft warm blue
+			blue: '#3A94C5',      // Darker blue for better contrast on post titles
+			yellow: '#DBBC7F',    // Everforest yellow - warm golden
+			secondary: '#EAE4CA', // Everforest bg1 - secondary background
+			border: '#DDD8BE',    // Everforest bg3 - warm border color
+			disabled: '#9DA9A0',  // Everforest grey2 - muted but warm
+			active: '#D8D3BA',    // Everforest bg4 - active state
+			highlight: '#EAEDC8', // Everforest bg_visual - soft highlight
+			green: '#A7C080',     // Everforest green - warm sage green
+			red: '#E67E80',       // Everforest red - warm coral red
+			purple: '#D699B6',    // Everforest purple - soft warm purple
+			orange: '#E69875',    // Everforest orange - warm peach
+			cyan: '#83C092',      // Everforest aqua - warm teal
+			gray: '#859289',      // Everforest grey1 - warm neutral gray
+			category: '#A7C080'   // Use Everforest green for categories
 		  },
 		  nightowl: {
 			// Night Owl dark theme colors (unchanged)

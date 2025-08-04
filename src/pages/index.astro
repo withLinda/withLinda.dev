@@ -46,45 +46,86 @@ const categories = Object.keys(postsByCategory)
   <Body>
     <Header />
     <Content>
-      <style>
-        .post-list {
-          list-style: none;
-          padding: 0;
-        }
-        .category {
-          margin: 2rem 0 1rem;
-          font-size: 1.1rem;
-          font-weight: 500;
-          @apply text-[#B8935A] dark:text-[#E1BB87] font-semibold;
-        }
-        .post-item {
-          padding: 1rem 0;
-          border-bottom: 1px solid #e2e8f0;
-          transition: transform 0.2s ease;
-          @apply border-solarized-border dark:border-nightowl-border;
-        }
-        .post-item:hover {
-          transform: translateX(8px);
-        }
-        .post-item:hover .post-date {
-          @apply text-[#FF684A] dark:text-[#FF684A];
-        }
-        .post-link {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        .post-date {
-          font-size: 0.9rem;
-          color: #718096;
-          transition: color 0.2s ease;
-        }
-        .post-item:hover {
-          @apply border-[#FF684A] dark:border-[#FF684A];
-        }
-      </style>
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .category {
+    margin: 2.5rem 0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    @apply text-[#B8935A] dark:text-[#E1BB87];
+  }
+  
+  .post-item {
+    /* Remove old styles - we'll use Tailwind classes instead */
+  }
+  
+  /* Feature detection and fallback */
+  .post-card {
+    /* Fallback for browsers without backdrop-filter support - using Everforest bg_green */
+    @apply relative overflow-hidden rounded-2xl border border-solarized-border dark:border-gray-700;
+    background-color: rgba(229, 230, 197, 0.8); /* Everforest bg_green with opacity */
+    @apply dark:bg-gray-900/80;
+    @apply shadow-lg hover:shadow-2xl;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-1 hover:scale-[1.02];
+    @apply p-6;
+  }
+  
+  /* Glassmorphism for supported browsers - using Everforest bg_green tones */
+  @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+    .post-card {
+      /* Warm green glassmorphic background instead of white */
+      background: linear-gradient(135deg, rgba(229, 230, 197, 0.15) 0%, rgba(229, 230, 197, 0.08) 100%);
+      @apply dark:bg-gradient-to-br dark:from-white/5 dark:to-white/[0.02];
+      border: 1px solid rgba(167, 192, 128, 0.2); /* Everforest green for border */
+      @apply dark:border-white/20;
+      backdrop-filter: blur(12px) saturate(1.5);
+      -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    }
+  }
+  
+  .post-card::before {
+    content: '';
+    /* Warm green hover overlay instead of white */
+    background: linear-gradient(135deg, rgba(167, 192, 128, 0.15) 0%, transparent 100%);
+    @apply absolute inset-0 opacity-0 hover:opacity-100;
+    @apply dark:bg-gradient-to-br dark:from-white/20 dark:to-transparent;
+    @apply transition-opacity duration-300;
+    pointer-events: none;
+  }
+  
+  .post-card:hover {
+    /* Stronger green border on hover */
+    border-color: rgba(167, 192, 128, 0.4);
+    @apply dark:border-white/40;
+    transform: translateY(-4px) scale(1.02) translateZ(0);
+  }
+  
+  .post-link {
+    @apply relative z-10 block no-underline;
+  }
+  
+  .post-title {
+    @apply text-lg font-semibold mb-2;
+    @apply text-solarized-blue dark:text-nightowl-blue;
+    @apply transition-colors duration-200;
+  }
+  
+  .post-card:hover .post-title {
+    @apply text-[#FF684A] dark:text-[#FF684A];
+  }
+  
+  .post-date {
+    @apply text-sm;
+    @apply text-solarized-text/80 dark:text-nightowl-text/80;
+  }
+</style>
 
       {categories.map(category => (
         <div>
@@ -92,10 +133,12 @@ const categories = Object.keys(postsByCategory)
           <ul class="post-list">
             {postsByCategory[category].map(post => (
               <li class="post-item">
-                <a class="post-link" href={post.url}>
-                  <span class="text-solarized-blue dark:text-nightowl-blue">{post.data.title}</span>
-                  <span class="post-date">{post.date}</span>
-                </a>
+                <div class="post-card">
+                  <a class="post-link" href={post.url}>
+                    <h3 class="post-title">{post.data.title}</h3>
+                    <span class="post-date">{post.date}</span>
+                  </a>
+                </div>
               </li>
             ))}
           </ul>
