@@ -1,14 +1,13 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://withlinda.dev/',
   integrations: [
     react(),
-    tailwind(),
     sitemap(),
     mdx({
       extendMarkdownConfig: true,
@@ -21,5 +20,8 @@ export default defineConfig({
       // Enable rehype plugins if needed
       rehypePlugins: []
     })
-  ]
+  ],
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });

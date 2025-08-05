@@ -38,7 +38,7 @@ export default function ThemeToggleButton() {
   }, []);
 
   return isMounted ? (
-    <div className="inline-flex items-center p-[1px] rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-xl backdrop-saturate-150 border border-[#5C6A72]/40 dark:border-white/30 supports-[backdrop-filter]:backdrop-blur-xl supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-xl]">
+    <div className="inline-flex items-center p-px rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-xl backdrop-saturate-150 border border-[#5C6A72]/40 dark:border-white/30 supports-backdrop-filter:backdrop-blur-xl supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-xl]">
       {themes.map((t) => {
         const checked = t === theme;
         return (
