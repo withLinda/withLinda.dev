@@ -120,7 +120,7 @@ New-Item -ItemType File -Path "src/index.css" -Force
   }
   
   .input {
-    @apply px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-200;
+    @apply px-4 py-2 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-200;
   }
 }
 ```

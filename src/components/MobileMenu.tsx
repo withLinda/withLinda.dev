@@ -28,7 +28,7 @@ export default function MobileMenu({ children }: Props) {
           id="mobile-menu"
           role="navigation"
           aria-label="Mobile navigation"
-          className="absolute right-2 top-[100%] w-auto py-2 px-4 paper-ui-bg dark:bg-nightowl-bg/60 backdrop-blur-lg border border-solarized-border dark:border-nightowl-border rounded-lg shadow-lg"
+          className="absolute right-2 top-full w-auto py-2 px-4 paper-ui-bg dark:bg-nightowl-bg/60 backdrop-blur-lg border border-solarized-border dark:border-nightowl-border rounded-lg shadow-lg"
         >
           <div className="flex flex-col gap-4 text-[#F27255] dark:text-[#F27255]">
             {children}

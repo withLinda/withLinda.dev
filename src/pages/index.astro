@@ -47,6 +47,8 @@ const categories = Object.keys(postsByCategory)
     <Header />
     <Content>
 <style>
+  @reference "../styles/global.css";
+  
   .post-list {
     list-style: none;
     padding: 0;
@@ -68,7 +70,7 @@ const categories = Object.keys(postsByCategory)
   /* Feature detection and fallback */
   .post-card {
     /* Fallback for browsers without backdrop-filter support - using Everforest bg_green */
-    @apply relative overflow-hidden rounded-2xl border border-solarized-border dark:border-gray-700;
+    @apply relative overflow-hidden rounded-xl border border-solarized-border dark:border-gray-700;
     background-color: rgba(229, 230, 197, 0.8); /* Everforest bg_green with opacity */
     @apply dark:bg-gray-900/80;
     @apply shadow-lg hover:shadow-2xl;
