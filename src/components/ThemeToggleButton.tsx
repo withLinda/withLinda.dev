@@ -50,7 +50,9 @@ export default function ThemeToggleButton() {
                 : "bg-transparent"
             } cursor-pointer rounded-3xl p-2 transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/10 transform-gpu`}
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={`Switch to ${t === "light" ? "light" : "dark"} theme`}
+            aria-pressed={checked}
+            type="button"
           >
             {t === "light" ? (
               <IoSunny className="text-solarized-yellow dark:text-nightowl-yellow" />

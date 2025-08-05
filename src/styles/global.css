@@ -364,13 +364,33 @@ header nav > div:last-child {
   will-change: transform;
 }
 
-/* Remove will-change after page load for better performance */
+/* Comprehensive reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Specific handling for orbs */
   .dark .orbs-container::before,
   .dark .orbs-container::after,
   .dark .orb-3 {
     animation: none;
     will-change: auto;
+    transform: translateZ(0); /* Keep GPU layer but remove animation */
+  }
+  
+  /* Reduce glassmorphism complexity for better performance */
+  .paper-header-bg,
+  .paper-ui-bg {
+    background-image: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
