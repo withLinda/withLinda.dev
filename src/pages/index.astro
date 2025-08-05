@@ -69,24 +69,20 @@ const categories = Object.keys(postsByCategory)
   
   /* Feature detection and fallback */
   .post-card {
-    /* Fallback for browsers without backdrop-filter support - using Everforest bg_green */
-    @apply relative overflow-hidden rounded-xl border border-solarized-border dark:border-gray-700;
-    background-color: rgba(229, 230, 197, 0.8); /* Everforest bg_green with opacity */
-    @apply dark:bg-gray-900/80;
+    /* Fallback for browsers without backdrop-filter support */
+    @apply relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700;
+    @apply bg-white/80 dark:bg-gray-900/80;
     @apply shadow-lg hover:shadow-2xl;
     @apply transition-all duration-300 ease-out;
     @apply hover:-translate-y-1 hover:scale-[1.02];
     @apply p-6;
   }
   
-  /* Glassmorphism for supported browsers - using Everforest bg_green tones */
+  /* Glassmorphism for supported browsers */
   @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
     .post-card {
-      /* Warm green glassmorphic background instead of white */
-      background: linear-gradient(135deg, rgba(229, 230, 197, 0.15) 0%, rgba(229, 230, 197, 0.08) 100%);
-      @apply dark:bg-gradient-to-br dark:from-white/5 dark:to-white/[0.02];
-      border: 1px solid rgba(167, 192, 128, 0.2); /* Everforest green for border */
-      @apply dark:border-white/20;
+      @apply bg-gradient-to-br from-white/10 to-white/5 dark:from-white/5 dark:to-white/[0.02];
+      @apply border-white/10 dark:border-white/20;
       backdrop-filter: blur(12px) saturate(1.5);
       -webkit-backdrop-filter: blur(12px) saturate(1.5);
     }
@@ -94,18 +90,17 @@ const categories = Object.keys(postsByCategory)
   
   .post-card::before {
     content: '';
-    /* Warm green hover overlay instead of white */
-    background: linear-gradient(135deg, rgba(167, 192, 128, 0.15) 0%, transparent 100%);
-    @apply absolute inset-0 opacity-0 hover:opacity-100;
-    @apply dark:bg-gradient-to-br dark:from-white/20 dark:to-transparent;
+    @apply absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 hover:opacity-100;
     @apply transition-opacity duration-300;
     pointer-events: none;
   }
   
+  .post-card:hover::before {
+    @apply opacity-100;
+  }
+  
   .post-card:hover {
-    /* Stronger green border on hover */
-    border-color: rgba(167, 192, 128, 0.4);
-    @apply dark:border-white/40;
+    @apply border-white/30 dark:border-white/40;
     transform: translateY(-4px) scale(1.02) translateZ(0);
   }
   
