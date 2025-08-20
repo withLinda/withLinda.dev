@@ -26,4 +26,5 @@ pnpm-debug.log*
 # repomix output
 repomix-output.txt
 MDdocs
-
+img_references
+palette.md

@@ -15,7 +15,7 @@
   }
 
   .category-heading.light-accent {
-    color: var(--everforest-fg);
+    color: var(--everforest-blue);
     font-weight: bold;
   }
 
@@ -85,10 +85,10 @@
   .post-title {
     @apply text-lg font-semibold mb-2;
     @apply transition-all duration-300 ease-out;
-    
+
     /* Performance optimization for smooth animations */
     will-change: color, text-shadow, font-weight, letter-spacing;
-    
+
     /* Light mode - use primary text for maximum contrast */
     color: var(--color-everforest-text-primary);
     letter-spacing: 0;
@@ -107,7 +107,7 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     text-shadow: 0 1px 3px rgba(58, 148, 197, 0.15);
-    
+
     /* GPU-accelerated transform for micro-movement */
     transform: translateY(-1px);
 
@@ -115,7 +115,7 @@
       /* Dark mode hover - enhanced brightness with aqua accent */
       color: var(--color-everforest-accent-primary);
       text-shadow: 0 1px 4px rgba(131, 192, 146, 0.2);
-      
+
       /* Subtle glow effect for dark mode */
       filter: brightness(1.1);
     }
@@ -204,7 +204,7 @@
       /* Reset hover effects for reduced motion */
       will-change: auto !important;
     }
-    
+
     .post-card:hover .post-title {
       /* Disable animations but maintain color change for accessibility */
       font-weight: 700 !important;
