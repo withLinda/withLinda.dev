@@ -28,7 +28,7 @@ export default function MobileMenu({ children }: Props) {
           id="mobile-menu"
           role="navigation"
           aria-label="Mobile navigation"
-          className="absolute right-2 top-full w-auto py-2 px-4 paper-ui-bg dark:bg-everforest-bg/60 backdrop-blur-[35px] backdrop-saturate-150 backdrop-brightness-110 border border-everforest-border dark:border-everforest-border rounded-lg shadow-lg"
+          className="absolute right-2 top-full w-auto py-2 px-4 bg-everforest-bg-elevated/30 dark:bg-everforest-bg-elevated/30 backdrop-blur-md backdrop-saturate-150 backdrop-brightness-110 border border-everforest-border dark:border-everforest-border rounded-lg shadow-lg mobile-menu-blur"
         >
           <div className="flex flex-col gap-4 text-everforest-fg dark:text-everforest-fg">
             {children}

@@ -20,6 +20,9 @@
 /* Component Styles - Orb Animations */
 @import './components/glassmorphism.css';
 
+/* Mobile Menu Styles - Backdrop Blur Support */
+@import './components/mobile-menu.css';
+
 /* ==========================================
    TYPOGRAPHY & PROSE UTILITIES
    ========================================== */
@@ -242,6 +245,31 @@
   /* Desktop navigation spacing */
   header nav > div:last-child {
     margin-left: auto;
+  }
+
+  /* Copy Code Button Styles */
+  .code-block-wrapper {
+    @apply relative;
+  }
+
+  .copy-code-button {
+    @apply absolute top-2 right-2 p-2 rounded-md;
+    @apply bg-everforest-button hover:bg-everforest-active;
+    @apply border border-everforest-border;
+    @apply text-everforest-fg dark:text-everforest-fg;
+    @apply opacity-75 hover:opacity-100;
+    @apply transition-all duration-200;
+    @apply flex items-center justify-center;
+    @apply w-8 h-8;
+  }
+
+  .copy-code-button:focus {
+    @apply outline-none ring-2 ring-everforest-accent;
+    ring-color: rgb(from var(--color-everforest-accent) r g b / 0.5);
+  }
+
+  .copy-button-container {
+    @apply absolute top-0 right-0;
   }
 }
 

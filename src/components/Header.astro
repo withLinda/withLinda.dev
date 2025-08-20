@@ -1,8 +1,8 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-import ThemeToggleButton from './ThemeToggleButton'
+import ThemeToggleButton from './ThemeToggleButton.tsx'
 import { ABOUT_URL, SITE_TITLE } from '../config'
-import { IoLogoGithub } from 'react-icons/io5'
+import GithubIcon from './GithubIcon.tsx'
 import MobileMenu from './MobileMenu'
 ---
 
@@ -23,13 +23,13 @@ import MobileMenu from './MobileMenu'
           href="https://github.com/withLinda/withLinda.dev"
           target="_blank"
         >
-          <IoLogoGithub />Source
+          <GithubIcon client:load />Source
         </HeaderLink>
       </div>
 
       {/* Right-side items */}
       <div class="flex-1"></div>
-      <ThemeToggleButton client:visible />
+      <ThemeToggleButton client:load />
 
       {/* Mobile Menu Button */}
       <div class="md:hidden">
@@ -39,7 +39,7 @@ import MobileMenu from './MobileMenu'
             href="https://github.com/withLinda/withLinda.dev"
             target="_blank"
           >
-            <IoLogoGithub />Source
+            <GithubIcon client:load />Source
           </HeaderLink>
         </MobileMenu>
       </div>
