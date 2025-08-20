@@ -1,0 +1,118 @@
+/* Shiki Overrides - Authentic Everforest Implementation */
+
+@layer base {
+  /* Override Shiki code block background to match Everforest bg1 */
+  pre.shiki {
+    background-color: #343F44 !important; /* Everforest bg1 - lighter than main bg */
+    border: 1px solid #475258; /* Everforest bg3 for subtle border */
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  /* Line numbers styling - red like in VS Code */
+  .shiki .line::before {
+    content: attr(data-line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    margin-left: 0.5rem;
+    color: #E67E80 !important; /* Red line numbers like VS Code */
+    text-align: right;
+    user-select: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Override inline code background */
+  code:not(pre code) {
+    background-color: #343F44 !important; /* Match code block background */
+    color: #E67E80 !important; /* Red text for inline code */
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+    border: 1px solid #475258;
+  }
+
+  /* Ensure Shiki theme colors are applied correctly */
+  .shiki {
+    --shiki-color-text: #D3C6AA;
+    --shiki-color-background: #343F44;
+    --shiki-token-comment: #859289;
+    --shiki-token-keyword: #E67E80;
+    --shiki-token-string: #A7C080;
+    --shiki-token-function: #A7C080;
+    --shiki-token-constant: #D699B6;
+    --shiki-token-parameter: #D3C6AA;
+    --shiki-token-number: #D699B6;
+    --shiki-token-punctuation: #859289;
+    --shiki-token-link: #83C092;
+  }
+
+  /* Fix for code blocks within prose */
+  .prose pre.shiki {
+    background-color: #343F44 !important;
+    margin: 1.5rem 0;
+  }
+
+  /* Fix for dark mode specifically */
+  .dark pre.shiki {
+    background-color: #343F44 !important;
+  }
+
+  /* Scrollbar styling for code blocks */
+  pre.shiki::-webkit-scrollbar {
+    height: 8px;
+    background-color: #2D353B;
+  }
+
+  pre.shiki::-webkit-scrollbar-thumb {
+    background-color: #475258;
+    border-radius: 4px;
+  }
+
+  pre.shiki::-webkit-scrollbar-thumb:hover {
+    background-color: #4F585E;
+  }
+
+  /* Copy button styling if using code copy plugins */
+  .shiki-copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #475258;
+    color: #D3C6AA;
+    border: 1px solid #4F585E;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .shiki:hover .shiki-copy-button {
+    opacity: 1;
+  }
+
+  .shiki-copy-button:hover {
+    background-color: #4F585E;
+  }
+}
+
+/* Language label styling */
+.shiki-lang {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  color: #859289;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  background-color: #3D484D;
+  border-radius: 0 0 4px 4px;
+}

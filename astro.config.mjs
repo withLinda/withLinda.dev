@@ -13,14 +13,19 @@ export default defineConfig({
       extendMarkdownConfig: true,
       gfm: true,
       optimize: true,
-      // Add support for processing JSX in MDX
       jsx: true,
-      // Enable remark plugins if needed
       remarkPlugins: [],
-      // Enable rehype plugins if needed
       rehypePlugins: []
     })
   ],
+  markdown: {
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'everforest-dark',
+      wrap: false,
+      transformers: []
+    }
+  },
   vite: {
     plugins: [tailwindcss()]
   }

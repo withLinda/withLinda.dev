@@ -14,6 +14,9 @@
 @import './themes/layout-backgrounds.css';
 @import './themes/post-cards.css';
 
+/* Syntax Highlighting - Shiki Overrides */
+@import './themes/shiki-overrides.css';
+
 /* Component Styles - Orb Animations */
 @import './components/glassmorphism.css';
 
@@ -83,7 +86,10 @@
 
   /* Inline code */
   & code:not(pre code) {
-    @apply px-1.5 py-0.5 rounded-sm text-sm bg-everforest-secondary dark:bg-everforest-secondary;
+    @apply px-1.5 py-0.5 rounded-sm text-sm;
+    /* Use same background as code blocks for consistency */
+    background-color: #343F44 !important;
+    border: 1px solid #475258;
     @apply text-everforest-red dark:text-everforest-red;
   }
 
@@ -111,7 +117,10 @@
 
   /* Code blocks */
   & pre {
-    @apply relative p-4 my-6 overflow-x-auto bg-everforest-secondary dark:bg-everforest-secondary rounded-lg;
+    @apply relative p-4 my-6 overflow-x-auto rounded-lg;
+    /* Use authentic Everforest bg1 (#343F44) for code blocks */
+    background-color: #343F44 !important;
+    border: 1px solid #475258;
     @apply text-everforest-text dark:text-everforest-text;
   }
 
@@ -178,7 +187,11 @@
 
   /* Make sure the markers (bullets & numbers) also use the correct color */
   & li::marker {
-    @apply text-everforest-text dark:text-everforest-text;
+    color: var(--color-everforest-text);
+  }
+  
+  .dark & li::marker {
+    color: var(--color-everforest-text);
   }
 }
 
