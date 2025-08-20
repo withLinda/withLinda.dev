@@ -25,7 +25,5 @@ pnpm-debug.log*
 
 # repomix output
 repomix-output.txt
-3rd-theme-organizing-instructions.md
-separate-cleanup-tasks.md
-tailwind-v4-migration-guide-corrected.md
-glassmorphism-fixing-instructions.md
+MDdocs
+

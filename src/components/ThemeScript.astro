@@ -19,6 +19,16 @@
 
   window.localStorage.setItem('theme', theme);
 
+  // Detect contrast preference
+  const contrastPreference = localStorage.getItem('contrast-preference');
+  if (contrastPreference) {
+    document.documentElement.setAttribute('data-contrast', contrastPreference);
+  } else if (window.matchMedia('(prefers-contrast: high)').matches) {
+    document.documentElement.setAttribute('data-contrast', 'hard');
+  } else if (window.matchMedia('(prefers-contrast: low)').matches) {
+    document.documentElement.setAttribute('data-contrast', 'soft');
+  }
+
   // Remove no-flash class to show content
   document.documentElement.classList.remove('no-flash');
 </script>

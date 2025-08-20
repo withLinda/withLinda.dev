@@ -1,0 +1,217 @@
+/* Post Cards - Proper Contrast Ratios with Everforest Colors
+   Fixes the poor contrast issues seen in both light and dark modes */
+
+@layer components {
+  /* Post List Layout */
+  .post-list {
+    @apply list-none p-0 grid gap-6;
+  }
+
+  /* Category Headers */
+  .category-heading {
+    @apply my-10 mb-6 text-lg font-semibold;
+    /* Use high contrast text colors for better readability */
+    color: var(--color-everforest-text-primary);
+  }
+
+  .category-heading.light-accent {
+    color: var(--everforest-fg);
+    font-weight: bold;
+  }
+
+  .category-heading.dark-accent {
+    .dark & {
+      color: var(--everforest-yellow);
+      font-weight: bold;
+    }
+  }
+
+  /* Post Card Container */
+  .post-card {
+    @apply relative overflow-hidden rounded-2xl border p-6;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-1 hover:scale-[1.02];
+    @apply transform-gpu;
+
+    /* Light mode - clean Everforest card background */
+    background-color: var(--color-everforest-surface-card);
+    border-color: var(--color-everforest-border-default);
+
+    /* Enhanced glassmorphism with proper backdrop */
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+
+    /* Light mode shadow */
+    box-shadow:
+      0 8px 32px rgba(167, 192, 128, 0.08),
+      0 2px 8px rgba(92, 106, 114, 0.04);
+
+    .dark & {
+      /* Dark mode - clean Everforest dark card background */
+      background-color: var(--color-everforest-surface-card);
+      border-color: var(--color-everforest-border-default);
+
+      /* Dark mode shadow with Everforest colors */
+      box-shadow:
+        0 8px 32px rgba(45, 53, 59, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  /* Hover Effects */
+  .post-card:hover {
+    /* Light mode hover - use Everforest accent */
+    border-color: var(--everforest-accent-secondary);
+    box-shadow:
+      0 12px 40px rgba(58, 148, 197, 0.12),
+      0 4px 16px rgba(92, 106, 114, 0.08);
+    transform: translateY(-4px) scale(1.02) translateZ(0);
+
+    .dark & {
+      /* Dark mode hover - use Everforest aqua accent */
+      border-color: var(--everforest-accent-primary);
+      box-shadow:
+        0 12px 40px rgba(131, 192, 146, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  /* Post Link - ensures full card is clickable */
+  .post-link {
+    @apply relative z-10 block no-underline;
+  }
+
+  /* Post Title - HIGH CONTRAST for readability */
+  .post-title {
+    @apply text-lg font-semibold mb-2;
+    @apply transition-all duration-300 ease-out;
+    
+    /* Performance optimization for smooth animations */
+    will-change: color, text-shadow, font-weight, letter-spacing;
+    
+    /* Light mode - use primary text for maximum contrast */
+    color: var(--color-everforest-text-primary);
+    letter-spacing: 0;
+    font-weight: 600;
+
+    .dark & {
+      /* Dark mode - use primary text (light) for maximum contrast */
+      color: var(--color-everforest-text-primary);
+    }
+  }
+
+  /* Post Title Hover States */
+  .post-card:hover .post-title {
+    /* Light mode hover - sophisticated color progression with visual enhancements */
+    color: var(--color-everforest-accent-secondary);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 3px rgba(58, 148, 197, 0.15);
+    
+    /* GPU-accelerated transform for micro-movement */
+    transform: translateY(-1px);
+
+    .dark & {
+      /* Dark mode hover - enhanced brightness with aqua accent */
+      color: var(--color-everforest-accent-primary);
+      text-shadow: 0 1px 4px rgba(131, 192, 146, 0.2);
+      
+      /* Subtle glow effect for dark mode */
+      filter: brightness(1.1);
+    }
+  }
+
+  /* Post Date - Secondary text with proper contrast */
+  .post-date {
+    @apply text-sm;
+
+    /* Use secondary text color for proper hierarchy but maintain readability */
+    color: var(--color-everforest-text-secondary);
+
+    .dark & {
+      color: var(--color-everforest-text-secondary);
+    }
+  }
+
+  /* Enhanced mobile performance optimization */
+  @media (max-width: 768px) {
+    .post-card {
+      /* Optimized blur for mobile */
+      backdrop-filter: blur(8px) saturate(1.1);
+      -webkit-backdrop-filter: blur(8px) saturate(1.1);
+    }
+
+    .post-card:hover {
+      /* Battery-conscious hover effects */
+      @apply -translate-y-0.5 scale-[1.005];
+      will-change: transform;
+    }
+
+    .post-card:not(:hover) {
+      will-change: auto;
+    }
+  }
+
+  /* Enhanced high contrast mode support */
+  @media (prefers-contrast: high) {
+    .post-card {
+      /* Very high contrast backgrounds */
+      background-color: var(--color-everforest-surface-primary) !important;
+      border: 2px solid var(--color-everforest-border-strong) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .post-title {
+      /* Maximum contrast text */
+      color: var(--color-everforest-text-primary) !important;
+      font-weight: 700 !important;
+      text-shadow: none !important;
+    }
+
+    .post-date {
+      /* Ensure date is readable in high contrast */
+      color: var(--color-everforest-text-secondary) !important;
+      font-weight: 500 !important;
+    }
+
+    .category-heading {
+      /* High contrast category headings */
+      color: var(--color-everforest-text-primary) !important;
+      font-weight: 700 !important;
+    }
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .post-card {
+      transition: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+
+      /* Fallback to solid backgrounds for better performance */
+      background-color: var(--color-everforest-surface-secondary) !important;
+    }
+
+    .post-card:hover {
+      transform: none !important;
+    }
+
+    .post-title {
+      transition: none !important;
+      /* Reset hover effects for reduced motion */
+      will-change: auto !important;
+    }
+    
+    .post-card:hover .post-title {
+      /* Disable animations but maintain color change for accessibility */
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+      text-shadow: none !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+}

@@ -1,172 +1,96 @@
-/* Tailwind directives */
+/* Tailwind CSS v4 Imports */
 @import 'tailwindcss';
 
 @plugin '@tailwindcss/typography';
 
-@custom-variant dark (&:is(.dark *));
+/* Theme System - Modular Organization */
+@import './themes/_base.css';
+@import './themes/everforest-base.css';
+@import './themes/everforest-light.css';
+@import './themes/everforest-dark.css';
 
-@theme {
-  --color-solarized-bg: #f3ead3;
-  --color-solarized-fg: #f27255;
-  --color-solarized-text: #5c6a72;
-  --color-solarized-button: #d8d3ba;
-  --color-solarized-button-bg: #eae4ca;
-  --color-solarized-accent: #7fbbb3;
-  --color-solarized-blue: #3a94c5;
-  --color-solarized-yellow: #dbbc7f;
-  --color-solarized-secondary: #eae4ca;
-  --color-solarized-border: #ddd8be;
-  --color-solarized-disabled: #9da9a0;
-  --color-solarized-active: #d8d3ba;
-  --color-solarized-highlight: #eaedc8;
-  --color-solarized-green: #a7c080;
-  --color-solarized-red: #e67e80;
-  --color-solarized-purple: #d699b6;
-  --color-solarized-orange: #e69875;
-  --color-solarized-cyan: #83c092;
-  --color-solarized-gray: #859289;
-  --color-solarized-category: #a7c080;
+/* Theme Components - Clean Everforest Implementation */
+@import './themes/body-backgrounds.css';
+@import './themes/layout-backgrounds.css';
+@import './themes/post-cards.css';
 
-  --color-nightowl-bg: #011627;
-  --color-nightowl-fg: #f27255;
-  --color-nightowl-text: #d6deeb;
-  --color-nightowl-button: #0b253a;
-  --color-nightowl-accent: #f7a5a5;
-  --color-nightowl-blue: #2ba9e3;
-  --color-nightowl-yellow: #ecc48d;
-  --color-nightowl-button-bg: #1e3951;
-  --color-nightowl-secondary: #0b2942;
-  --color-nightowl-border: #122d42;
-  --color-nightowl-disabled: #697098;
-  --color-nightowl-active: #13344f;
-  --color-nightowl-highlight: #084d81;
-  --color-nightowl-green: #addb67;
-  --color-nightowl-red: #f7b6b3;
-  --color-nightowl-purple: #c792ea;
-  --color-nightowl-orange: #f78c6c;
-  --color-nightowl-cyan: #7fdbca;
-  --color-nightowl-gray: #637777;
-  --color-nightowl-category: #e1bb87;
+/* Component Styles - Orb Animations */
+@import './components/glassmorphism.css';
 
-  --font-sans:
-    system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif;
-
-  /* Border radius values - using standard Tailwind v4 naming */
-  --radius-none: 0px;
-  --radius-sm: 0.125rem;
-  --radius: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-3xl: 1.5rem;
-  --radius-full: 9999px;
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
+/* ==========================================
+   TYPOGRAPHY & PROSE UTILITIES
+   ========================================== */
 
 @utility prose {
   @apply max-w-none leading-normal;
-  @apply text-solarized-fg dark:text-nightowl-fg;
+  @apply text-everforest-fg dark:text-everforest-fg;
 
   /* Consistent color application */
   & p {
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
+
   & li {
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
+
   & td {
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
-  & h1 {
-    @apply text-solarized-fg dark:text-nightowl-fg;
-  }
-
-  & h2 {
-    @apply text-solarized-fg dark:text-nightowl-fg;
-  }
-
-  & h3 {
-    @apply text-solarized-fg dark:text-nightowl-fg;
-  }
-
-  & h4 {
-    @apply text-solarized-fg dark:text-nightowl-fg;
-  }
-
-  & strong {
-    @apply text-solarized-fg dark:text-nightowl-fg;
-  }
   & h1 {
     @apply text-4xl font-bold my-8;
-    @apply text-solarized-blue dark:text-nightowl-blue;
+    @apply text-everforest-fg dark:text-everforest-yellow;
   }
 
   & h2 {
     @apply text-3xl font-semibold my-6;
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply text-everforest-fg dark:text-everforest-yellow;
   }
 
   & h3 {
     @apply text-2xl font-semibold my-4;
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply text-everforest-fg dark:text-everforest-yellow;
   }
 
   & h4 {
     @apply text-xl font-semibold my-4;
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply text-everforest-fg dark:text-everforest-yellow;
   }
 
   & p {
     @apply my-6;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   /* Fix for bold text in dark mode */
   & strong {
-    @apply font-bold text-solarized-fg dark:text-nightowl-fg;
+    @apply font-bold text-everforest-fg dark:text-everforest-fg;
   }
+
   & b {
-    @apply font-bold text-solarized-fg dark:text-nightowl-fg;
+    @apply font-bold text-everforest-fg dark:text-everforest-fg;
   }
 
   /* Emphasis/italic text */
   & em {
-    @apply italic text-solarized-text dark:text-nightowl-text;
+    @apply italic text-everforest-text dark:text-everforest-text;
   }
+
   & i {
-    @apply italic text-solarized-text dark:text-nightowl-text;
+    @apply italic text-everforest-text dark:text-everforest-text;
   }
 
   /* Inline code */
   & code:not(pre code) {
-    @apply px-1.5 py-0.5 rounded-sm text-sm bg-solarized-secondary dark:bg-nightowl-secondary;
-    @apply text-solarized-red dark:text-nightowl-red;
+    @apply px-1.5 py-0.5 rounded-sm text-sm bg-everforest-secondary dark:bg-everforest-secondary;
+    @apply text-everforest-red dark:text-everforest-red;
   }
 
   /* Blockquotes */
   & blockquote {
-    @apply pl-4 border-l-4 border-solarized-border dark:border-nightowl-border;
-    @apply my-6 italic text-solarized-text dark:text-nightowl-text;
+    @apply pl-4 border-l-4 border-everforest-border dark:border-everforest-border;
+    @apply my-6 italic text-everforest-text dark:text-everforest-text;
   }
 
   /* Images */
@@ -175,20 +99,20 @@
   }
 
   & img + em {
-    @apply block text-center text-sm text-solarized-text dark:text-nightowl-text -mt-6 mb-8;
+    @apply block text-center text-sm text-everforest-text dark:text-everforest-text -mt-6 mb-8;
   }
 
   /* Links */
   & a {
-    @apply text-solarized-blue hover:text-solarized-accent dark:text-nightowl-blue dark:hover:text-nightowl-accent;
+    @apply text-everforest-blue hover:text-everforest-accent dark:text-everforest-blue dark:hover:text-everforest-accent;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   /* Code blocks */
   & pre {
-    @apply relative p-4 my-6 overflow-x-auto bg-solarized-secondary dark:bg-nightowl-secondary rounded-lg;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply relative p-4 my-6 overflow-x-auto bg-everforest-secondary dark:bg-everforest-secondary rounded-lg;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   & pre code {
@@ -202,48 +126,49 @@
   }
 
   & thead {
-    @apply bg-solarized-secondary dark:bg-nightowl-secondary;
+    @apply bg-everforest-secondary dark:bg-everforest-secondary;
   }
 
   & th {
-    @apply p-2 text-left font-semibold border border-solarized-border dark:border-nightowl-border;
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply p-2 text-left font-semibold border border-everforest-border dark:border-everforest-border;
+    @apply text-everforest-fg dark:text-everforest-fg;
   }
 
   & td {
-    @apply p-2 border border-solarized-border dark:border-nightowl-border;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply p-2 border border-everforest-border dark:border-everforest-border;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   /* Horizontal rule */
   & hr {
-    @apply my-8 border-t border-solarized-border dark:border-nightowl-border;
+    @apply my-8 border-t border-everforest-border dark:border-everforest-border;
   }
 
   /* Unordered lists */
   & ul {
     @apply my-6 list-disc pl-8;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   /* Ordered lists */
   & ol {
     @apply my-6 list-decimal pl-8;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   /* All list items (both ul and ol) */
   & li {
     @apply my-2;
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 
   /* Bold text within list items - explicit fix for the issue */
   & li strong {
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply text-everforest-fg dark:text-everforest-fg;
   }
+
   & li b {
-    @apply text-solarized-fg dark:text-nightowl-fg;
+    @apply text-everforest-fg dark:text-everforest-fg;
   }
 
   /* Nested paragraphs inside list items */
@@ -253,311 +178,63 @@
 
   /* Make sure the markers (bullets & numbers) also use the correct color */
   & li::marker {
-    @apply text-solarized-text dark:text-nightowl-text;
+    @apply text-everforest-text dark:text-everforest-text;
   }
 }
+
+/* ==========================================
+   LAYOUT & NAVIGATION UTILITIES
+   ========================================== */
+
 @utility category {
   /* Category heading specific styling */
-  &h2 {
+  & h2 {
     margin-left: 0;
   }
 }
+
 @utility inline-flex {
   /* Mobile-first approach for nav items */
   header nav & {
     margin-right: 0;
   }
+
   @media (min-width: 768px) {
     header nav & {
       margin-right: 27px;
     }
   }
 }
-@utility header-bg-everforest {
-  /* Header background - Everforest green in light, Night Owl in dark */
-  background-color: rgba(
-    229,
-    230,
-    197,
-    0.6
-  ); /* Everforest bg_green for light mode */
 
-  .dark & {
-    background-color: rgba(1, 22, 39, 0.4); /* Night Owl bg/40 for dark mode */
+/* ==========================================
+   BASE STYLES & LAYOUT
+   ========================================== */
+
+@layer base {
+  body {
+    @apply dark:bg-everforest-bg text-everforest-fg dark:text-everforest-fg;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
   }
 }
-@utility dark {
-  & .header-bg-everforest {
-    background-color: rgba(1, 22, 39, 0.4); /* Night Owl bg/40 for dark mode */
+
+@layer components {
+  /* Header navigation styling */
+  header nav h2 {
+    margin-left: 17px;
   }
 
-  & .footer-bg-everforest {
-    background: rgba(
-      1,
-      22,
-      39,
-      0.8
-    ) !important; /* Night Owl bg/80 for dark mode - needs !important to override gradient */
-  }
-}
-@utility footer-bg-everforest {
-  /* Footer background - Everforest gradient in light, Night Owl in dark */
-  background: linear-gradient(
-    135deg,
-    rgba(229, 230, 197, 0.8) 0%,
-    rgba(229, 230, 197, 0.6) 100%
-  );
-
-  .dark & {
-    background: rgba(
-      1,
-      22,
-      39,
-      0.8
-    ) !important; /* Night Owl bg/80 for dark mode - needs !important to override gradient */
+  /* Desktop navigation spacing */
+  header nav > div:last-child {
+    margin-left: auto;
   }
 }
 
 @layer utilities {
-  /* Add this at the top of your global.css */
+  /* Theme flash prevention */
   html.no-flash {
     visibility: hidden;
   }
-  /* Finally, custom styles */
-}
-@layer base {
-    body {
-        @apply dark:bg-nightowl-bg text-solarized-fg dark:text-nightowl-fg;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-        sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        overflow-wrap: break-word;
-
-        /* Paper-like background for light theme - Everforest warm palette */
-        background-color: #F3EAD3; /* Fallback color (Everforest bg0) */
-        background-image: 
-            /* Age spots and variations - using warm Everforest tones */
-            radial-gradient(circle at 15% 25%, rgba(122, 138, 137, 0.08) 0%, transparent 35%),
-            radial-gradient(circle at 85% 75%, rgba(167, 192, 128, 0.06) 0%, transparent 40%),
-            radial-gradient(circle at 45% 60%, rgba(219, 188, 127, 0.05) 0%, transparent 30%),
-            /* Subtle grain - warm Everforest tone */
-            repeating-radial-gradient(circle at 50% 50%, 
-                transparent 0px, 
-                rgba(133, 146, 137, 0.02) 1px, 
-                transparent 2px),
-            /* Base aged paper color - using Everforest light colors */
-            linear-gradient(145deg, 
-                #F3EAD3 0%, 
-                #EAE4CA 30%, 
-                #E5DFC5 70%, 
-                #DDD8BE 100%);
-    }
-
-    /* Reset to normal background in dark mode */
-    .dark body {
-        background-image: none;
-    }
-
-    /* Reset header background in dark mode */
-    .dark .paper-header-bg {
-        background-image: none;
-        /* Removed background-color: transparent to allow the dark:bg-nightowl-bg/60 class to work */
-    }
-
-    /* Reset UI element background in dark mode */
-    .dark .paper-ui-bg {
-        background-image: none;
-        /* Removed background-color: transparent to allow the dark:bg-nightowl-bg/60 class to work */
-    }
-
-    /* Paper-like header background for light theme - Everforest warm palette */
-    .paper-header-bg {
-        background-color: rgba(243, 234, 211, 0.6); /* Fallback color (Everforest bg0 with opacity) */
-        background-image: 
-            /* Subtle grain for header - warm Everforest tone */
-            repeating-radial-gradient(circle at 50% 50%, 
-                transparent 0px, 
-                rgba(133, 146, 137, 0.02) 1px, 
-                transparent 2px),
-            /* Base color with opacity - Everforest colors */
-            linear-gradient(145deg, 
-                rgba(243, 234, 211, 0.6) 0%, 
-                rgba(234, 228, 202, 0.6) 100%);
-    }
-
-    /* Paper-like background for UI elements in light theme - Everforest warm palette */
-    .paper-ui-bg {
-        background-color: rgba(243, 234, 211, 0.6); /* Fallback color (Everforest bg0 with opacity) */
-        background-image: 
-            /* Subtle grain for UI elements - warm Everforest tone */
-            repeating-radial-gradient(circle at 50% 50%, 
-                transparent 0px, 
-                rgba(133, 146, 137, 0.02) 1px, 
-                transparent 2px),
-            /* Base color with opacity - matching header - Everforest colors */
-            linear-gradient(145deg, 
-                rgba(243, 234, 211, 0.6) 0%, 
-                rgba(234, 228, 202, 0.6) 100%);
-    }
-}
-@layer components {
-
-/* Header navigation styling */
-header nav h2 {
-    margin-left: 17px;
-}
-
-/* Desktop navigation spacing */
-
-/* Auto margin for last nav item */
-header nav > div:last-child {
-    margin-left: auto;
-}
-}
-
-@layer utilities {
-  /* Animated Background Orbs for Glassmorphism - GPU Accelerated */
-  @keyframes float-1 {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    25% {
-      transform: translate3d(30px, -30px, 0) scale(1.1);
-    }
-    50% {
-      transform: translate3d(-20px, 20px, 0) scale(0.9);
-    }
-    75% {
-      transform: translate3d(40px, 10px, 0) scale(1.05);
-    }
-  }
-
-  @keyframes float-2 {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    25% {
-      transform: translate3d(-40px, 20px, 0) scale(0.95);
-    }
-    50% {
-      transform: translate3d(30px, -40px, 0) scale(1.1);
-    }
-    75% {
-      transform: translate3d(-10px, -20px, 0) scale(1);
-    }
-  }
-
-  @keyframes float-3 {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    33% {
-      transform: translate3d(50px, -20px, 0) scale(1.15);
-    }
-    66% {
-      transform: translate3d(-30px, 30px, 0) scale(0.85);
-    }
-  }
-
-  /* Background orbs container */
-  .orbs-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-    pointer-events: none;
-    transform: translateZ(0); /* Force GPU layer */
-  }
-
-  /* Dark mode only - hide orbs in light mode for performance */
-  .dark .orbs-container::before,
-  .dark .orbs-container::after,
-  .dark .orbs-container .orb {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-    will-change: transform; /* GPU acceleration hint */
-    transform: translateZ(0); /* Create compositor layer */
-  }
-
-  /* Orb 1 - Cyan */
-  .dark .orbs-container::before {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #7fdbca 0%, transparent 70%);
-    top: 10%;
-    left: 10%;
-    animation: float-1 20s ease-in-out infinite;
-  }
-
-  /* Orb 2 - Purple */
-  .dark .orbs-container::after {
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, #c792ea 0%, transparent 70%);
-    bottom: 20%;
-    right: 15%;
-    animation: float-2 25s ease-in-out infinite;
-  }
-
-  /* Orb 3 - Blue */
-  .dark .orb-3 {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, #82aaff 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) translateZ(0);
-    animation: float-3 30s ease-in-out infinite;
-    filter: blur(80px);
-    opacity: 0.3;
-    will-change: transform;
-  }
-
-  /* Comprehensive reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    /* Disable all animations and transitions */
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-
-    /* Specific handling for orbs */
-    .dark .orbs-container::before,
-    .dark .orbs-container::after,
-    .dark .orb-3 {
-      animation: none;
-      will-change: auto;
-      transform: translateZ(0); /* Keep GPU layer but remove animation */
-    }
-
-    /* Reduce glassmorphism complexity for better performance */
-    .paper-header-bg,
-    .paper-ui-bg {
-      background-image: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-  }
-
-  /* Light mode - ensure orbs are hidden */
-  .orbs-container:not(.dark .orbs-container) {
-    display: none;
-  }
-
-  /* Custom background utilities for proper light/dark mode handling */
 }

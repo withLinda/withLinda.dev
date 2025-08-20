@@ -1,0 +1,87 @@
+/* Everforest Base Theme Configuration
+   This file defines the complete color palette and semantic mappings
+   DO NOT MODIFY COLOR VALUES - They are from the official Everforest palette */
+
+@theme {
+  /* ============================================
+     SEMANTIC COLOR SYSTEM
+     These map to actual usage in the UI
+     ============================================ */
+  
+  /* Background Hierarchy */
+  --color-everforest-bg-main: var(--everforest-bg0);
+  --color-everforest-bg-dim: var(--everforest-bg-dim);
+  --color-everforest-bg-elevated: var(--everforest-bg1);
+  --color-everforest-bg-floating: var(--everforest-bg2);
+  --color-everforest-bg-inactive: var(--everforest-bg3);
+  
+  /* Surface Colors */
+  --color-everforest-surface-primary: var(--everforest-bg0);
+  --color-everforest-surface-secondary: var(--everforest-bg1);
+  --color-everforest-surface-tertiary: var(--everforest-bg2);
+  --color-everforest-surface-card: var(--everforest-bg1);
+  --color-everforest-surface-modal: var(--everforest-bg2);
+  
+  /* Border System */
+  --color-everforest-border-default: var(--everforest-bg4);
+  --color-everforest-border-subtle: var(--everforest-bg5);
+  --color-everforest-border-strong: var(--everforest-bg3);
+  
+  /* Text Hierarchy */
+  --color-everforest-text-primary: var(--everforest-fg);
+  --color-everforest-text-secondary: var(--everforest-grey1);
+  --color-everforest-text-muted: var(--everforest-grey0);
+  --color-everforest-text-disabled: var(--everforest-grey1);
+  --color-everforest-text-heading: var(--everforest-fg);
+  
+  /* Interactive States */
+  --color-everforest-hover: var(--everforest-bg3);
+  --color-everforest-active: var(--everforest-bg4);
+  --color-everforest-selected: var(--everforest-bg-visual);
+  --color-everforest-focus: var(--everforest-blue);
+  
+  /* Semantic Colors */
+  --color-everforest-success: var(--everforest-green);
+  --color-everforest-success-bg: var(--everforest-bg-green);
+  --color-everforest-warning: var(--everforest-yellow);
+  --color-everforest-warning-bg: var(--everforest-bg-yellow);
+  --color-everforest-error: var(--everforest-red);
+  --color-everforest-error-bg: var(--everforest-bg-red);
+  --color-everforest-info: var(--everforest-blue);
+  --color-everforest-info-bg: var(--everforest-bg-blue);
+  
+  /* Accent Colors */
+  --color-everforest-accent-primary: var(--everforest-aqua);
+  --color-everforest-accent-secondary: var(--everforest-blue);
+  --color-everforest-link: var(--everforest-blue);
+  --color-everforest-link-hover: var(--everforest-aqua);
+  
+  /* Syntax Highlighting */
+  --color-everforest-syntax-keyword: var(--everforest-red);
+  --color-everforest-syntax-string: var(--everforest-green);
+  --color-everforest-syntax-number: var(--everforest-purple);
+  --color-everforest-syntax-function: var(--everforest-green);
+  --color-everforest-syntax-variable: var(--everforest-fg);
+  --color-everforest-syntax-comment: var(--everforest-grey1);
+  --color-everforest-syntax-operator: var(--everforest-orange);
+  --color-everforest-syntax-type: var(--everforest-yellow);
+  --color-everforest-syntax-constant: var(--everforest-aqua);
+}
+
+/* Contrast Level Custom Property */
+:root {
+  --everforest-contrast: medium; /* Options: soft, medium, hard */
+}
+
+/* Support for prefers-contrast media query */
+@media (prefers-contrast: high) {
+  :root {
+    --everforest-contrast: hard;
+  }
+}
+
+@media (prefers-contrast: low) {
+  :root {
+    --everforest-contrast: soft;
+  }
+}

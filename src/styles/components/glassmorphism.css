@@ -1,0 +1,118 @@
+/* ==========================================
+   GLASSMORPHISM EFFECTS & ANIMATED ORBS
+   ========================================== */
+
+/* Header and footer background utilities moved to themes/layout-backgrounds.css
+   for better organization and pure Everforest implementation */
+
+/* Body background effects moved to themes/body-backgrounds.css
+   for cleaner organization and simplified implementation */
+
+@layer base {
+  /* Placeholder for any future base layer styles */
+}
+
+@layer utilities {
+  /* ==========================================
+     UTILITY CLASSES & PERFORMANCE OPTIMIZATIONS
+     ========================================== */
+
+  /* Smart will-change management utility */
+  .will-change-on-hover {
+    will-change: auto;
+  }
+
+  .will-change-on-hover:hover {
+    will-change: transform, opacity;
+  }
+
+  /* GPU optimization utility classes */
+  .gpu-optimized {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .gpu-animate {
+    will-change: transform, opacity;
+  }
+
+  .gpu-animate.animation-complete {
+    will-change: auto;
+  }
+
+  /* Animation pausing for battery optimization */
+  .animations-paused * {
+    animation-play-state: paused !important;
+  }
+
+  /* Modern CSS containment for better performance */
+  .post-card {
+    contain: layout style paint;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY & PERFORMANCE MEDIA QUERIES
+   ========================================== */
+
+/* Comprehensive reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    will-change: auto !important;
+  }
+
+
+  /* Reduce glassmorphism complexity for better performance */
+  .header-bg-everforest,
+  .footer-bg-everforest {
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Disable all card animations */
+  .post-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    transition: none !important;
+    transform: none !important;
+    
+    .dark & {
+      background: rgba(0, 0, 0, 0.85) !important;
+    }
+  }
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .post-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid rgba(167, 192, 128, 0.8) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
+    .dark & {
+      background: rgba(0, 0, 0, 0.95) !important;
+      border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+  
+}
+
+/* Battery and performance conscious optimizations */
+@media (max-width: 480px) and (max-resolution: 150dpi) {
+  /* Simplified glassmorphism */
+  .post-card {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+}

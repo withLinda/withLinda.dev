@@ -1,0 +1,108 @@
+/* Everforest Dark Theme - Complete Implementation
+   Includes all color levels and contrast variants */
+
+@layer base {
+  .dark {
+    /* ============================================
+       EVERFOREST DARK PALETTE - MEDIUM CONTRAST (DEFAULT)
+       ============================================ */
+    
+    /* Background Colors */
+    --everforest-bg-dim: #232A2E;
+    --everforest-bg0: #2D353B;
+    --everforest-bg1: #343F44;
+    --everforest-bg2: #3D484D;
+    --everforest-bg3: #475258;
+    --everforest-bg4: #4F585E;
+    --everforest-bg5: #56635f;
+    
+    /* Special Backgrounds */
+    --everforest-bg-visual: #543A48;
+    --everforest-bg-red: #514045;
+    --everforest-bg-yellow: #4D4C43;
+    --everforest-bg-green: #425047;
+    --everforest-bg-blue: #3A515D;
+    --everforest-bg-purple: #4A444E;
+    
+    /* Foreground Colors */
+    --everforest-fg: #D3C6AA;
+    --everforest-red: #E67E80;
+    --everforest-orange: #E69875;
+    --everforest-yellow: #DBBC7F;
+    --everforest-green: #A7C080;
+    --everforest-aqua: #83C092;
+    --everforest-blue: #7FBBB3;
+    --everforest-purple: #D699B6;
+    
+    /* Grey Scale */
+    --everforest-grey0: #7A8478;
+    --everforest-grey1: #859289;
+    --everforest-grey2: #9DA9A0;
+    
+    /* Statusline Colors */
+    --everforest-statusline1: #A7C080;
+    --everforest-statusline2: #D3C6AA;
+    --everforest-statusline3: #E67E80;
+  }
+  
+  /* Hard Contrast Variant */
+  .dark[data-contrast="hard"] {
+    --everforest-bg-dim: #1E2326;
+    --everforest-bg0: #272E33;
+    --everforest-bg1: #2E383C;
+    --everforest-bg2: #374145;
+    --everforest-bg3: #414B50;
+    --everforest-bg4: #495156;
+    --everforest-bg5: #4F5B58;
+  }
+  
+  /* Soft Contrast Variant */
+  .dark[data-contrast="soft"] {
+    --everforest-bg-dim: #293136;
+    --everforest-bg0: #333C43;
+    --everforest-bg1: #3A464C;
+    --everforest-bg2: #434F55;
+    --everforest-bg3: #4D5960;
+    --everforest-bg4: #555F66;
+    --everforest-bg5: #5D6B66;
+  }
+}
+
+/* Map to Tailwind color utilities for dark mode */
+@theme {
+  /* Dark mode color mappings use the same variable names
+     but pull from the CSS custom properties defined above */
+  --color-everforest-bg: var(--everforest-bg0);
+  --color-everforest-bg-dim: var(--everforest-bg-dim);
+  --color-everforest-bg-elevated: var(--everforest-bg1);
+  --color-everforest-bg-floating: var(--everforest-bg2);
+  --color-everforest-bg-inactive: var(--everforest-bg3);
+  
+  /* Surface Colors */
+  --color-everforest-secondary: var(--everforest-bg1);
+  --color-everforest-button: var(--everforest-bg3);
+  --color-everforest-button-bg: var(--everforest-bg4);
+  --color-everforest-active: var(--everforest-bg3);
+  --color-everforest-highlight: var(--everforest-bg-visual);
+  
+  /* Border Colors */
+  --color-everforest-border: var(--everforest-bg4);
+  --color-everforest-border-subtle: var(--everforest-bg5);
+  
+  /* Text Colors */
+  --color-everforest-fg: var(--everforest-fg);
+  --color-everforest-text: var(--everforest-fg);
+  --color-everforest-disabled: var(--everforest-grey0);
+  
+  /* Accent Colors */
+  --color-everforest-accent: var(--everforest-aqua);
+  --color-everforest-blue: var(--everforest-blue);
+  --color-everforest-yellow: var(--everforest-yellow);
+  --color-everforest-green: var(--everforest-green);
+  --color-everforest-red: var(--everforest-red);
+  --color-everforest-purple: var(--everforest-purple);
+  --color-everforest-orange: var(--everforest-orange);
+  --color-everforest-cyan: var(--everforest-aqua);
+  --color-everforest-gray: var(--everforest-grey1);
+  --color-everforest-category: var(--everforest-green);
+}

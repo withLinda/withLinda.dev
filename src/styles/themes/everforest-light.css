@@ -1,0 +1,113 @@
+/* Everforest Light Theme - Complete Implementation
+   Includes all color levels and contrast variants */
+
+@layer base {
+  :root {
+    /* ============================================
+       EVERFOREST LIGHT PALETTE - MEDIUM CONTRAST (DEFAULT)
+       ============================================ */
+    
+    /* Background Colors */
+    --everforest-bg-dim: #EFEBD4;
+    --everforest-bg0: #FDF6E3;
+    --everforest-bg1: #F4F0D9;
+    --everforest-bg2: #EFEBD4;
+    --everforest-bg3: #E6E2CC;
+    --everforest-bg4: #E0DCC7;
+    --everforest-bg5: #BDC3AF;
+    
+    /* Special Backgrounds */
+    --everforest-bg-visual: #EAEDC8;
+    --everforest-bg-red: #FDE3DA;
+    --everforest-bg-yellow: #FAEDCD;
+    --everforest-bg-green: #F0F1D2;
+    --everforest-bg-blue: #E9F0E9;
+    --everforest-bg-purple: #FAE8E2;
+    
+    /* Foreground Colors */
+    --everforest-fg: #5C6A72;
+    --everforest-red: #F85552;
+    --everforest-orange: #F57D26;
+    --everforest-yellow: #DFA000;
+    --everforest-green: #8DA101;
+    --everforest-aqua: #35A77C;
+    --everforest-blue: #3A94C5;
+    --everforest-purple: #DF69BA;
+    
+    /* Grey Scale */
+    --everforest-grey0: #A6B0A0;
+    --everforest-grey1: #939F91;
+    --everforest-grey2: #829181;
+    
+    /* Statusline Colors */
+    --everforest-statusline1: #93B259;
+    --everforest-statusline2: #708089;
+    --everforest-statusline3: #E66868;
+  }
+  
+  /* Hard Contrast Variant - Better Readability */
+  :root[data-contrast="hard"] {
+    --everforest-bg-dim: #F2EFDF;
+    --everforest-bg0: #FFFBEF;
+    --everforest-bg1: #F8F5E4;
+    --everforest-bg2: #F2EFDF;
+    --everforest-bg3: #EDEADA;
+    --everforest-bg4: #E8E5D5;
+    --everforest-bg5: #BEC5B2;
+    
+    /* Darker text for better contrast */
+    --everforest-fg: #4A565E;
+    --everforest-grey0: #8A9486;
+    --everforest-grey1: #7A8478;
+    --everforest-grey2: #6A7570;
+  }
+  
+  /* Soft Contrast Variant */
+  :root[data-contrast="soft"] {
+    --everforest-bg-dim: #E5DFC5;
+    --everforest-bg0: #F3EAD3;
+    --everforest-bg1: #EAE4CA;
+    --everforest-bg2: #E5DFC5;
+    --everforest-bg3: #DDD8BE;
+    --everforest-bg4: #D8D3BA;
+    --everforest-bg5: #B9C0AB;
+  }
+}
+
+/* Map to Tailwind color utilities */
+@theme {
+  /* Background Colors */
+  --color-everforest-bg: var(--everforest-bg0);
+  --color-everforest-bg-dim: var(--everforest-bg-dim);
+  --color-everforest-bg-elevated: var(--everforest-bg1);
+  --color-everforest-bg-floating: var(--everforest-bg2);
+  --color-everforest-bg-inactive: var(--everforest-bg3);
+  
+  /* Surface Colors */
+  --color-everforest-secondary: var(--everforest-bg1);
+  --color-everforest-button: var(--everforest-bg3);
+  --color-everforest-button-bg: var(--everforest-bg4);
+  --color-everforest-active: var(--everforest-bg3);
+  --color-everforest-highlight: var(--everforest-bg-visual);
+  
+  /* Border Colors */
+  --color-everforest-border: var(--everforest-bg4);
+  --color-everforest-border-subtle: var(--everforest-bg5);
+  
+  /* Text Colors */
+  --color-everforest-fg: var(--everforest-fg);
+  --color-everforest-text: var(--everforest-fg);
+  --color-everforest-disabled: var(--everforest-grey0);
+  
+  /* Accent Colors */
+  --color-everforest-accent: var(--everforest-aqua);
+  --color-everforest-blue: var(--everforest-blue);
+  --color-everforest-yellow: var(--everforest-yellow);
+  --color-everforest-green: var(--everforest-green);
+  --color-everforest-red: var(--everforest-red);
+  --color-everforest-purple: var(--everforest-purple);
+  --color-everforest-orange: var(--everforest-orange);
+  --color-everforest-cyan: var(--everforest-aqua);
+  --color-everforest-gray: var(--everforest-grey1);
+  --color-everforest-category: var(--everforest-green);
+}

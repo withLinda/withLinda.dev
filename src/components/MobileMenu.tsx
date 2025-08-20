@@ -13,7 +13,7 @@ export default function MobileMenu({ children }: Props) {
       {/* Hamburger Button */}
         <button
             type="button"
-            className="p-2 text-2xl text-[#F27255] dark:text-[#F27255] hover:bg-solarized-button dark:hover:bg-nightowl-button rounded-lg transition-colors rounded-md mr-4"
+            className="p-2 text-2xl text-everforest-fg dark:text-everforest-fg hover:bg-everforest-button dark:hover:bg-everforest-button rounded-lg transition-colors rounded-md mr-4"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={isOpen}
@@ -28,9 +28,9 @@ export default function MobileMenu({ children }: Props) {
           id="mobile-menu"
           role="navigation"
           aria-label="Mobile navigation"
-          className="absolute right-2 top-full w-auto py-2 px-4 paper-ui-bg dark:bg-nightowl-bg/60 backdrop-blur-lg border border-solarized-border dark:border-nightowl-border rounded-lg shadow-lg"
+          className="absolute right-2 top-full w-auto py-2 px-4 paper-ui-bg dark:bg-everforest-bg/60 backdrop-blur-[35px] backdrop-saturate-150 backdrop-brightness-110 border border-everforest-border dark:border-everforest-border rounded-lg shadow-lg"
         >
-          <div className="flex flex-col gap-4 text-[#F27255] dark:text-[#F27255]">
+          <div className="flex flex-col gap-4 text-everforest-fg dark:text-everforest-fg">
             {children}
           </div>
         </div>

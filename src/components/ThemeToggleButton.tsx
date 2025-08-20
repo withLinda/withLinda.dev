@@ -38,7 +38,7 @@ export default function ThemeToggleButton() {
   }, []);
 
   return isMounted ? (
-    <div className="inline-flex items-center p-px rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-xl backdrop-saturate-150 border border-[#5C6A72]/40 dark:border-white/30 supports-backdrop-filter:backdrop-blur-xl supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-xl]">
+    <div className="inline-flex items-center p-px rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-[30px] backdrop-saturate-150 backdrop-brightness-110 border border-[#5C6A72]/40 dark:border-white/30 supports-backdrop-filter:backdrop-blur-[30px] supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-[30px]]">
       {themes.map((t) => {
         const checked = t === theme;
         return (
@@ -55,9 +55,9 @@ export default function ThemeToggleButton() {
             type="button"
           >
             {t === "light" ? (
-              <IoSunny className="text-solarized-yellow dark:text-nightowl-yellow" />
+              <IoSunny className="text-everforest-yellow dark:text-everforest-yellow" />
             ) : (
-              <IoMoon className="text-[#2b6cb0] dark:text-nightowl-blue" />
+              <IoMoon className="text-everforest-blue dark:text-everforest-blue" />
             )}
           </button>
         );

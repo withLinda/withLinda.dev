@@ -46,87 +46,11 @@ const categories = Object.keys(postsByCategory)
   <Body>
     <Header />
     <Content>
-<style>
-  @reference "../styles/global.css";
-  
-  .post-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 1.5rem;
-  }
-  
-  .category {
-    margin: 2.5rem 0 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    @apply text-[#B8935A] dark:text-[#E1BB87];
-  }
-  
-  .post-item {
-    /* Remove old styles - we'll use Tailwind classes instead */
-  }
-  
-  /* Feature detection and fallback */
-  .post-card {
-    /* Fallback for browsers without backdrop-filter support */
-    @apply relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700;
-    @apply bg-white/80 dark:bg-gray-900/80;
-    @apply shadow-lg hover:shadow-2xl;
-    @apply transition-all duration-300 ease-out;
-    @apply hover:-translate-y-1 hover:scale-[1.02];
-    @apply p-6;
-  }
-  
-  /* Glassmorphism for supported browsers */
-  @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
-    .post-card {
-      @apply bg-gradient-to-br from-white/10 to-white/5 dark:from-white/5 dark:to-white/[0.02];
-      @apply border-white/10 dark:border-white/20;
-      backdrop-filter: blur(12px) saturate(1.5);
-      -webkit-backdrop-filter: blur(12px) saturate(1.5);
-    }
-  }
-  
-  .post-card::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 hover:opacity-100;
-    @apply transition-opacity duration-300;
-    pointer-events: none;
-  }
-  
-  .post-card:hover::before {
-    @apply opacity-100;
-  }
-  
-  .post-card:hover {
-    @apply border-white/30 dark:border-white/40;
-    transform: translateY(-4px) scale(1.02) translateZ(0);
-  }
-  
-  .post-link {
-    @apply relative z-10 block no-underline;
-  }
-  
-  .post-title {
-    @apply text-lg font-semibold mb-2;
-    @apply text-solarized-blue dark:text-nightowl-blue;
-    @apply transition-colors duration-200;
-  }
-  
-  .post-card:hover .post-title {
-    @apply text-[#FF684A] dark:text-[#FF684A];
-  }
-  
-  .post-date {
-    @apply text-sm;
-    @apply text-solarized-text/80 dark:text-nightowl-text/80;
-  }
-</style>
+<!-- All styling moved to src/styles/themes/post-cards.css for better organization -->
 
       {categories.map(category => (
         <div>
-          <h2 class="category">{category}</h2>
+          <h2 class="category-heading light-accent dark-accent">{category}</h2>
           <ul class="post-list">
             {postsByCategory[category].map(post => (
               <li class="post-item">

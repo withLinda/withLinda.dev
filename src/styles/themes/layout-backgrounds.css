@@ -1,0 +1,97 @@
+/* Layout Backgrounds - Pure Everforest Implementation
+   Header and Footer backgrounds using consistent Everforest colors
+   Replaces mixed Night Owl/Everforest implementation */
+
+@utility header-bg-everforest {
+  /* Light mode - Everforest with backdrop blur support
+     Using lower opacity to allow backdrop-filter to work properly */
+  background-color: rgba(244, 240, 217, 0.25); /* everforest-bg1 with low opacity for blur */
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border-color: var(--everforest-border-default);
+
+  .dark & {
+    /* Dark mode - Everforest dark with backdrop blur support
+       Lower opacity allows the blur effect to show through */
+    background-color: rgba(52, 63, 68, 0.3); /* everforest-bg1 dark with low opacity for blur */
+    backdrop-filter: blur(12px) saturate(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    border-color: var(--everforest-border-default);
+  }
+}
+
+@utility footer-bg-everforest {
+  /* Light mode - Everforest with backdrop blur support for consistency */
+  background: linear-gradient(
+    135deg,
+    rgba(239, 235, 212, 0.25) 0%,  /* everforest-bg2 with low opacity */
+    rgba(244, 240, 217, 0.2) 100% /* everforest-bg1 with low opacity */
+  );
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border-color: var(--everforest-border-default);
+
+  .dark & {
+    /* Dark mode - Consistent blur effect with header */
+    background: linear-gradient(
+      135deg,
+      rgba(45, 53, 59, 0.3) 0%,   /* everforest-bg0 dark with low opacity */
+      rgba(52, 63, 68, 0.25) 100%  /* everforest-bg1 dark with low opacity */
+    ) !important;
+    backdrop-filter: blur(12px) saturate(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    border-color: var(--everforest-border-default);
+  }
+}
+
+/* Performance and accessibility optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .header-bg-everforest {
+    /* Disable blur effects and use solid background for reduced motion */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(244, 240, 217, 0.95) !important;
+    
+    .dark & {
+      background-color: rgba(52, 63, 68, 0.95) !important;
+    }
+  }
+  
+  .footer-bg-everforest {
+    /* Fallback to more opaque backgrounds when motion is reduced */
+    background-color: var(--everforest-surface-secondary) !important;
+    
+    .dark & {
+      background-color: var(--everforest-surface-secondary) !important;
+    }
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header-bg-everforest {
+    /* Solid background for high contrast - no blur effects */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(244, 240, 217, 1) !important;
+    border: 2px solid var(--everforest-border-strong) !important;
+    
+    .dark & {
+      background: rgba(52, 63, 68, 1) !important;
+    }
+  }
+  
+  .footer-bg-everforest {
+    background: var(--everforest-surface-primary) !important;
+    border: 2px solid var(--everforest-border-strong) !important;
+    
+    .dark & {
+      background: var(--everforest-surface-primary) !important;
+    }
+  }
+}
+
+/* Mobile optimization - Note: backdrop blur handled by Tailwind classes */
+@media (max-width: 768px) {
+  /* Mobile-specific optimizations can be added here if needed */
+}
