@@ -1,24 +1,6 @@
 /* Layout Backgrounds - Pure Everforest Implementation
-   Header and Footer backgrounds using consistent Everforest colors
-   Replaces mixed Night Owl/Everforest implementation */
-
-@utility header-bg-everforest {
-  /* Light mode - Everforest with backdrop blur support
-     Using lower opacity to allow backdrop-filter to work properly */
-  background-color: rgba(244, 240, 217, 0.25); /* everforest-bg1 with low opacity for blur */
-  backdrop-filter: blur(12px) saturate(1.2);
-  -webkit-backdrop-filter: blur(12px) saturate(1.2);
-  border-color: var(--everforest-border-default);
-
-  .dark & {
-    /* Dark mode - Everforest dark with backdrop blur support
-       Lower opacity allows the blur effect to show through */
-    background-color: rgba(52, 63, 68, 0.3); /* everforest-bg1 dark with low opacity for blur */
-    backdrop-filter: blur(12px) saturate(1.1);
-    -webkit-backdrop-filter: blur(12px) saturate(1.1);
-    border-color: var(--everforest-border-default);
-  }
-}
+   Footer backgrounds using consistent Everforest colors
+   Header now uses simple Tailwind backdrop-blur approach */
 
 @utility footer-bg-everforest {
   /* Light mode - Everforest with backdrop blur support for consistency */
@@ -46,17 +28,6 @@
 
 /* Performance and accessibility optimizations */
 @media (prefers-reduced-motion: reduce) {
-  .header-bg-everforest {
-    /* Disable blur effects and use solid background for reduced motion */
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background-color: rgba(244, 240, 217, 0.95) !important;
-    
-    .dark & {
-      background-color: rgba(52, 63, 68, 0.95) !important;
-    }
-  }
-  
   .footer-bg-everforest {
     /* Fallback to more opaque backgrounds when motion is reduced */
     background-color: var(--everforest-surface-secondary) !important;
@@ -69,18 +40,6 @@
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .header-bg-everforest {
-    /* Solid background for high contrast - no blur effects */
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: rgba(244, 240, 217, 1) !important;
-    border: 2px solid var(--everforest-border-strong) !important;
-    
-    .dark & {
-      background: rgba(52, 63, 68, 1) !important;
-    }
-  }
-  
   .footer-bg-everforest {
     background: var(--everforest-surface-primary) !important;
     border: 2px solid var(--everforest-border-strong) !important;

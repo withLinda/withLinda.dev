@@ -20,8 +20,6 @@
 /* Component Styles - Orb Animations */
 @import './components/glassmorphism.css';
 
-/* Mobile Menu Styles - Backdrop Blur Support */
-@import './components/mobile-menu.css';
 
 /* ==========================================
    TYPOGRAPHY & PROSE UTILITIES
