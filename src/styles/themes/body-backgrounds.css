@@ -1,23 +1,30 @@
-/* Body Background - Clean Everforest Implementation
-   Replaces complex paper-like effects with simple, pure Everforest colors */
+/* Body Background - Authentic Everforest Implementation
+   Uses exact Everforest colors with stronger specificity */
 
 @layer base {
-  /* Clean body background using pure Everforest colors */
+  /* Light mode - use clean Everforest bg0 */
   body {
-    /* Light mode - use clean Everforest bg0 */
-    background-color: var(--everforest-bg0);
-    
-    /* Subtle backdrop blur for depth (optional) */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    
+    background-color: #FFFBEF !important; /* Everforest light bg0 */
+    /* Remove blur effects that can interfere with color accuracy */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     /* Ensure smooth transitions between themes */
     transition: background-color 0.3s ease;
   }
 
-  /* Dark mode - use Everforest dark bg0 */
+  /* Dark mode - use authentic Everforest dark bg0 (#2D353B) */
   .dark body {
-    background-color: var(--everforest-bg0);
+    background-color: #142226 !important; /* Authentic Everforest dark bg0 */
+  }
+
+  /* Ensure html element doesn't interfere */
+  html {
+    background-color: inherit;
+  }
+
+  /* Override any global styles that might interfere */
+  html.dark {
+    background-color: #2D353B;
   }
 }
 
