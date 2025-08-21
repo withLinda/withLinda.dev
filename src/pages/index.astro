@@ -5,7 +5,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import { SITE_TITLE, SITE_DESCRIPTION, CATEGORY_NAMES } from '../config'
 
 const posts = await getCollection('blog')
 const sortedPosts = posts.sort((a, b) => 
@@ -15,11 +15,14 @@ const sortedPosts = posts.sort((a, b) =>
 // Group posts by category
 const postsByCategory = sortedPosts.reduce((acc, post) => {
   const pathParts = post.id.split('/')
-  const category = pathParts.length > 1
-    ? pathParts[0]
+  const categoryDir = pathParts.length > 1 ? pathParts[0] : null
+  
+  // Use the category name mapping if available, otherwise fall back to formatted directory name
+  const category = categoryDir
+    ? (CATEGORY_NAMES[categoryDir] || categoryDir
         .split('-')
         .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')
+        .join(' '))
     : 'Uncategorized'
   
   if (!acc[category]) acc[category] = []
