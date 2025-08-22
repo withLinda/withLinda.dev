@@ -26,7 +26,7 @@
    ========================================== */
 
 @utility prose {
-  @apply max-w-none leading-normal;
+  @apply leading-normal;
   @apply text-everforest-fg dark:text-everforest-fg;
 
   /* Consistent color application */
