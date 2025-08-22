@@ -1,3 +1,79 @@
+# Quick Reference
+
+## File Locations
+- Components: `src/components/`
+- Blog posts: `src/content/blog/[category]/`
+- Styles: `src/styles/`
+- Config: `src/config.ts`
+- Content schema: `src/content.config.ts`
+
+## Key Commands
+- `npm run dev` - Start dev server (http://localhost:4321)
+- `npm run build` - Production build (includes type checking)
+- `npm run preview` - Preview production build
+- `npm run astro sync` - Sync content types (REQUIRED after content changes)
+- `npm run astro check` - Type check
+
+## Important Files to Check First
+1. `src/config.ts` - Site settings and category names
+2. `src/styles/global.css` - All style imports
+3. `astro.config.mjs` - Framework configuration
+4. `src/content.config.ts` - Content schema
+5. `package.json` - Dependencies and scripts
+
+# Repository Structure
+
+## File Tree Overview
+```
+├── src/
+│   ├── components/          # Astro & React components
+│   │   ├── *.astro         # Static components (no client JS)
+│   │   └── *.tsx           # Interactive React components
+│   ├── content/
+│   │   └── blog/           # Blog posts organized by category
+│   │       ├── Love-the-storm-that-taught-you-to-build-better-shelters/
+│   │       ├── Mastery-sleeps-in-fragments-until-curiosity-fuses-them-awake/
+│   │       └── a-powerful-river-cant-be-dammed-only-redirected/
+│   ├── layouts/            # Page layouts
+│   │   └── BlogPost.astro  # Blog post template
+│   ├── pages/              # Route pages
+│   │   ├── index.astro     # Homepage
+│   │   ├── about.md        # About page
+│   │   └── blog/
+│   │       └── [...id].astro  # Dynamic blog routes
+│   ├── styles/
+│   │   ├── global.css      # Main style entry point
+│   │   ├── themes/         # Everforest theme system
+│   │   └── components/     # Component-specific styles
+│   ├── utils/              # Utility functions
+│   ├── config.ts           # Site configuration & category names
+│   └── content.config.ts   # Content collection schema (NOT in content/)
+├── public/                 # Static assets
+│   └── fonts/             # Web fonts
+├── astro.config.mjs       # Astro configuration
+├── tsconfig.json          # TypeScript configuration  
+├── postcss.config.js      # PostCSS for Tailwind v4
+└── package.json           # Dependencies and scripts
+```
+
+# Technology Stack
+
+## Core Technologies
+- **Framework**: Astro 5.13.2 (Static Site Generator)
+- **UI Components**: React 18.3.1 (for interactive components only)
+- **Styling**: Tailwind CSS v4.1.11 (latest version with new @import syntax)
+- **Language**: TypeScript 5.6.3 (strict mode enabled)
+- **Syntax Highlighting**: Shiki 3.11.0 with custom Everforest theme
+- **Icons**: React Icons 5.3.0
+- **Markdown**: MDX support with Astro's remark processor
+
+## Key Integrations
+- `@astrojs/react` - React component support
+- `@astrojs/mdx` - MDX file support  
+- `@astrojs/sitemap` - Automatic sitemap generation
+- `@headlessui/react` - Accessible UI components (mobile menu)
+- `@tailwindcss/typography` - Prose styling (loaded via @plugin)
+
 # Commands
 
 * `npm run dev` - Start development server
@@ -17,6 +93,100 @@
 * **Error Handling**: Use try/catch blocks for async operations
 * **Components**: Keep them small, focused, and reusable
 * **Theme**: Support for both light (Solarized) and dark (Night Owl) modes
+
+# Styling System Architecture
+
+## Tailwind CSS v4 Implementation
+- Uses NEW `@import 'tailwindcss'` syntax (NOT old @tailwind directives)
+- PostCSS configured with `@tailwindcss/postcss` plugin
+- Custom utilities defined with `@utility` directive
+- Typography plugin loaded via `@plugin '@tailwindcss/typography'`
+- Configuration in `postcss.config.js` (no tailwind.config.js needed)
+
+## Theme System (Everforest)
+The site uses a sophisticated Everforest color theme with light/dark modes:
+
+### File Organization:
+- `src/styles/global.css` - Main entry point, imports all styles in order
+- `src/styles/themes/_base.css` - Base theme utilities
+- `src/styles/themes/everforest-base.css` - Color palette definitions  
+- `src/styles/themes/everforest-light.css` - Light mode overrides
+- `src/styles/themes/everforest-dark.css` - Dark mode overrides
+- `src/styles/themes/body-backgrounds.css` - Background patterns & orbs
+- `src/styles/themes/layout-backgrounds.css` - Layout-specific backgrounds
+- `src/styles/themes/post-cards.css` - Blog post card styles
+- `src/styles/themes/shiki-overrides.css` - Code block styling
+- `src/styles/components/glassmorphism.css` - Orb animations
+
+### Color Variables Pattern:
+```css
+/* Defined in @theme block */
+--color-everforest-bg: var(--everforest-bg0);
+--color-everforest-fg: var(--everforest-fg);
+
+/* Used in Tailwind classes */
+bg-everforest-bg
+text-everforest-fg
+border-everforest-border
+```
+
+### Dark Mode Implementation:
+- CSS variables switch automatically based on `html.dark` class
+- Most colors work without `dark:` prefix due to CSS variable system
+- Theme toggle managed by ThemeToggleButton.tsx with localStorage
+
+# Component Architecture
+
+## Component Types
+1. **Astro Components** (.astro) - Server-rendered, zero client JavaScript
+   - `BaseHead.astro` - Meta tags, fonts, theme initialization
+   - `Header.astro` - Navigation bar with glass morphism
+   - `Footer.astro` - Site footer
+   - `Body.astro` - Layout wrapper with animated orbs
+   - `Content.astro` - Main content container
+   - `HeaderLink.astro` - Navigation link component
+   
+2. **React Components** (.tsx) - Client-side interactivity
+   - `ThemeToggleButton.tsx` - Theme switching with localStorage persistence
+   - `MobileMenu.tsx` - Responsive navigation using Headless UI
+   - `CopyCodeButton.tsx` - Code block copy functionality
+   - `GithubIcon.tsx` - SVG icon component
+
+## Component Hierarchy
+```
+index.astro (Homepage)
+├── BaseHead (meta tags, fonts, theme script)
+├── Body (layout wrapper with orb animations)
+├── Header
+│   ├── HeaderLink (static nav links)
+│   ├── ThemeToggleButton (client:load)
+│   └── MobileMenu (client:visible)
+│       └── HeaderLink (mobile nav links)
+├── Content (main content wrapper)
+│   └── Blog post cards (generated from content)
+└── Footer
+
+BlogPost.astro (Blog layout)
+├── BaseHead
+├── Body
+├── Header
+├── Content
+│   └── <slot/> (MDX/Markdown content)
+├── Footer
+└── CopyCodeButton (client:idle)
+```
+
+## Client Directives (Astro Islands)
+- `client:load` - Hydrate immediately on page load (critical UI)
+- `client:visible` - Hydrate when component enters viewport  
+- `client:idle` - Hydrate when browser is idle (non-critical)
+- `client:only="react"` - Skip SSR, render only on client
+
+## Component Communication
+- Props pass down through Astro components
+- React components use props and local state
+- Theme state persisted in localStorage
+- No global state management (not needed)
 
 # Thorough Reasoning Assistant
 
@@ -229,26 +399,158 @@ The only time to provide multiple approaches:
 
 Remember: **Precision and specificity save time. Assumptions and guessing waste time.**
 
-## Content Structure (Updated for Astro v5.0)
+## Content Management System
 
-- Blog posts are located in `src/content/blog/`
-- Posts are organized by category subdirectories
-- Configuration is in `src/content.config.ts` (note: NOT inside content folder)
-- Uses modern Astro v5.0 Content Collections API with glob loader
-- Frontmatter schema is enforced via Zod
-- Required fields: title, description, pubDate
-- Optional fields: updatedDate, tags, author
-- Posts are accessible at `/blog/[id]` URLs (uses id, not slug)
+### Blog Post Structure
+Posts are organized in category folders under `src/content/blog/`:
+- Each category folder has a descriptive, URL-safe name
+- Display names are mapped in `src/config.ts` → `CATEGORY_NAMES`
+- Posts are .md or .mdx files within category folders
+- URLs follow pattern: `/blog/[category-folder]/[post-filename]`
 
-## No Hero Images
+### Current Categories:
+- `Love-the-storm-that-taught-you-to-build-better-shelters/`
+- `Mastery-sleeps-in-fragments-until-curiosity-fuses-them-awake/`
+- `a-powerful-river-cant-be-dammed-only-redirected/`
 
-This site does not use hero images for blog posts. The heroImage field has been completely removed from all posts and components.
+### Required Frontmatter Fields
+```yaml
+---
+title: "Post Title"
+description: "Brief description for SEO"
+pubDate: 2024-01-15  # or "2024-01-15" or "Jan 15 2024"
+---
+```
 
-## Content Collections Commands
+### Optional Frontmatter Fields
+```yaml
+updatedDate: 2024-01-20
+tags: ["astro", "web-dev"]
+author: "Linda"
+```
 
-- `npm run astro sync` - ALWAYS run after changing content collections config
-- `npm run astro check` - Type checking for content
-- Content is queried using `getCollection('blog')` and rendered with `render(post)`
+### Content Collection Configuration
+- Schema defined in `src/content.config.ts` (NOT inside content/ folder)
+- Uses Astro v5.0 glob loader pattern
+- Zod validation enforces frontmatter schema
+- No hero images (field removed from design)
+
+### Content Queries
+```typescript
+// Get all posts
+const posts = await getCollection('blog')
+
+// Sort by date
+const sorted = posts.sort((a, b) => 
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+)
+
+// Render a post
+const { Content } = await post.render()
+```
+
+### Content Commands
+- `npm run astro sync` - ALWAYS run after adding new content
+- `npm run astro check` - Type check content and components
+
+# Common Development Patterns
+
+## Adding a New Blog Post
+1. Choose appropriate category folder in `src/content/blog/`
+2. Create .md file with descriptive filename (becomes URL)
+3. Add required frontmatter (title, description, pubDate)
+4. Write content using Markdown
+5. Run `npm run astro sync` to update types
+6. Post automatically appears on homepage
+
+## Creating a New Category
+1. Create new folder in `src/content/blog/` with URL-safe name
+2. Add mapping in `src/config.ts` → `CATEGORY_NAMES`
+3. Add blog posts as .md files
+4. Category appears automatically on homepage
+
+## Creating a New Component
+1. **Static component**: Create .astro file in `src/components/`
+2. **Interactive component**: Create .tsx file with React
+3. Import in parent component
+4. Add client directive if React: `client:load`, `client:visible`, etc.
+5. Style using Tailwind classes with Everforest variables
+
+## Modifying Styles
+1. **Theme colors**: Edit `src/styles/themes/everforest-*.css`
+2. **Component styles**: Edit relevant file in `src/styles/`
+3. **Global utilities**: Add to `src/styles/global.css` using `@utility`
+4. **Always use semantic color variables**, not hard-coded values
+5. Import order matters - check `global.css` for proper sequence
+
+## Working with Images
+- Static assets go in `public/` folder
+- Reference as `/image.png` (no `public/` in path)
+- No hero images in blog posts (design decision)
+- Use descriptive alt text for accessibility
+
+## Theme Customization
+1. Light mode: Edit `src/styles/themes/everforest-light.css`
+2. Dark mode: Edit `src/styles/themes/everforest-dark.css`
+3. Base colors: `src/styles/themes/everforest-base.css`
+4. Backgrounds: `src/styles/themes/body-backgrounds.css`
+
+# Troubleshooting Guide
+
+## Common Issues & Solutions
+
+### Content not appearing
+- ✅ Run `npm run astro sync` after adding content
+- ✅ Check frontmatter is valid YAML (watch for quotes)
+- ✅ Ensure file is .md or .mdx extension
+- ✅ Verify file is in correct category folder
+
+### Styles not applying
+- ✅ Tailwind v4 uses `@import 'tailwindcss'` not `@tailwind`
+- ✅ Dark mode uses CSS variables, may not need `dark:` prefix
+- ✅ Check color variable names match Everforest system
+- ✅ Restart dev server if hot reload fails
+
+### Build failures
+```bash
+npm run astro check  # Check for type errors
+npm run astro sync   # Sync content types
+```
+- ✅ Verify all imports resolve correctly
+- ✅ Check for missing dependencies in package.json
+- ✅ Ensure frontmatter dates are valid format
+
+### Component not interactive
+- ✅ Must be .tsx file, not .astro
+- ✅ Needs client directive: `client:load`, `client:visible`, etc.
+- ✅ Check browser console for hydration errors
+- ✅ Verify React imports are correct
+
+### Theme toggle not working
+- ✅ Check localStorage not blocked
+- ✅ Verify ThemeScript.astro is in BaseHead
+- ✅ Theme class applied to `<html>` element
+- ✅ CSS variables properly defined in theme files
+
+### Code blocks not highlighting
+- ✅ Shiki theme configured in `astro.config.mjs`
+- ✅ Theme file exists: `src/styles/themes/everforest-shiki.json`
+- ✅ Language specified in markdown: ` ```javascript `
+
+## Error Messages
+
+### "Cannot find module"
+- Missing dependency: `npm install`
+- Wrong import path: Check relative paths
+
+### "Content collection not found"
+- Run `npm run astro sync`
+- Check `src/content.config.ts` exists
+
+### "Invalid frontmatter"
+- Check YAML syntax (indentation, quotes)
+- Verify required fields present
+- Date format: `YYYY-MM-DD` or `Month DD YYYY`
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
