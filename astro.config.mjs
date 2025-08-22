@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
+import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   site: 'https://withlinda.dev/',
@@ -24,7 +25,8 @@ export default defineConfig({
       theme: 'everforest-dark',
       wrap: false,
       transformers: []
-    }
+    },
+    remarkPlugins: [remarkGfm]
   },
   vite: {
     plugins: [tailwindcss()]
