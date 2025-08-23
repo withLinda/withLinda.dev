@@ -7,24 +7,26 @@ pubDate: "2024-03-21"
 
 # About Me
 
-Hello! I'm Linda, a freelancer at Upwork, based in Indonesia. My experience is in frontend development, web scraping, and automation. I always have a side project and am learning to have the courage to publish a SaaS. In my free time, I play Fallout 76, read books, and play with my two cats.
+Hello! I'm Linda, a freelance developer on Upwork and an AI specialist based in Indonesia. I've spent 10 years working on complex projects through Upwork, including maintaining a Semantic Knowledge Base, building my expertise in data structuring and AI integration. Currently, I'm developing ContextDistiller, a SaaS that intelligently consolidates redundant information using semantic analysis.
+I approach coding challenges like puzzles - each piece revealing the next in sequence. My work combines technical precision with creative problem-solving.
 
 ## What I Do
 
-My experience is in building modern web applications using technologies like:
+I specialize in creating solutions that bridge AI and web technologies:
+Frontend & Applications
 
-- Astro
-- React
-- TypeScript
-- Tailwind CSS
+- React, TypeScript, Astro
+- Tailwind CSS for clean, responsive design
+- AI integration and prompt engineering
 
-And for scraping and automation, I use:
+Automation & Data
 
-- Python Requests
-- Playwright
-- Puppeteer-real-browser
-- Scrapy
+- Web scraping at scale (Playwright, Puppeteer, Scrapy)
+- LLM fine-tuning and optimization 
+- Knowledge base management 
+- Python-based automation pipelines
 
+When I'm not coding, you'll find me in Fallout 76, exploring ideas, or being supervised by my two cats.
 
 ## Get in Touch
 
