@@ -7,17 +7,17 @@ import MobileMenu from './MobileMenu'
 ---
 
 <header class="fixed w-full z-20 backdrop-blur-md bg-everforest-bg/80 dark:bg-everforest-bg/80 border-b border-everforest-border-subtle dark:border-white/30">
-  <div class="mx-auto max-w-3xl px-6 py-2">
-    <nav class="flex items-center gap-3 text-base">
+  <div class="mx-auto max-w-3xl py-2">
+    <nav class="flex items-center text-base">
       {/* Site Title/Home Link */}
       <a href="/" class="group">
-        <h2 class="font-semibold tracking-wide p-2 text-lg text-everforest-fg dark:text-everforest-fg">
+        <h2 class="font-semibold tracking-wide text-lg text-everforest-fg dark:text-everforest-fg">
           {SITE_TITLE}
         </h2>
       </a>
 
       {/* Desktop Navigation Links */}
-      <div class="items-center gap-6 hidden md:flex">
+      <div class="items-center gap-6 hidden md:flex ml-6">
         <HeaderLink href={ABOUT_URL}>About</HeaderLink>
         <HeaderLink 
           href="https://github.com/withLinda/withLinda.dev"
