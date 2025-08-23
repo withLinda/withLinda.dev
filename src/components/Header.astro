@@ -7,7 +7,7 @@ import MobileMenu from './MobileMenu'
 ---
 
 <header class="fixed w-full z-20 backdrop-blur-md bg-everforest-bg/80 dark:bg-everforest-bg/80 border-b border-everforest-border-subtle dark:border-white/30">
-  <div class="mx-auto max-w-3xl py-2">
+  <div class="mx-auto max-w-3xl px-1 py-2">
     <nav class="flex items-center text-base">
       {/* Site Title/Home Link */}
       <a href="/" class="group">
@@ -19,7 +19,7 @@ import MobileMenu from './MobileMenu'
       {/* Desktop Navigation Links */}
       <div class="items-center gap-6 hidden md:flex ml-6">
         <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-        <HeaderLink 
+        <HeaderLink
           href="https://github.com/withLinda/withLinda.dev"
           target="_blank"
         >
@@ -35,7 +35,7 @@ import MobileMenu from './MobileMenu'
       <div class="md:hidden">
         <MobileMenu client:visible>
           <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-          <HeaderLink 
+          <HeaderLink
             href="https://github.com/withLinda/withLinda.dev"
             target="_blank"
           >
