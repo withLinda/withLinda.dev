@@ -18,7 +18,7 @@
         "comment.block.documentation"
       ],
       "settings": {
-        "foreground": "#7A8478",
+        "foreground": "#646F62",
         "fontStyle": "italic"
       }
     },
@@ -197,7 +197,7 @@
         "punctuation.definition.parameters"
       ],
       "settings": {
-        "foreground": "#7A8478"
+        "foreground": "#646F62"
       }
     },
     {
