@@ -94,10 +94,10 @@
     @apply text-everforest-red dark:text-everforest-red;
   }
 
-  /* Blockquotes */
+  /* Blockquotes with red accent border */
   & blockquote {
-    @apply pl-4 border-l-4 border-everforest-border dark:border-everforest-border;
-    @apply my-6 italic text-everforest-text dark:text-everforest-text;
+    @apply pl-4 my-6 italic text-everforest-text dark:text-everforest-text;
+    border-left: 4px solid var(--everforest-red);
   }
 
   /* Images */
@@ -109,11 +109,16 @@
     @apply block text-center text-sm text-everforest-text dark:text-everforest-text -mt-6 mb-8;
   }
 
-  /* Links */
+  /* Links with red hover accent */
   & a {
-    @apply text-everforest-blue hover:text-everforest-accent dark:text-everforest-blue dark:hover:text-everforest-accent;
+    @apply text-everforest-blue dark:text-everforest-blue;
     text-decoration: underline;
     text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  & a:hover {
+    color: var(--everforest-red);
   }
 
   /* Code blocks */
@@ -130,28 +135,56 @@
     @apply text-sm font-mono;
   }
 
-  /* Tables */
+  /* Enhanced Tables with red accents */
   & table {
-    @apply w-full my-6 border-collapse;
+    @apply w-full my-6 border-collapse rounded-lg overflow-hidden;
+    border: 1px solid var(--everforest-border);
   }
 
   & thead {
-    @apply bg-everforest-secondary dark:bg-everforest-secondary;
+    /* Subtle red gradient background */
+    background: linear-gradient(135deg, 
+      var(--everforest-bg-red) 0%, 
+      var(--everforest-bg1) 100%);
   }
 
   & th {
-    @apply p-2 text-left font-semibold border border-everforest-border dark:border-everforest-border;
-    @apply text-everforest-fg dark:text-everforest-fg;
+    @apply p-3 text-left font-semibold;
+    border-bottom: 2px solid var(--everforest-red);
+    color: var(--everforest-fg);
+  }
+
+  /* Alternating row colors for better readability */
+  & tbody tr:nth-child(even) {
+    background-color: var(--everforest-bg1);
+  }
+
+  /* Hover effect for table rows */
+  & tbody tr:hover {
+    background-color: var(--everforest-bg2);
+    transition: background-color 0.2s ease;
   }
 
   & td {
-    @apply p-2 border border-everforest-border dark:border-everforest-border;
-    @apply text-everforest-text dark:text-everforest-text;
+    @apply p-3;
+    border-bottom: 1px solid var(--everforest-border-subtle);
+    color: var(--everforest-fg);
   }
 
-  /* Horizontal rule */
+  /* Remove border from last row */
+  & tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Horizontal rule with red gradient */
   & hr {
-    @apply my-8 border-t border-everforest-border dark:border-everforest-border;
+    @apply my-8;
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      var(--everforest-red) 50%,
+      transparent 100%);
   }
 
   /* Unordered lists */
@@ -186,13 +219,13 @@
     @apply my-0;
   }
 
-  /* Make sure the markers (bullets & numbers) also use the correct color */
+  /* List markers with red accent colors */
   & li::marker {
-    color: var(--color-everforest-text);
+    color: var(--everforest-red);
   }
   
   .dark & li::marker {
-    color: var(--color-everforest-text);
+    color: var(--everforest-red);
   }
 }
 
