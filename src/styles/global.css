@@ -26,6 +26,10 @@
    ========================================== */
 
 @utility prose {
+  /* CRITICAL: Override prose plugin's max-width */
+  max-width: none !important;
+  width: 100%;
+  
   @apply leading-normal;
   @apply text-everforest-fg dark:text-everforest-fg;
 
