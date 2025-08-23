@@ -72,7 +72,7 @@ npm run dev
 2. **Create a new `.md` file** with a descriptive filename (becomes the URL):
    ```bash
    # Example: creating a new post about TypeScript
-   touch src/content/blog/Mastery-sleeps-in-fragments-until-curiosity-fuses-them-awake/typescript-tips-2025.md
+   touch src/content/blog/mastery/typescript-tips-2025.md
    ```
 
 3. **Add frontmatter and content**:

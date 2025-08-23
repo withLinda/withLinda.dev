@@ -43,8 +43,8 @@
 
     /* Light mode shadow */
     box-shadow:
-      0 8px 32px rgba(167, 192, 128, 0.08),
-      0 2px 8px rgba(92, 106, 114, 0.04);
+      0 8px 32px rgb(from var(--everforest-green) r g b / 0.08),
+      0 2px 8px rgb(from var(--everforest-grey1) r g b / 0.04);
 
     .dark & {
       /* Dark mode - clean Everforest dark card background */
@@ -53,7 +53,7 @@
 
       /* Dark mode shadow with Everforest colors */
       box-shadow:
-        0 8px 32px rgba(45, 53, 59, 0.2),
+        0 8px 32px rgb(from var(--everforest-bg0) r g b / 0.2),
         0 2px 8px rgba(0, 0, 0, 0.1);
     }
   }
@@ -63,15 +63,15 @@
     /* Light mode hover - use Everforest accent */
     border-color: var(--everforest-accent-secondary);
     box-shadow:
-      0 12px 40px rgba(58, 148, 197, 0.12),
-      0 4px 16px rgba(92, 106, 114, 0.08);
+      0 12px 40px rgb(from var(--everforest-blue) r g b / 0.12),
+      0 4px 16px rgb(from var(--everforest-grey1) r g b / 0.08);
     transform: translateY(-4px) scale(1.02) translateZ(0);
 
     .dark & {
       /* Dark mode hover - use Everforest aqua accent */
       border-color: var(--everforest-accent-primary);
       box-shadow:
-        0 12px 40px rgba(131, 192, 146, 0.15),
+        0 12px 40px rgb(from var(--everforest-aqua) r g b / 0.15),
         0 4px 16px rgba(0, 0, 0, 0.2);
     }
   }
@@ -106,7 +106,7 @@
     color: var(--color-everforest-accent-secondary);
     font-weight: 700;
     letter-spacing: 0.02em;
-    text-shadow: 0 1px 3px rgba(58, 148, 197, 0.15);
+    text-shadow: 0 1px 3px rgb(from var(--everforest-blue) r g b / 0.15);
 
     /* GPU-accelerated transform for micro-movement */
     transform: translateY(-1px);
@@ -114,7 +114,7 @@
     .dark & {
       /* Dark mode hover - enhanced brightness with aqua accent */
       color: var(--color-everforest-accent-primary);
-      text-shadow: 0 1px 4px rgba(131, 192, 146, 0.2);
+      text-shadow: 0 1px 4px rgb(from var(--everforest-aqua) r g b / 0.2);
 
       /* Subtle glow effect for dark mode */
       filter: brightness(1.1);

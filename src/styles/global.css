@@ -89,8 +89,8 @@
   & code:not(pre code) {
     @apply px-1.5 py-0.5 rounded-sm text-sm;
     /* Use same background as code blocks for consistency */
-    background-color: #343F44 !important;
-    border: 1px solid #475258;
+    background-color: var(--everforest-bg1) !important;
+    border: 1px solid var(--everforest-bg3);
     @apply text-everforest-red dark:text-everforest-red;
   }
 
@@ -125,8 +125,8 @@
   & pre {
     @apply relative p-4 my-6 overflow-x-auto rounded-lg;
     /* Use authentic Everforest bg1 (#343F44) for code blocks */
-    background-color: #343F44 !important;
-    border: 1px solid #475258;
+    background-color: var(--everforest-bg1) !important;
+    border: 1px solid var(--everforest-bg3);
     @apply text-everforest-text dark:text-everforest-text;
   }
 

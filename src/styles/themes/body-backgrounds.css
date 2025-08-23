@@ -4,7 +4,7 @@
 @layer base {
   /* Light mode - use clean Everforest bg0 */
   body {
-    background-color: #FFFBEF !important; /* Everforest light bg0 */
+    background-color: var(--everforest-bg0) !important; /* Everforest light bg0 */
     /* Remove blur effects that can interfere with color accuracy */
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -24,7 +24,7 @@
 
   /* Override any global styles that might interfere */
   html.dark {
-    background-color: #2D353B;
+    background-color: var(--everforest-bg0);
   }
 }
 

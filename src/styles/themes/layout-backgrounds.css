@@ -6,8 +6,8 @@
   /* Light mode - Everforest with backdrop blur support for consistency */
   background: linear-gradient(
     135deg,
-    rgba(239, 235, 212, 0.25) 0%,  /* everforest-bg2 with low opacity */
-    rgba(244, 240, 217, 0.2) 100% /* everforest-bg1 with low opacity */
+    rgb(from var(--everforest-bg2) r g b / 0.25) 0%,  /* everforest-bg2 with low opacity */
+    rgb(from var(--everforest-bg1) r g b / 0.2) 100% /* everforest-bg1 with low opacity */
   );
   backdrop-filter: blur(12px) saturate(1.2);
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
@@ -17,8 +17,8 @@
     /* Dark mode - Consistent blur effect with header */
     background: linear-gradient(
       135deg,
-      rgba(45, 53, 59, 0.3) 0%,   /* everforest-bg0 dark with low opacity */
-      rgba(52, 63, 68, 0.25) 100%  /* everforest-bg1 dark with low opacity */
+      rgb(from var(--everforest-bg0) r g b / 0.3) 0%,   /* everforest-bg0 dark with low opacity */
+      rgb(from var(--everforest-bg1) r g b / 0.25) 100%  /* everforest-bg1 dark with low opacity */
     ) !important;
     backdrop-filter: blur(12px) saturate(1.1);
     -webkit-backdrop-filter: blur(12px) saturate(1.1);
