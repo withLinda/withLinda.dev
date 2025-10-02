@@ -22,9 +22,18 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+.claude/
+MDdocs/
 
 # repomix output
 repomix-output.txt
+repomix-output.xml
 MDdocs
 img_references
 palette.md
+CLAUDE.md
+fixing-markdown-references.md
+
+
+#temporary ignore
+src/content/blog/

@@ -27,8 +27,8 @@ import MobileMenu from './MobileMenu'
 
       <div class="md:hidden">
         <MobileMenu client:visible>
-          <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-          <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank">
+          <HeaderLink href={ABOUT_URL} class="block w-full px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">About</HeaderLink>
+          <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank" class="block w-full px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">
             <GithubIcon client:load />Source
           </HeaderLink>
         </MobileMenu>
