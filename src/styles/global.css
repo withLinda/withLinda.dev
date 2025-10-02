@@ -314,3 +314,36 @@
     visibility: hidden;
   }
 }
+
+/* Global aesthetic tweaks */
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    min-height: 100svh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Typography balance & measure */
+@layer components {
+  .prose { max-width: 70ch; }
+  .prose :where(p, ul, ol, blockquote) { line-height: 1.7; }
+  .prose :where(h1){ letter-spacing: -0.02em }
+  .prose :where(a){
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 3px;
+    text-decoration-color: transparent;
+    transition: color .2s ease, text-decoration-color .2s ease;
+  }
+  .prose :where(a:hover){ text-decoration-color: currentColor; }
+}
+
+/* Selection */
+@layer utilities {
+  ::selection {
+    background: color-mix(in oklab, var(--everforest-yellow) 22%, transparent);
+  }
+}

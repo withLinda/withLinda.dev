@@ -116,3 +116,52 @@
     -webkit-backdrop-filter: blur(4px) !important;
   }
 }
+
+/* Glass & Frost utilities for Everforest */
+@layer utilities {
+  .bg-glass-header {
+    background:
+      linear-gradient(180deg,
+        color-mix(in oklab, var(--everforest-bg0) 72%, transparent) 0%,
+        color-mix(in oklab, var(--everforest-bg0) 68%, transparent) 60%,
+        color-mix(in oklab, var(--everforest-bg0) 60%, transparent) 100%);
+    backdrop-filter: blur(12px) saturate(1.25);
+    -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  }
+
+  .bg-glass-footer {
+    background:
+      radial-gradient(1000px 300px at 50% 120%,
+        color-mix(in oklab, var(--everforest-surface-primary) 60%, transparent) 0%,
+        transparent 70%),
+      linear-gradient(180deg,
+        color-mix(in oklab, var(--everforest-surface-primary) 55%, transparent) 0%,
+        color-mix(in oklab, var(--everforest-surface-primary) 45%, transparent) 100%);
+    backdrop-filter: blur(8px) saturate(1.15);
+    -webkit-backdrop-filter: blur(8px) saturate(1.15);
+  }
+
+  .glass-panel {
+    background: color-mix(in oklab, var(--everforest-surface-primary) 62%, transparent);
+    backdrop-filter: blur(14px) saturate(1.25);
+    -webkit-backdrop-filter: blur(14px) saturate(1.25);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.08);
+  }
+
+  .frost-panel {
+    background: linear-gradient(145deg,
+      color-mix(in oklab, var(--everforest-surface-primary) 68%, transparent) 0%,
+      color-mix(in oklab, var(--everforest-surface-secondary) 62%, transparent) 100%);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border-radius: 1rem;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.10);
+  }
+
+  @supports not ((backdrop-filter: blur(2px))) {
+    .bg-glass-header, .bg-glass-footer, .glass-panel, .frost-panel {
+      background: color-mix(in oklab, var(--everforest-surface-primary) 92%, transparent);
+    }
+  }
+}

@@ -5,40 +5,30 @@ import { ABOUT_URL, SITE_TITLE } from '../config'
 import GithubIcon from './GithubIcon.tsx'
 import MobileMenu from './MobileMenu'
 ---
-
-<header class="fixed w-full z-20 backdrop-blur-md bg-everforest-bg/80 dark:bg-everforest-bg/80 border-b border-everforest-border-subtle dark:border-white/30">
-  <div class="mx-auto max-w-3xl px-1 py-2">
-    <nav class="flex items-center text-base">
-      {/* Site Title/Home Link */}
-      <a href="/" class="group">
-        <h2 class="font-semibold tracking-wide text-lg text-everforest-fg dark:text-everforest-fg">
+<header class="site-header bg-glass-header">
+  <div class="site-header__container">
+    <nav class="site-header__nav">
+      <a href="/" class="group decoration-transparent hover:decoration-current">
+        <h1 class="font-semibold tracking-wide text-[1.05rem] md:text-[1.15rem] text-everforest-fg dark:text-everforest-fg">
           {SITE_TITLE}
-        </h2>
+        </h1>
       </a>
 
-      {/* Desktop Navigation Links */}
-      <div class="items-center gap-6 hidden md:flex ml-6">
+      <div class="hidden md:flex items-center gap-5 ms-6">
         <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-        <HeaderLink
-          href="https://github.com/withLinda/withLinda.dev"
-          target="_blank"
-        >
+        <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank">
           <GithubIcon client:load />Source
         </HeaderLink>
       </div>
 
-      {/* Right-side items */}
-      <div class="flex-1"></div>
+      <div class="flex-1" />
+
       <ThemeToggleButton client:load />
 
-      {/* Mobile Menu Button */}
       <div class="md:hidden">
         <MobileMenu client:visible>
           <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-          <HeaderLink
-            href="https://github.com/withLinda/withLinda.dev"
-            target="_blank"
-          >
+          <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank">
             <GithubIcon client:load />Source
           </HeaderLink>
         </MobileMenu>
@@ -46,3 +36,32 @@ import MobileMenu from './MobileMenu'
     </nav>
   </div>
 </header>
+
+<style is:global>
+:root { --header-h: 64px; }
+@media (min-width: 768px) { :root { --header-h: 72px; } }
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 40;
+}
+.site-header__container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  padding-block: .5rem;
+}
+@media (min-width: 1024px) {
+  .site-header__container {
+    padding-inline: 1.5rem;
+    padding-block: .75rem;
+  }
+}
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+</style>

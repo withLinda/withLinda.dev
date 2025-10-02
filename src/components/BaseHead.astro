@@ -10,16 +10,16 @@ export interface Props {
 const { title, description } = Astro.props
 ---
 <head>
-  <!-- Theme Script must be the first thing in head -->
   <ThemeScript />
-
-  <!-- Basic meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
 
-  <!-- Vercel Analytics -->
+  <!-- Match system theme color for address bar -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2efdf" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2D353B" />
+
   <script>
     import { inject } from "@vercel/analytics";
     inject();

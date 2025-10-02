@@ -1,15 +1,25 @@
 ---
 const today = new Date()
 ---
-
-<footer class="mt-16 border-t border-everforest-border-subtle dark:border-white/30 footer-bg-everforest">
-  <div class="mx-auto max-w-3xl px-6 py-8 text-center">
-    <p class="text-everforest-fg dark:text-everforest-fg">
+<footer class="site-footer bg-glass-footer">
+  <div class="site-footer__container">
+    <p class="text-sm md:text-base text-everforest-fg/90 dark:text-everforest-fg/90">
       &copy; {today.getFullYear()}
-      <a href="/" class="ml-1 hover:underline text-everforest-blue dark:text-everforest-blue transition-colors duration-200 hover:text-everforest-orange dark:hover:text-everforest-orange">
+      <a href="/" class="ms-1 underline underline-offset-4 decoration-transparent hover:decoration-current text-everforest-blue dark:text-everforest-blue hover:text-everforest-orange dark:hover:text-everforest-orange">
         withLinda.dev
       </a>
     </p>
   </div>
 </footer>
+
+<style is:global>
+.site-footer { margin-top: 6rem; }
+.site-footer__container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 2rem;
+  text-align: center;
+}
+</style>
 
