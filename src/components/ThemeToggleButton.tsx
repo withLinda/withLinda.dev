@@ -38,26 +38,34 @@ export default function ThemeToggleButton() {
   }, []);
 
   return isMounted ? (
-    <div className="inline-flex items-center p-px rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-[30px] backdrop-saturate-150 backdrop-brightness-110 border border-[#5C6A72]/40 dark:border-white/30 supports-backdrop-filter:backdrop-blur-[30px] supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-[30px]]">
+    <div className="inline-flex items-center p-px rounded-3xl
+                    bg-black/[0.06] dark:bg-white/10
+                    backdrop-blur-[30px] backdrop-saturate-150
+                    border border-[#5C6A72]/40 dark:border-white/30
+                    supports-backdrop-filter:backdrop-blur-[30px]
+                    supports-[-webkit-backdrop-filter]:[-webkit-backdrop-blur-[30px]]">
       {themes.map((t) => {
         const checked = t === theme;
         return (
           <button
             key={t}
-            className={`${
+            className={`group relative isolate ${
               checked
-                ? "bg-white/30 dark:bg-white/20"
+                ? "bg-white/80 dark:bg-white/20 ring-1 ring-black/10 dark:ring-white/30 shadow-sm"
                 : "bg-transparent"
-            } cursor-pointer rounded-3xl p-2 transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/10 transform-gpu`}
+            } cursor-pointer rounded-3xl p-2 transition-all duration-200
+               hover:bg-white/30 dark:hover:bg-white/10 transform-gpu
+               focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 dark:focus-visible:ring-white/30`}
             onClick={toggleTheme}
             aria-label={`Switch to ${t === "light" ? "light" : "dark"} theme`}
             aria-pressed={checked}
             type="button"
           >
+            {checked && <span aria-hidden className="glossy-knob absolute inset-0 rounded-3xl" />}
             {t === "light" ? (
-              <IoSunny className="text-everforest-yellow dark:text-everforest-yellow" />
+              <IoSunny className="relative z-10 text-everforest-yellow dark:text-everforest-yellow" />
             ) : (
-              <IoMoon className="text-everforest-blue dark:text-everforest-blue" />
+              <IoMoon className="relative z-10 text-everforest-blue dark:text-everforest-blue" />
             )}
           </button>
         );
