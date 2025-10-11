@@ -4,55 +4,55 @@
 @layer base {
   .dark {
     /* ============================================
-       EVERFOREST DARK PALETTE - MEDIUM CONTRAST (DEFAULT)
+       EVERFOREST DARK PALETTE - HARD CONTRAST (DEFAULT)
        ============================================ */
-    
+
     /* Background Colors */
-    --everforest-bg-dim: #232A2E;
-    --everforest-bg0: #2D353B;
-    --everforest-bg1: #343F44;
-    --everforest-bg2: #3D484D;
-    --everforest-bg3: #475258;
-    --everforest-bg4: #4F585E;
-    --everforest-bg5: #56635f;
-    
+    --everforest-bg-dim: #1E2326;
+    --everforest-bg0: #1E2326;
+    --everforest-bg1: #272E33;
+    --everforest-bg2: #2E383C;
+    --everforest-bg3: #374145;
+    --everforest-bg4: #414B50;
+    --everforest-bg5: #4F5B58;
+
     /* Special Backgrounds */
-    --everforest-bg-visual: #543A48;
-    --everforest-bg-red: #514045;
-    --everforest-bg-yellow: #4D4C43;
-    --everforest-bg-green: #425047;
-    --everforest-bg-blue: #3A515D;
-    --everforest-bg-purple: #4A444E;
-    
+    --everforest-bg-visual: #4C3743;
+    --everforest-bg-red: #493B40;
+    --everforest-bg-yellow: #45443C;
+    --everforest-bg-green: #3C4841;
+    --everforest-bg-blue: #384B55;
+    --everforest-bg-purple: #463F48;
+
     /* Foreground Colors */
     --everforest-fg: #D3C6AA;
     --everforest-red: #E67E80;
     --everforest-orange: #E69875;
     --everforest-yellow: #DBBC7F;
-    --everforest-green: #A7C080;
-    --everforest-aqua: #83C092;
+    --everforest-green: #83C092;
+    --everforest-aqua: #7FBBB3;
     --everforest-blue: #7FBBB3;
     --everforest-purple: #D699B6;
-    
+
     /* Grey Scale */
     --everforest-grey0: #7A8478;
     --everforest-grey1: #859289;
     --everforest-grey2: #9DA9A0;
-    
+
     /* Statusline Colors */
-    --everforest-statusline1: #A7C080;
-    --everforest-statusline2: #D3C6AA;
+    --everforest-statusline1: #D3C6AA;
+    --everforest-statusline2: #E67E80;
     --everforest-statusline3: #E67E80;
   }
-  
-  /* Hard Contrast Variant */
+
+  /* Hard Contrast Variant - keep parity for explicit requests */
   .dark[data-contrast="hard"] {
     --everforest-bg-dim: #1E2326;
-    --everforest-bg0: #272E33;
-    --everforest-bg1: #2E383C;
-    --everforest-bg2: #374145;
-    --everforest-bg3: #414B50;
-    --everforest-bg4: #495156;
+    --everforest-bg0: #1E2326;
+    --everforest-bg1: #272E33;
+    --everforest-bg2: #2E383C;
+    --everforest-bg3: #374145;
+    --everforest-bg4: #414B50;
     --everforest-bg5: #4F5B58;
   }
   
