@@ -128,7 +128,7 @@
   /* Code blocks */
   & pre {
     @apply relative p-4 my-6 overflow-x-auto rounded-lg;
-    /* Use authentic Everforest bg1 (#343F44) for code blocks */
+    /* Use Everforest hard bg1 (#272E33) for code blocks */
     background-color: var(--everforest-bg1) !important;
     border: 1px solid var(--everforest-bg3);
     @apply text-everforest-text dark:text-everforest-text;

@@ -12,9 +12,9 @@
     transition: background-color 0.3s ease;
   }
 
-  /* Dark mode - use authentic Everforest dark bg0 (#2D353B) */
+  /* Dark mode - Everforest hard contrast background */
   .dark body {
-    background-color: #142226 !important; /* Authentic Everforest dark bg0 */
+    background-color: #1E2326 !important; /* Everforest hard bg0 */
   }
 
   /* Ensure html element doesn't interfere */
