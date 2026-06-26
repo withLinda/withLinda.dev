@@ -5,63 +5,138 @@ import { ABOUT_URL, SITE_TITLE } from '../config'
 import GithubIcon from './GithubIcon.tsx'
 import MobileMenu from './MobileMenu'
 ---
-<header class="site-header bg-glass-header">
+
+<header class="site-header">
   <div class="site-header__container">
-    <nav class="site-header__nav">
-      <a href="/" class="group decoration-transparent hover:decoration-current">
-        <h1 class="font-semibold tracking-wide text-[1.05rem] md:text-[1.15rem] text-everforest-fg dark:text-everforest-fg">
-          {SITE_TITLE}
-        </h1>
-      </a>
+    <a href="/" class="site-header__brand" aria-label={`${SITE_TITLE} home`}>
+      <span class="site-header__brand-text">{SITE_TITLE}</span>
+    </a>
 
-      <div class="hidden md:flex items-center gap-5 ms-6">
-        <HeaderLink href={ABOUT_URL}>About</HeaderLink>
-        <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank">
-          <GithubIcon client:load />Source
-        </HeaderLink>
-      </div>
-
-      <div class="flex-1" />
-
-      <ThemeToggleButton client:load />
-
-      <div class="md:hidden">
-        <MobileMenu client:visible>
-          <HeaderLink href={ABOUT_URL} class="block w-full px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">About</HeaderLink>
-          <HeaderLink href="https://github.com/withLinda/withLinda.dev" target="_blank" class="block w-full px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">
-            <GithubIcon client:load />Source
-          </HeaderLink>
-        </MobileMenu>
-      </div>
+    <nav class="site-header__nav" aria-label="Primary">
+      <HeaderLink href={ABOUT_URL}>About</HeaderLink>
+      <HeaderLink
+        href="https://github.com/withLinda/withLinda.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View source on GitHub"
+        title="View source on GitHub"
+      >
+        <GithubIcon client:load />
+      </HeaderLink>
     </nav>
+
+    <ThemeToggleButton client:load />
+
+    <div class="site-header__mobile">
+      <MobileMenu client:visible>
+        <HeaderLink href={ABOUT_URL} class="mobile-menu__item">
+          About
+        </HeaderLink>
+        <HeaderLink
+          href="https://github.com/withLinda/withLinda.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-menu__item"
+        >
+          <GithubIcon client:load />
+          <span>Source</span>
+        </HeaderLink>
+      </MobileMenu>
+    </div>
   </div>
 </header>
 
 <style is:global>
-:root { --header-h: 64px; }
-@media (min-width: 768px) { :root { --header-h: 72px; } }
-
-.site-header {
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline: 0;
-  z-index: 40;
-}
-.site-header__container {
-  max-width: 72rem;
-  margin-inline: auto;
-  padding-inline: 1rem;
-  padding-block: .5rem;
-}
-@media (min-width: 1024px) {
-  .site-header__container {
-    padding-inline: 1.5rem;
-    padding-block: .75rem;
+  :root {
+    --header-h: 60px;
   }
-}
-.site-header__nav {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
+  @media (min-width: 768px) {
+    :root {
+      --header-h: 68px;
+    }
+  }
+
+  .site-header {
+    background: color-mix(in oklab, var(--everforest-bg0) 92%, transparent);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--everforest-border-subtle);
+    inset-block-start: 0;
+    inset-inline: 0;
+    position: fixed;
+    z-index: 40;
+  }
+
+  .site-header__container {
+    align-items: center;
+    display: flex;
+    gap: var(--space-sm);
+    margin-inline: auto;
+    max-width: var(--page-measure);
+    min-height: var(--header-h);
+    padding-block: var(--space-2xs);
+    padding-inline: var(--page-gutter);
+  }
+
+  .site-header__brand {
+    color: var(--everforest-text-primary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+
+  @media (min-width: 768px) {
+    .site-header__brand {
+      font-size: 1rem;
+    }
+  }
+
+  .site-header__brand:hover {
+    color: var(--everforest-text-primary);
+  }
+
+  .site-header__brand:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 4px;
+  }
+
+  .site-header__nav {
+    align-items: center;
+    display: none;
+    flex: 1;
+    gap: var(--space-sm);
+    margin-inline-start: var(--space-md);
+  }
+
+  @media (min-width: 640px) {
+    .site-header__nav {
+      display: inline-flex;
+    }
+  }
+
+  .site-header__nav .header-link svg {
+    font-size: 1.05rem;
+  }
+
+  .site-header__mobile {
+    display: inline-flex;
+  }
+
+  @media (min-width: 640px) {
+    .site-header__mobile {
+      display: none;
+    }
+  }
+
+  /* On mobile the desktop nav is hidden, so push everything after the brand to
+     the right by giving the brand an auto trailing margin. On desktop the
+     flex:1 on .site-header__nav already does the job. */
+  @media (max-width: 639px) {
+    .site-header__brand {
+      margin-inline-end: auto;
+    }
+  }
 </style>

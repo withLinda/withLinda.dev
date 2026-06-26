@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro'
 import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 import CopyCodeButton from '../components/CopyCodeButton.tsx'
-import { SITE_TITLE } from '../config'
+import { SITE_TITLE, CATEGORY_NAMES, CATEGORY_TAGS } from '../config'
 
 export interface Props {
   content: {
@@ -14,10 +14,30 @@ export interface Props {
     pubDate: Date
     updatedDate?: Date
   }
+  categoryDir?: string
+  hideArchiveLink?: boolean
 }
 
-const { content } = Astro.props
-const { title, description } = content
+const { content, categoryDir, hideArchiveLink = false } = Astro.props
+const { title, description, pubDate, updatedDate } = content
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+
+// Derive category from URL when not explicitly passed (e.g. content collection
+// posts route as /blog/<dir>/<slug>; about.md uses the same layout but has no dir).
+const pathParts = Astro.url.pathname.replace(/^\/+|\/+$/g, '').split('/')
+const derivedCategoryDir = pathParts[0] === 'blog' && pathParts.length > 2 ? pathParts[1] : ''
+const dir = categoryDir ?? derivedCategoryDir
+
+const categoryTag = dir ? CATEGORY_TAGS[dir] : null
+const categoryName = dir ? CATEGORY_NAMES[dir] : null
+
+const formattedDate = pubDate ? dateFmt.format(new Date(pubDate)) : null
+const formattedUpdated = updatedDate ? dateFmt.format(new Date(updatedDate)) : null
 ---
 
 <!DOCTYPE html>
@@ -28,11 +48,46 @@ const { title, description } = content
   <Body>
     <Header />
     <Content>
-      <div class="prose prose-lg">
+      <header class="article-header">
+        {
+          !hideArchiveLink && (
+            <a class="article-header__back" href="/">All posts</a>
+          )
+        }
+        {
+          (categoryTag || formattedDate) && (
+            <p class="article-header__eyebrow">
+              {categoryTag && (
+                <span class="chip" title={categoryName ?? undefined}>
+                  {categoryTag}
+                </span>
+              )}
+              {categoryTag && formattedDate && (
+                <span class="article-header__eyebrow__sep">·</span>
+              )}
+              {formattedDate && (
+                <time datetime={new Date(pubDate).toISOString()}>
+                  {formattedDate}
+                </time>
+              )}
+              {formattedUpdated && (
+                <>
+                  <span class="article-header__eyebrow__sep">·</span>
+                  <span>Updated {formattedUpdated}</span>
+                </>
+              )}
+            </p>
+          )
+        }
+        <h1 class="article-header__title">{title}</h1>
+        {description && <p class="article-header__desc">{description}</p>}
+      </header>
+
+      <div class="prose">
         <slot />
       </div>
     </Content>
     <Footer />
-    <CopyCodeButton client:idle />
+    <CopyCodeButton client:only="react" />
   </Body>
 </html>

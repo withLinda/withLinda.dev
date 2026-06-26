@@ -1,0 +1,223 @@
+/* Homepage list — reading-first, no boxes.
+   One dominant hero (the latest post) + a single chronological list of the rest.
+   Categories appear as quiet inline chips, not section headings, so the visual
+   weight matches the content's intent. */
+
+@layer components {
+  /* ---------- Intro tagline ---------- */
+  .intro-tagline {
+    color: var(--everforest-text-muted);
+    font-size: 0.9375rem;
+    letter-spacing: 0;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 32rem;
+  }
+
+  /* ---------- Hero (latest post) ---------- */
+  .hero {
+    margin-top: var(--space-lg);
+    padding-block: var(--space-md) var(--space-xl);
+  }
+
+  .hero-eyebrow {
+    color: var(--everforest-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-sm);
+    text-transform: uppercase;
+  }
+
+  .hero-eyebrow__sep {
+    margin-inline: 0.4em;
+    opacity: 0.55;
+  }
+
+  .hero-title {
+    margin: 0 0 var(--space-sm);
+  }
+
+  .hero-title a {
+    color: var(--everforest-text-primary);
+    display: inline;
+    font-size: clamp(1.625rem, 1.2rem + 1.8vw, 2.125rem);
+    font-weight: 650;
+    letter-spacing: -0.012em;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  .hero-title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--everforest-link-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+
+  .hero-title a:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 4px;
+  }
+
+  .hero-desc {
+    color: var(--everforest-text-secondary);
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0 0 var(--space-md);
+    max-width: 34rem;
+  }
+
+  .hero-cta {
+    align-items: baseline;
+    color: var(--everforest-link-accent);
+    display: inline-flex;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    gap: 0.35rem;
+    letter-spacing: 0;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--everforest-link-accent) 45%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.18s ease, text-decoration-thickness 0.18s ease;
+  }
+
+  .hero-cta::after {
+    content: '\2192'; /* → */
+    transition: transform 0.18s ease;
+  }
+
+  .hero-cta:hover {
+    text-decoration-color: var(--everforest-link-accent);
+    text-decoration-thickness: 2px;
+  }
+
+  .hero-cta:hover::after {
+    transform: translateX(3px);
+  }
+
+  .hero-cta:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Archive (chronological list) ---------- */
+  .archive {
+    border-top: 1px solid var(--everforest-border-subtle);
+    padding-top: var(--space-md);
+  }
+
+  .archive-label {
+    color: var(--everforest-text-muted);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-md);
+    text-transform: uppercase;
+  }
+
+  .post-list {
+    display: grid;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-row {
+    border-bottom: 1px solid var(--everforest-border-subtle);
+  }
+
+  .post-row:last-child {
+    border-bottom: 0;
+  }
+
+  .post-row__link {
+    color: inherit;
+    display: grid;
+    gap: 0.3rem;
+    padding-block: var(--space-md);
+    text-decoration: none;
+  }
+
+  .post-row__link:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 4px;
+  }
+
+  .post-row__meta {
+    color: var(--everforest-text-muted);
+    font-size: 0.8125rem;
+    letter-spacing: 0;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .post-row__meta__sep {
+    margin-inline: 0.45em;
+    opacity: 0.55;
+  }
+
+  .post-row__title {
+    color: var(--everforest-text-primary);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.006em;
+    line-height: 1.45;
+    margin: 0;
+    text-decoration-color: transparent;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.18s ease;
+  }
+
+  .post-row__link:hover .post-row__title {
+    text-decoration-color: var(--everforest-link-accent);
+  }
+
+  /* ---------- Chip (inline category tag, no fill) ---------- */
+  .chip {
+    color: var(--everforest-text-secondary);
+    font-feature-settings: 'tnum';
+    font-size: inherit;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  @layer components {
+    .hero {
+      padding-block: var(--space-sm) var(--space-lg);
+    }
+
+    .post-row__link {
+      padding-block: var(--space-sm);
+    }
+
+    .post-row__meta {
+      font-size: 0.75rem;
+    }
+
+    .post-row__title {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .post-row__title,
+    .hero-cta::after {
+      transition: none;
+    }
+  }
+}

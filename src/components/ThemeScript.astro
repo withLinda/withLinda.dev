@@ -1,34 +1,80 @@
 ---
----
-<script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
 
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
-  } else {
-    document.documentElement.classList.add('dark');
+---
+
+<script is:inline>
+  const themeStorageKey = 'withlinda-theme'
+  const oldAppearanceStorageKey = 'theme'
+  const oldContrastStorageKey = 'contrast-preference'
+  const appearances = ['light', 'dark']
+  const contrasts = ['hard', 'medium', 'soft']
+  const defaultContrast = 'hard'
+
+  const systemAppearance = window.matchMedia('(prefers-color-scheme: dark)')
+    .matches
+    ? 'dark'
+    : 'light'
+  const systemContrast = window.matchMedia('(prefers-contrast: low)').matches
+    ? 'soft'
+    : window.matchMedia('(prefers-contrast: high)').matches
+      ? 'hard'
+      : defaultContrast
+
+  const normalizeTheme = (theme) => {
+    if (typeof theme !== 'string') {
+      return null
+    }
+
+    const [appearance, contrast] = theme.split('-')
+    if (!appearances.includes(appearance) || !contrasts.includes(contrast)) {
+      return null
+    }
+
+    return `${appearance}-${contrast}`
   }
 
-  window.localStorage.setItem('theme', theme);
+  const storedTheme = (() => {
+    try {
+      return normalizeTheme(localStorage.getItem(themeStorageKey))
+    } catch {
+      return null
+    }
+  })()
 
-  // Detect contrast preference
-  const contrastPreference = localStorage.getItem('contrast-preference');
-  if (contrastPreference) {
-    document.documentElement.setAttribute('data-contrast', contrastPreference);
-  } else if (window.matchMedia('(prefers-contrast: high)').matches) {
-    document.documentElement.setAttribute('data-contrast', 'hard');
-  } else if (window.matchMedia('(prefers-contrast: low)').matches) {
-    document.documentElement.setAttribute('data-contrast', 'soft');
+  const migratedTheme = (() => {
+    try {
+      const appearance = localStorage.getItem(oldAppearanceStorageKey)
+      const contrast = localStorage.getItem(oldContrastStorageKey)
+      if (appearances.includes(appearance) && contrasts.includes(contrast)) {
+        return `${appearance}-${contrast}`
+      }
+      if (appearances.includes(appearance)) {
+        return `${appearance}-${systemContrast}`
+      }
+      if (contrasts.includes(contrast)) {
+        return `${systemAppearance}-${contrast}`
+      }
+    } catch {
+      return null
+    }
+    return null
+  })()
+
+  const theme =
+    storedTheme || migratedTheme || `${systemAppearance}-${systemContrast}`
+  const [appearance, contrast] = theme.split('-')
+
+  document.documentElement.classList.toggle('dark', appearance === 'dark')
+  document.documentElement.dataset.theme = theme
+  document.documentElement.dataset.contrast = contrast
+  document.documentElement.style.colorScheme = appearance
+
+  try {
+    localStorage.setItem(themeStorageKey, theme)
+  } catch {
+    // The current page still uses the chosen theme when storage is blocked.
   }
 
   // Remove no-flash class to show content
-  document.documentElement.classList.remove('no-flash');
+  document.documentElement.classList.remove('no-flash')
 </script>

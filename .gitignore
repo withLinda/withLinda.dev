@@ -35,5 +35,5 @@ CLAUDE.md
 fixing-markdown-references.md
 
 
-#temporary ignore
-src/content/blog/
+##temporary ignore
+#src/content/blog/

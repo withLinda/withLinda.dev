@@ -1,0 +1,87 @@
+/* Article header — the meta strip + title + description that sits above
+   a post's prose body. Solves the "dropped mid-stream" problem by giving the
+   reader a real "you are here" anchor plus a one-tap path back to the index. */
+
+@layer components {
+  .article-header {
+    border-bottom: 1px solid var(--everforest-border-subtle);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+  }
+
+  .article-header__back {
+    align-items: baseline;
+    color: var(--everforest-text-muted);
+    display: inline-flex;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    gap: 0.35rem;
+    letter-spacing: 0;
+    margin-bottom: var(--space-md);
+    text-decoration: none;
+  }
+
+  .article-header__back::before {
+    content: '\2190'; /* ← */
+    transition: transform 0.18s ease;
+  }
+
+  .article-header__back:hover {
+    color: var(--everforest-text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--everforest-link-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+
+  .article-header__back:hover::before {
+    transform: translateX(-3px);
+  }
+
+  .article-header__back:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 3px;
+  }
+
+  .article-header__eyebrow {
+    color: var(--everforest-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-sm);
+    text-transform: uppercase;
+  }
+
+  .article-header__eyebrow__sep {
+    margin-inline: 0.4em;
+    opacity: 0.55;
+  }
+
+  .article-header__title {
+    color: var(--everforest-text-primary);
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    line-height: 1.12;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .article-header__desc {
+    color: var(--everforest-text-secondary);
+    font-size: 1.0625rem;
+    font-style: italic;
+    line-height: 1.55;
+    margin: 0;
+    max-width: 32rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .article-header__back::before {
+      transition: none;
+    }
+  }
+}

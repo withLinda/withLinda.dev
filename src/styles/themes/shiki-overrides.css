@@ -15,13 +15,13 @@
   /* Let Shiki handle colors through inline styles */
   /* Light mode uses the inline color property */
   /* Dark mode uses the --shiki-dark custom properties */
-  
+
   /* Only apply structural styles to code blocks */
   .dark pre.astro-code {
     /* Dark mode will use --shiki-dark values from inline styles */
     color: var(--shiki-dark) !important;
   }
-  
+
   .dark pre.astro-code span {
     /* Each span has its own --shiki-dark value */
     color: var(--shiki-dark) !important;
@@ -47,24 +47,12 @@
     background-color: var(--everforest-bg4);
   }
 
-  /* Inline code styling - different colors for light/dark */
+  /* Inline code — defer to the @utility prose rule for color (text-primary,
+     not red). This file only owns the code-block container styling. */
   code:not(pre code) {
     padding: 0.125rem 0.375rem;
     border-radius: 4px;
     font-size: 0.875em;
-    border: 1px solid var(--everforest-bg3);
-  }
-
-  /* Light mode inline code */
-  :root code:not(pre code) {
-    background-color: var(--everforest-bg1) !important;
-    color: var(--everforest-red) !important;
-  }
-
-  /* Dark mode inline code */
-  .dark code:not(pre code) {
-    background-color: var(--everforest-bg1) !important;
-    color: var(--everforest-red) !important;
   }
 
   /* Copy button styling (if using code copy plugins) */
@@ -101,7 +89,7 @@
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   padding: 0.25rem 0.5rem;
   background-color: var(--everforest-bg2);
   border-radius: 0 0 4px 4px;

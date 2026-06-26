@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import remarkGfm from 'remark-gfm';
+import remarkStripFirstH1 from './src/utils/remark-strip-first-h1.mjs';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -32,7 +33,7 @@ export default defineConfig({
       gfm: true,
       optimize: true,
       jsx: true,
-      remarkPlugins: [],
+      remarkPlugins: [remarkStripFirstH1],
       rehypePlugins: []
     })
   ],
@@ -47,7 +48,7 @@ export default defineConfig({
       wrap: false,
       transformers: []
     },
-    remarkPlugins: [remarkGfm]
+    remarkPlugins: [remarkGfm, remarkStripFirstH1]
   },
   vite: {
     plugins: [tailwindcss()]

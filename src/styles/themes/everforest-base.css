@@ -7,39 +7,39 @@
      SEMANTIC COLOR SYSTEM
      These map to actual usage in the UI
      ============================================ */
-  
+
   /* Background Hierarchy */
   --color-everforest-bg-main: var(--everforest-bg0);
   --color-everforest-bg-dim: var(--everforest-bg-dim);
   --color-everforest-bg-elevated: var(--everforest-bg1);
   --color-everforest-bg-floating: var(--everforest-bg2);
   --color-everforest-bg-inactive: var(--everforest-bg3);
-  
+
   /* Surface Colors */
-  --color-everforest-surface-primary: var(--everforest-bg0);
-  --color-everforest-surface-secondary: var(--everforest-bg1);
-  --color-everforest-surface-tertiary: var(--everforest-bg2);
-  --color-everforest-surface-card: var(--everforest-bg1);
-  --color-everforest-surface-modal: var(--everforest-bg2);
-  
+  --color-everforest-surface-primary: var(--everforest-surface-primary);
+  --color-everforest-surface-secondary: var(--everforest-surface-secondary);
+  --color-everforest-surface-tertiary: var(--everforest-surface-tertiary);
+  --color-everforest-surface-card: var(--everforest-surface-card);
+  --color-everforest-surface-modal: var(--everforest-surface-modal);
+
   /* Border System */
-  --color-everforest-border-default: var(--everforest-bg4);
-  --color-everforest-border-subtle: var(--everforest-bg5);
-  --color-everforest-border-strong: var(--everforest-bg3);
-  
+  --color-everforest-border-default: var(--everforest-border);
+  --color-everforest-border-subtle: var(--everforest-border-subtle);
+  --color-everforest-border-strong: var(--everforest-border-strong);
+
   /* Text Hierarchy */
-  --color-everforest-text-primary: var(--everforest-fg);
-  --color-everforest-text-secondary: var(--everforest-grey1);
-  --color-everforest-text-muted: var(--everforest-grey0);
-  --color-everforest-text-disabled: var(--everforest-grey1);
-  --color-everforest-text-heading: var(--everforest-fg);
-  
+  --color-everforest-text-primary: var(--everforest-text-primary);
+  --color-everforest-text-secondary: var(--everforest-text-secondary);
+  --color-everforest-text-muted: var(--everforest-text-muted);
+  --color-everforest-text-disabled: var(--everforest-text-muted);
+  --color-everforest-text-heading: var(--everforest-text-primary);
+
   /* Interactive States */
   --color-everforest-hover: var(--everforest-bg3);
   --color-everforest-active: var(--everforest-bg4);
   --color-everforest-selected: var(--everforest-bg-visual);
   --color-everforest-focus: var(--everforest-blue);
-  
+
   /* Semantic Colors */
   --color-everforest-success: var(--everforest-green);
   --color-everforest-success-bg: var(--everforest-bg-green);
@@ -49,13 +49,13 @@
   --color-everforest-error-bg: var(--everforest-bg-red);
   --color-everforest-info: var(--everforest-blue);
   --color-everforest-info-bg: var(--everforest-bg-blue);
-  
+
   /* Accent Colors */
   --color-everforest-accent-primary: var(--everforest-aqua);
   --color-everforest-accent-secondary: var(--everforest-blue);
   --color-everforest-link: var(--everforest-blue);
   --color-everforest-link-hover: var(--everforest-aqua);
-  
+
   /* Syntax Highlighting */
   --color-everforest-syntax-keyword: var(--everforest-red);
   --color-everforest-syntax-string: var(--everforest-green);
@@ -71,6 +71,20 @@
 /* Contrast Level Custom Property */
 :root {
   --everforest-contrast: medium; /* Options: soft, medium, hard */
+  --everforest-surface-primary: var(--everforest-bg0);
+  --everforest-surface-secondary: var(--everforest-bg1);
+  --everforest-surface-tertiary: var(--everforest-bg2);
+  --everforest-surface-card: var(--everforest-bg1);
+  --everforest-surface-modal: var(--everforest-bg2);
+  --everforest-border: var(--everforest-bg4);
+  --everforest-border-subtle: var(--everforest-bg3);
+  --everforest-border-strong: var(--everforest-text-secondary);
+  --everforest-link-color: var(--everforest-text-primary);
+  --everforest-link-hover: var(--everforest-text-secondary);
+  --everforest-focus-ring: var(--everforest-text-primary);
+  /* Active-state accent rail. Default = text-primary so light themes meet
+     3:1 (audit-verified). Dark theme overrides to orange in everforest-dark.css. */
+  --everforest-link-accent: var(--everforest-text-primary);
 }
 
 /* Support for prefers-contrast media query */

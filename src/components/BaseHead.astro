@@ -9,6 +9,7 @@ export interface Props {
 
 const { title, description } = Astro.props
 ---
+
 <head>
   <ThemeScript />
   <meta charset="utf-8" />
@@ -17,11 +18,19 @@ const { title, description } = Astro.props
   <meta name="description" content={description} />
 
   <!-- Match system theme color for address bar -->
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2efdf" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2D353B" />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: light)"
+    content="#FFFBEF"
+  />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: dark)"
+    content="#272E33"
+  />
 
   <script>
-    import { inject } from "@vercel/analytics";
-    inject();
+    import { inject } from '@vercel/analytics'
+    inject()
   </script>
 </head>

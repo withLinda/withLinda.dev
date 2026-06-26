@@ -1,11 +1,9 @@
 ---
 layout: ../layouts/BlogPost.astro
-title: "About Me"
-description: "A little bit about me and what I do"
+title: "About"
+description: "Freelance developer and AI specialist. I write here about web development, automation, and the craft of building things."
 pubDate: "2024-03-21"
 ---
-
-# About Me
 
 Hello! I'm Linda, a freelance developer on Upwork and an AI specialist based in Indonesia. I've spent 10 years working on complex projects through Upwork, including maintaining a Semantic Knowledge Base, building my expertise in data structuring and AI integration. Currently, I'm developing ContextDistiller, a SaaS that intelligently consolidates redundant information using semantic analysis.
 I approach coding challenges like puzzles - each piece revealing the next in sequence. My work combines technical precision with creative problem-solving.

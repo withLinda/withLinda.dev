@@ -1,101 +1,112 @@
-/* Everforest Dark Theme - Complete Implementation
-   Includes all color levels and contrast variants */
+/* Everforest Dark Theme
+   Six total themes are controlled by html.dark and html[data-contrast]. */
 
 @layer base {
   .dark {
-    /* ============================================
-       EVERFOREST DARK PALETTE - HARD CONTRAST (DEFAULT)
-       ============================================ */
+    color-scheme: dark;
 
-    /* Background Colors */
-    --everforest-bg-dim: #1E2326;
-    --everforest-bg0: #1E2326;
-    --everforest-bg1: #272E33;
-    --everforest-bg2: #2E383C;
-    --everforest-bg3: #374145;
-    --everforest-bg4: #414B50;
-    --everforest-bg5: #4F5B58;
+    /* Hard contrast is the default dark profile. */
+    --everforest-bg-dim: #1e2326;
+    --everforest-bg0: #272e33;
+    --everforest-bg1: #2e383c;
+    --everforest-bg2: #374145;
+    --everforest-bg3: #414b50;
+    --everforest-bg4: #495156;
+    --everforest-bg5: #4f5b58;
+    --everforest-bg-visual: #4c3743;
+    --everforest-bg-red: #493b40;
+    --everforest-bg-yellow: #45443c;
+    --everforest-bg-green: #3c4841;
+    --everforest-bg-blue: #384b55;
+    --everforest-bg-purple: #463f48;
 
-    /* Special Backgrounds */
-    --everforest-bg-visual: #4C3743;
-    --everforest-bg-red: #493B40;
-    --everforest-bg-yellow: #45443C;
-    --everforest-bg-green: #3C4841;
-    --everforest-bg-blue: #384B55;
-    --everforest-bg-purple: #463F48;
+    --everforest-fg: #d3c6aa;
+    --everforest-text-primary: #d3c6aa;
+    --everforest-text-secondary: #9da9a0;
+    --everforest-text-muted: #9da9a0;
 
-    /* Foreground Colors */
-    --everforest-fg: #D3C6AA;
-    --everforest-red: #E67E80;
-    --everforest-orange: #E69875;
-    --everforest-yellow: #DBBC7F;
-    --everforest-green: #83C092;
-    --everforest-aqua: #7FBBB3;
-    --everforest-blue: #7FBBB3;
-    --everforest-purple: #D699B6;
+    --everforest-red: #e67e80;
+    --everforest-orange: #e69875;
+    --everforest-yellow: #dbbc7f;
+    --everforest-green: #83c092;
+    --everforest-aqua: #7fbbb3;
+    --everforest-blue: #7fbbb3;
+    --everforest-purple: #d699b6;
 
-    /* Grey Scale */
-    --everforest-grey0: #7A8478;
+    --everforest-grey0: #7a8478;
     --everforest-grey1: #859289;
-    --everforest-grey2: #9DA9A0;
+    --everforest-grey2: #9da9a0;
+    --everforest-statusline1: #d3c6aa;
+    --everforest-statusline2: #e67e80;
+    --everforest-statusline3: #e67e80;
 
-    /* Statusline Colors */
-    --everforest-statusline1: #D3C6AA;
-    --everforest-statusline2: #E67E80;
-    --everforest-statusline3: #E67E80;
+    /* Active-state accent — orange reads cleanly on dark base (5.98–4.88:1
+       audit-verified). Light themes keep the text-primary default. */
+    --everforest-link-accent: var(--everforest-orange);
   }
 
-  /* Hard Contrast Variant - keep parity for explicit requests */
-  .dark[data-contrast="hard"] {
-    --everforest-bg-dim: #1E2326;
-    --everforest-bg0: #1E2326;
-    --everforest-bg1: #272E33;
-    --everforest-bg2: #2E383C;
-    --everforest-bg3: #374145;
-    --everforest-bg4: #414B50;
-    --everforest-bg5: #4F5B58;
+  .dark[data-contrast='medium'] {
+    --everforest-bg-dim: #232a2e;
+    --everforest-bg0: #2d353b;
+    --everforest-bg1: #343f44;
+    --everforest-bg2: #3d484d;
+    --everforest-bg3: #475258;
+    --everforest-bg4: #4f585e;
+    --everforest-bg5: #56635f;
+    --everforest-bg-visual: #543a48;
+    --everforest-bg-red: #514045;
+    --everforest-bg-yellow: #4d4c43;
+    --everforest-bg-green: #425047;
+    --everforest-bg-blue: #3a515d;
+    --everforest-bg-purple: #4a444e;
+
+    --everforest-text-primary: #d3c6aa;
+    --everforest-text-secondary: #a9b2a9;
+    --everforest-text-muted: #a9b2a9;
   }
-  
-  /* Soft Contrast Variant */
-  .dark[data-contrast="soft"] {
+
+  .dark[data-contrast='soft'] {
     --everforest-bg-dim: #293136;
-    --everforest-bg0: #333C43;
-    --everforest-bg1: #3A464C;
-    --everforest-bg2: #434F55;
-    --everforest-bg3: #4D5960;
-    --everforest-bg4: #555F66;
-    --everforest-bg5: #5D6B66;
+    --everforest-bg0: #333c43;
+    --everforest-bg1: #3a464c;
+    --everforest-bg2: #434f55;
+    --everforest-bg3: #4d5960;
+    --everforest-bg4: #555f66;
+    --everforest-bg5: #5d6b66;
+    --everforest-bg-visual: #5c3f4f;
+    --everforest-bg-red: #59464c;
+    --everforest-bg-yellow: #55544a;
+    --everforest-bg-green: #48584e;
+    --everforest-bg-blue: #3f5865;
+    --everforest-bg-purple: #4e4953;
+
+    --everforest-text-primary: #f3ead3;
+    --everforest-text-secondary: #d3c6aa;
+    --everforest-text-muted: #b8b8a3;
   }
 }
 
-/* Map to Tailwind color utilities for dark mode */
 @theme {
-  /* Dark mode color mappings use the same variable names
-     but pull from the CSS custom properties defined above */
   --color-everforest-bg: var(--everforest-bg0);
   --color-everforest-bg-dim: var(--everforest-bg-dim);
   --color-everforest-bg-elevated: var(--everforest-bg1);
   --color-everforest-bg-floating: var(--everforest-bg2);
   --color-everforest-bg-inactive: var(--everforest-bg3);
-  
-  /* Surface Colors */
+
   --color-everforest-secondary: var(--everforest-bg1);
-  --color-everforest-button: var(--everforest-bg3);
-  --color-everforest-button-bg: var(--everforest-bg4);
+  --color-everforest-button: var(--everforest-bg2);
+  --color-everforest-button-bg: var(--everforest-bg3);
   --color-everforest-active: var(--everforest-bg3);
   --color-everforest-highlight: var(--everforest-bg-visual);
-  
-  /* Border Colors */
+
   --color-everforest-border: var(--everforest-bg4);
   --color-everforest-border-subtle: var(--everforest-bg5);
-  
-  /* Text Colors */
-  --color-everforest-fg: var(--everforest-fg);
-  --color-everforest-text: var(--everforest-fg);
-  --color-everforest-disabled: var(--everforest-grey0);
-  
-  /* Accent Colors */
-  --color-everforest-accent: var(--everforest-aqua);
+
+  --color-everforest-fg: var(--everforest-text-primary);
+  --color-everforest-text: var(--everforest-text-primary);
+  --color-everforest-disabled: var(--everforest-text-muted);
+
+  --color-everforest-accent: var(--everforest-orange);
   --color-everforest-blue: var(--everforest-blue);
   --color-everforest-yellow: var(--everforest-yellow);
   --color-everforest-green: var(--everforest-green);
@@ -103,6 +114,6 @@
   --color-everforest-purple: var(--everforest-purple);
   --color-everforest-orange: var(--everforest-orange);
   --color-everforest-cyan: var(--everforest-aqua);
-  --color-everforest-gray: var(--everforest-grey1);
-  --color-everforest-category: var(--everforest-green);
+  --color-everforest-gray: var(--everforest-text-secondary);
+  --color-everforest-category: var(--everforest-text-secondary);
 }

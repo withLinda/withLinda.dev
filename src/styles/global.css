@@ -11,15 +11,30 @@
 
 /* Theme Components - Clean Everforest Implementation */
 @import './themes/body-backgrounds.css';
-@import './themes/layout-backgrounds.css';
-@import './themes/post-cards.css';
+@import './themes/post-list.css';
+@import './themes/article-header.css';
 
 /* Syntax Highlighting - Shiki Overrides */
 @import './themes/shiki-overrides.css';
 
-/* Component Styles - Orb Animations */
+/* Component Surface Utilities */
 @import './components/glassmorphism.css';
 
+@layer base {
+  :root {
+    --space-3xs: 0.236rem;
+    --space-2xs: 0.382rem;
+    --space-xs: 0.618rem;
+    --space-sm: 1rem;
+    --space-md: 1.618rem;
+    --space-lg: 2.618rem;
+    --space-xl: 4.236rem;
+    --page-gutter: clamp(1rem, 4vw, var(--space-md));
+    /* Single reading-first measure — chrome and content share it so the page
+       feels like one calm column from header to footer. ~70 chars at 16px. */
+    --page-measure: 38rem;
+  }
+}
 
 /* ==========================================
    TYPOGRAPHY & PROSE UTILITIES
@@ -29,7 +44,7 @@
   /* CRITICAL: Override prose plugin's max-width */
   max-width: none !important;
   width: 100%;
-  
+
   @apply leading-normal;
   @apply text-everforest-fg dark:text-everforest-fg;
 
@@ -47,27 +62,35 @@
   }
 
   & h1 {
-    @apply text-4xl font-bold my-8;
-    @apply text-everforest-fg dark:text-everforest-yellow;
+    @apply text-4xl font-bold;
+    @apply text-everforest-fg dark:text-everforest-fg;
+    letter-spacing: 0;
+    margin-block: var(--space-lg) var(--space-md);
   }
 
   & h2 {
-    @apply text-3xl font-semibold my-6;
-    @apply text-everforest-fg dark:text-everforest-yellow;
+    @apply text-3xl font-semibold;
+    @apply text-everforest-fg dark:text-everforest-fg;
+    letter-spacing: 0;
+    margin-block: var(--space-lg) var(--space-sm);
   }
 
   & h3 {
-    @apply text-2xl font-semibold my-4;
-    @apply text-everforest-fg dark:text-everforest-yellow;
+    @apply text-2xl font-semibold;
+    @apply text-everforest-fg dark:text-everforest-fg;
+    letter-spacing: 0;
+    margin-block: var(--space-md) var(--space-xs);
   }
 
   & h4 {
-    @apply text-xl font-semibold my-4;
-    @apply text-everforest-fg dark:text-everforest-yellow;
+    @apply text-xl font-semibold;
+    @apply text-everforest-fg dark:text-everforest-fg;
+    letter-spacing: 0;
+    margin-block: var(--space-md) var(--space-xs);
   }
 
   & p {
-    @apply my-6;
+    margin-block: var(--space-md);
     @apply text-everforest-text dark:text-everforest-text;
   }
 
@@ -89,19 +112,18 @@
     @apply italic text-everforest-text dark:text-everforest-text;
   }
 
-  /* Inline code */
+  /* Inline code — quiet utility, not danger (text-primary, not red) */
   & code:not(pre code) {
     @apply px-1.5 py-0.5 rounded-sm text-sm;
-    /* Use same background as code blocks for consistency */
-    background-color: var(--everforest-bg1) !important;
+    background-color: var(--everforest-bg1);
     border: 1px solid var(--everforest-bg3);
-    @apply text-everforest-red dark:text-everforest-red;
+    color: var(--everforest-text-primary);
   }
 
-  /* Blockquotes with red accent border */
+  /* Blockquotes — quiet neutral rail. Italic carries the emphasis. */
   & blockquote {
     @apply pl-4 my-6 italic text-everforest-text dark:text-everforest-text;
-    border-left: 4px solid var(--everforest-red);
+    border-left: 2px solid var(--everforest-bg4);
   }
 
   /* Images */
@@ -113,16 +135,19 @@
     @apply block text-center text-sm text-everforest-text dark:text-everforest-text -mt-6 mb-8;
   }
 
-  /* Links with red hover accent */
+  /* Links — quiet rest, warm hover-underline. Color stays text-primary so
+     light themes stay readable (orange would fail 3:1 as a thin rail). */
   & a {
-    @apply text-everforest-blue dark:text-everforest-blue;
+    color: var(--everforest-text-primary);
     text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: color 0.2s ease;
+    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
   }
 
   & a:hover {
-    color: var(--everforest-red);
+    text-decoration-color: var(--everforest-link-accent);
   }
 
   /* Code blocks */
@@ -139,23 +164,20 @@
     @apply text-sm font-mono;
   }
 
-  /* Enhanced Tables with red accents */
+  /* Tables */
   & table {
     @apply w-full my-6 border-collapse rounded-lg overflow-hidden;
     border: 1px solid var(--everforest-border);
   }
 
   & thead {
-    /* Subtle red gradient background */
-    background: linear-gradient(135deg, 
-      var(--everforest-bg-red) 0%, 
-      var(--everforest-bg1) 100%);
+    background: var(--everforest-bg1);
   }
 
   & th {
     @apply p-3 text-left font-semibold;
-    border-bottom: 2px solid var(--everforest-red);
-    color: var(--everforest-fg);
+    border-bottom: 1px solid var(--everforest-border);
+    color: var(--everforest-text-primary);
   }
 
   /* Alternating row colors for better readability */
@@ -172,7 +194,7 @@
   & td {
     @apply p-3;
     border-bottom: 1px solid var(--everforest-border-subtle);
-    color: var(--everforest-fg);
+    color: var(--everforest-text-primary);
   }
 
   /* Remove border from last row */
@@ -180,15 +202,11 @@
     border-bottom: none;
   }
 
-  /* Horizontal rule with red gradient */
+  /* Horizontal rule */
   & hr {
-    @apply my-8;
-    border: none;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%,
-      var(--everforest-red) 50%,
-      transparent 100%);
+    margin-block: var(--space-lg);
+    border: 0;
+    border-top: 1px solid var(--everforest-border-subtle);
   }
 
   /* Unordered lists */
@@ -225,11 +243,11 @@
 
   /* List markers with red accent colors */
   & li::marker {
-    color: var(--everforest-red);
+    color: var(--everforest-text-muted);
   }
-  
+
   .dark & li::marker {
-    color: var(--everforest-red);
+    color: var(--everforest-text-muted);
   }
 }
 
@@ -244,19 +262,6 @@
   }
 }
 
-@utility inline-flex {
-  /* Mobile-first approach for nav items */
-  header nav & {
-    margin-right: 0;
-  }
-
-  @media (min-width: 768px) {
-    header nav & {
-      margin-right: 27px;
-    }
-  }
-}
-
 /* ==========================================
    BASE STYLES & LAYOUT
    ========================================== */
@@ -264,7 +269,14 @@
 @layer base {
   body {
     @apply dark:bg-everforest-bg text-everforest-fg dark:text-everforest-fg;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Helvetica,
+      Arial,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-wrap: break-word;
@@ -272,16 +284,6 @@
 }
 
 @layer components {
-  /* Header navigation styling */
-  header nav h2 {
-    margin-left: 17px;
-  }
-
-  /* Desktop navigation spacing */
-  header nav > div:last-child {
-    margin-left: auto;
-  }
-
   /* Copy Code Button Styles */
   .code-block-wrapper {
     @apply relative;
@@ -300,11 +302,257 @@
 
   .copy-code-button:focus {
     @apply outline-none ring-2 ring-everforest-accent;
-    ring-color: rgb(from var(--color-everforest-accent) r g b / 0.5);
+    ring-color: var(--everforest-focus-ring);
   }
 
   .copy-button-container {
     @apply absolute top-0 right-0;
+  }
+
+  /* Ghost icon buttons — no pill, no border. Surface appears only on hover/focus.
+     Keeps header chrome quiet so the eye lands on content first. */
+  .theme-selector-shell {
+    align-items: center;
+    color: var(--everforest-text-secondary);
+    display: inline-flex;
+    gap: var(--space-3xs);
+    position: relative;
+  }
+
+  .theme-selector-toggle,
+  .theme-selector-settings,
+  .theme-selector-choice {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    letter-spacing: 0;
+  }
+
+  .theme-selector-toggle {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    height: 2.25rem;
+    justify-content: center;
+    width: 2.25rem;
+  }
+
+  .theme-selector-settings {
+    align-items: center;
+    border-radius: 8px;
+    color: var(--everforest-text-muted);
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
+    width: 2rem;
+  }
+
+  .theme-selector-toggle:hover,
+  .theme-selector-settings:hover {
+    background: var(--everforest-bg1);
+    color: var(--everforest-text-primary);
+  }
+
+  .theme-selector-toggle:focus-visible,
+  .theme-selector-settings:focus-visible,
+  .theme-selector-choice:focus-visible {
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .theme-selector-choice:hover {
+    background: var(--everforest-bg2);
+    color: var(--everforest-text-primary);
+  }
+
+  .theme-selector-icon {
+    height: 1.05rem;
+    width: 1.05rem;
+  }
+
+  /* Compact panel — narrow enough not to overlap content, tall enough to
+     show both rows without text wrapping. Right-aligned to the gear icon. */
+  .theme-selector-panel {
+    background: var(--everforest-bg1);
+    border: 1px solid var(--everforest-border-subtle);
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1.25rem color-mix(in oklab, var(--everforest-bg-dim) 55%, transparent);
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    position: absolute;
+    right: 0;
+    top: calc(100% + var(--space-2xs));
+    width: min(15.5rem, calc(100vw - (var(--page-gutter) * 2)));
+    z-index: 70;
+  }
+
+  .theme-selector-section {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  /* Eyebrow label — tiny, uppercase, quiet. Same visual language as the
+     hero/article eyebrow so the panel feels like one design system. */
+  .theme-selector-label {
+    align-items: center;
+    color: var(--everforest-text-muted);
+    display: inline-flex;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    gap: var(--space-3xs);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .theme-selector-label__icon {
+    height: 0.8rem;
+    width: 0.8rem;
+  }
+
+  .theme-selector-grid {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .theme-selector-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-selector-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .theme-selector-choice {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--everforest-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 550;
+    line-height: 1;
+    min-height: 2.125rem;
+    padding: 0 0.35rem;
+    white-space: nowrap;
+  }
+
+  /* Quiet selected state — surface tint + accent rail underline.
+     Reads as "this is the chosen one" without competing with content. */
+  .theme-selector-choice[aria-pressed='true'] {
+    background: var(--everforest-bg2);
+    border-color: color-mix(in oklab, var(--everforest-link-accent) 35%, transparent);
+    box-shadow: inset 0 -2px 0 0 var(--everforest-link-accent);
+    color: var(--everforest-text-primary);
+    font-weight: 650;
+  }
+
+  /* ---------- Mobile Menu ---------- */
+  .mobile-menu {
+    position: relative;
+    z-index: 50;
+  }
+
+  .mobile-menu__button {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: var(--everforest-text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1.35rem;
+    height: 2.5rem;
+    justify-content: center;
+    transition: background-color 0.18s ease, color 0.18s ease;
+    width: 2.5rem;
+  }
+
+  .mobile-menu__button:hover {
+    background: var(--everforest-bg1);
+    color: var(--everforest-text-primary);
+  }
+
+  .mobile-menu__button:focus-visible {
+    outline: 2px solid var(--everforest-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .mobile-menu__overlay {
+    background: color-mix(in oklab, var(--everforest-bg-dim) 55%, transparent);
+    inset: 0;
+    position: fixed;
+    z-index: 40;
+  }
+
+  .mobile-menu__overlay--enter {
+    transition: opacity 0.15s ease-out;
+  }
+  .mobile-menu__overlay--enter-from { opacity: 0; }
+  .mobile-menu__overlay--enter-to { opacity: 1; }
+  .mobile-menu__overlay--leave {
+    transition: opacity 0.12s ease-in;
+  }
+  .mobile-menu__overlay--leave-from { opacity: 1; }
+  .mobile-menu__overlay--leave-to { opacity: 0; }
+
+  .mobile-menu__card {
+    background: var(--everforest-bg1);
+    border: 1px solid var(--everforest-border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 0.5rem 1.25rem color-mix(in oklab, var(--everforest-bg-dim) 60%, transparent);
+    margin-top: 0.5rem;
+    padding: var(--space-2xs);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 14rem;
+    z-index: 50;
+  }
+
+  .mobile-menu__card:focus { outline: none; }
+
+  .mobile-menu__card--enter {
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  }
+  .mobile-menu__card--enter-from { opacity: 0; transform: scale(0.97); }
+  .mobile-menu__card--enter-to { opacity: 1; transform: scale(1); }
+  .mobile-menu__card--leave {
+    transition: opacity 0.1s ease-in, transform 0.1s ease-in;
+  }
+  .mobile-menu__card--leave-from { opacity: 1; transform: scale(1); }
+  .mobile-menu__card--leave-to { opacity: 0; transform: scale(0.97); }
+
+  .mobile-menu__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu__row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu__item {
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    width: 100%;
+  }
+
+  .mobile-menu__item:hover {
+    background: var(--everforest-bg2);
   }
 }
 
@@ -315,9 +563,12 @@
   }
 }
 
+
 /* Global aesthetic tweaks */
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     min-height: 100svh;
     text-rendering: optimizeLegibility;
@@ -328,17 +579,17 @@
 
 /* Typography balance & measure */
 @layer components {
-  .prose { max-width: 70ch; }
-  .prose :where(p, ul, ol, blockquote) { line-height: 1.7; }
-  .prose :where(h1){ letter-spacing: -0.02em }
-  .prose :where(a){
-    text-decoration-line: underline;
-    text-decoration-thickness: from-font;
-    text-underline-offset: 3px;
-    text-decoration-color: transparent;
-    transition: color .2s ease, text-decoration-color .2s ease;
+  .prose {
+    max-width: none;
   }
-  .prose :where(a:hover){ text-decoration-color: currentColor; }
+  .prose :where(p, ul, ol, blockquote) {
+    line-height: 1.7;
+  }
+  .prose :where(h1) {
+    letter-spacing: -0.015em;
+  }
+  /* Defer to the @utility prose link rule above so there is one source of
+     truth for link color, underline color, and hover behavior. */
 }
 
 /* Selection */
