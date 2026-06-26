@@ -73,13 +73,11 @@
     padding: var(--space-md) 0.75rem;
     text-decoration: none;
     transition:
-      background-color 0.18s ease,
-      box-shadow 0.18s ease;
+      background-color 0.18s ease;
   }
 
   .post-row__link:hover {
     background: var(--everforest-home-row-hover-bg);
-    box-shadow: inset 3px 0 0 var(--everforest-home-row-rail-hover);
   }
 
   .post-row__link:focus-visible {
