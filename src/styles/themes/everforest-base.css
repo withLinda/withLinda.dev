@@ -85,6 +85,18 @@
   /* Active-state accent rail. Default = text-primary so light themes meet
      3:1 (audit-verified). Dark theme overrides to orange in everforest-dark.css. */
   --everforest-link-accent: var(--everforest-text-primary);
+
+  /* Homepage reading-list roles. Keep accents semantic so post-list.css does
+     not need raw palette colors or contrast-specific branching. */
+  --everforest-home-category-text: color-mix(in oklab, var(--everforest-yellow) 34%, var(--everforest-text-primary));
+  --everforest-home-category-rail: var(--everforest-orange);
+  --everforest-home-post-title: var(--everforest-text-primary);
+  --everforest-home-post-title-hover: color-mix(in oklab, var(--everforest-orange) 32%, var(--everforest-text-primary));
+  --everforest-home-post-date: var(--everforest-text-muted);
+  --everforest-home-row-rule: color-mix(in oklab, var(--everforest-border-subtle) 78%, var(--everforest-text-muted) 22%);
+  --everforest-home-row-rule-hover: color-mix(in oklab, var(--everforest-border-subtle) 56%, var(--everforest-orange) 44%);
+  --everforest-home-row-hover-bg: color-mix(in oklab, var(--everforest-bg1) 72%, transparent);
+  --everforest-home-row-rail-hover: var(--everforest-orange);
 }
 
 /* Support for prefers-contrast media query */

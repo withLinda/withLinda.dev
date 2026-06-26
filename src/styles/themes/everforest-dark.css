@@ -86,6 +86,16 @@
   }
 }
 
+/* These tokens must override unlayered defaults from everforest-base.css. */
+.dark {
+  --everforest-link-accent: var(--everforest-orange);
+  --everforest-home-category-text: var(--everforest-yellow);
+  --everforest-home-post-title-hover: var(--everforest-orange);
+  --everforest-home-row-rule: color-mix(in oklab, var(--everforest-bg4) 52%, transparent);
+  --everforest-home-row-rule-hover: color-mix(in oklab, var(--everforest-bg4) 50%, var(--everforest-orange) 50%);
+  --everforest-home-row-hover-bg: color-mix(in oklab, var(--everforest-bg1) 58%, transparent);
+}
+
 @theme {
   --color-everforest-bg: var(--everforest-bg0);
   --color-everforest-bg-dim: var(--everforest-bg-dim);

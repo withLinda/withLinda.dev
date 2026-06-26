@@ -70,8 +70,9 @@ function readAppliedTheme(): ThemeParts {
 }
 
 export default function ThemeToggleButton() {
+  const [hasHydrated, setHasHydrated] = useState(false)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
-  const [theme, setTheme] = useState<ThemeParts>(readAppliedTheme)
+  const [theme, setTheme] = useState<ThemeParts>(defaultTheme)
   const selectorRef = useRef<HTMLDivElement>(null)
 
   const updateTheme = (next: ThemeParts) => {
@@ -94,16 +95,21 @@ export default function ThemeToggleButton() {
   }
 
   useEffect(() => {
+    if (!hasHydrated) {
+      return
+    }
+
     const root = document.documentElement
     const nextThemeKey = `${theme.appearance}-${theme.contrast}`
     root.classList.toggle('dark', theme.appearance === 'dark')
     root.dataset.theme = nextThemeKey
     root.dataset.contrast = theme.contrast
     root.style.colorScheme = theme.appearance
-  }, [theme])
+  }, [hasHydrated, theme])
 
   useEffect(() => {
     setTheme(readAppliedTheme())
+    setHasHydrated(true)
   }, [])
 
   useEffect(() => {
