@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
@@ -25,19 +26,20 @@ const everforestLightTheme = JSON.parse(
 
 export default defineConfig({
   site: 'https://withlinda.dev/',
+  compressHTML: true,
   integrations: [
     react(),
     sitemap(),
     mdx({
       extendMarkdownConfig: true,
-      gfm: true,
       optimize: true,
-      jsx: true,
-      remarkPlugins: [remarkStripFirstH1],
-      rehypePlugins: []
+      jsx: true
     })
   ],
   markdown: {
+    processor: unified({
+      remarkPlugins: [remarkGfm, remarkStripFirstH1]
+    }),
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // CRITICAL: Use 'themes' (plural) NOT 'theme' (singular)
@@ -47,8 +49,7 @@ export default defineConfig({
       },
       wrap: false,
       transformers: []
-    },
-    remarkPlugins: [remarkGfm, remarkStripFirstH1]
+    }
   },
   vite: {
     plugins: [tailwindcss()]
