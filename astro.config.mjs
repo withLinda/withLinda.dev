@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
@@ -37,9 +36,7 @@ export default defineConfig({
     })
   ],
   markdown: {
-    processor: unified({
-      remarkPlugins: [remarkGfm, remarkStripFirstH1]
-    }),
+    remarkPlugins: [remarkGfm, remarkStripFirstH1],
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // CRITICAL: Use 'themes' (plural) NOT 'theme' (singular)
