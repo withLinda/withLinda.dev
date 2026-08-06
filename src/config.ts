@@ -1,8 +1,8 @@
 export const SITE_TITLE: string = 'withLinda.dev'
 export const SITE_TAGLINE: string =
-  'Notes on web development, automation, and AI — by Linda.'
+  'Notes on Swift, Mac and iOS apps, and building things — by Linda.'
 export const SITE_DESCRIPTION: string =
-  'Linda\'s personal blog about web development, automation, and technology.'
+  'Linda\'s personal blog about building Mac and iPhone apps, and the craft behind them.'
 export const ABOUT_URL: string = '/about'
 
 // Full category display names (preserved for tooltip / SEO / future category pages)
